@@ -1,0 +1,40 @@
+﻿@model AdminCreateBrandDto
+
+
+<form class="form-horizontal bv-form" asp-area="Admin" asp-controller="Brand" asp-action="CreateBrand" method="POST" enctype="multipart/form-data" id="createBrandPopupForm">
+    <div class="box box-success">
+        <div class="box-body">
+            <div class="tabs-container">
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <!--Marka Adı-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="BrandName"><b>Marka Adı</b></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="BrandName">
+                        <span asp-validation-for="BrandName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Marka Fotoğrafı Yükleme-->
+                <div class="form-group row" id="mainPhotoGroup">
+                    <label class="col-sm-3 col-form-label" asp-for="BrandPhoto"><b>Marka Fotoğrafı Yükle</b></label>
+                    <div class="col-sm-9 align-content-start">
+                        <div class="custom-file">
+                            <input type="file" asp-for="BrandPhoto" class="custom-file-input form-control" id="brandPhotoUpload" accept=".png, .jpeg, .jpg, .bmp" data-urunId="@Model.Id" required />
+                            <label class="custom-file-label" asp-for="BrandPhoto" id="brandPhotoUploadLabel">Marka Fotoğrafını Seçiniz</label>
+                        </div>
+                        <span asp-validation-for="BrandPhoto" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-footer" style="text-align:right">
+        <button type="submit" class="btn btn-danger btn-xl">Kaydet</button>
+    </div>
+</form>
+
+

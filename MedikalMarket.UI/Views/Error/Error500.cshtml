@@ -1,0 +1,26 @@
+﻿
+@section Head {
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="@ViewBag.ErrorMessage">
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center page-404">
+            <div class="logo">
+                <h1 class="theme-h1"><b style="font-size:64px;color:#F44336;">404</b></h1>
+            </div>
+            <p class="lead text-muted" style="word-wrap: break-word;">@ViewBag.ErrorMessage</p>
+            <p>@ViewBag.ErrorMessage2</p>
+            <p>@ViewBag.RouteOfException</p>
+            <div class="clearfix"></div>
+            <div class="clearfix"></div>
+            <br>
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="btn-group btn-group-justified">
+                    <a href="/" class="btn btn-warning">@ViewBag.Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

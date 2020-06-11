@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="/tr/hakkimizda" xml:space="preserve">
+    <value>/ru/about-us</value>
+  </data>
+  <data name="/tr/sepetim" xml:space="preserve">
+    <value>/ru/cart</value>
+  </data>
+  <data name="Ad soyad minimum 2, maksimum 100 karakter içermelidir." xml:space="preserve">
+    <value>Имя Фамилия минимум 2, максимум 100 символов.</value>
+  </data>
+  <data name="Ad soyad mininmum 2, maksimum 100 karakter içermelidir." xml:space="preserve">
+    <value>Имя Фамилия минимум 2, максимум 100 символов.</value>
+  </data>
+  <data name="Adres" xml:space="preserve">
+    <value>адрес</value>
+  </data>
+  <data name="Adres Başlığı" xml:space="preserve">
+    <value>Заголовок адреса</value>
+  </data>
+  <data name="Adres Ekle" xml:space="preserve">
+    <value>Добавить адрес</value>
+  </data>
+  <data name="Adres Listesi" xml:space="preserve">
+    <value>Список адресов</value>
+  </data>
+  <data name="Adreslerim" xml:space="preserve">
+    <value>Мой адрес</value>
+  </data>
+  <data name="Adınız Soyadınız" xml:space="preserve">
+    <value>Ваше Имя  Фамилия</value>
+  </data>
+  <data name="Adınız Soyadınız1" xml:space="preserve">
+    <value>Ваше Имя  Фамилия</value>
+  </data>
+  <data name="Alışverişe devam et" xml:space="preserve">
+    <value>Продолжить покупки</value>
+  </data>
+  <data name="Bildirim Ayarlarım" xml:space="preserve">
+    <value>Настройки уведомлений</value>
+  </data>
+  <data name="Bilgilerim" xml:space="preserve">
+    <value>информация</value>
+  </data>
+  <data name="Bilgilerimi Güncelle" xml:space="preserve">
+    <value>Обновить мою информацию</value>
+  </data>
+  <data name="Bireysel" xml:space="preserve">
+    <value>Физическое лицо</value>
+  </data>
+  <data name="E-Fatura kullanıcısıyım." xml:space="preserve">
+    <value>Я пользователь электронной накладной.</value>
+  </data>
+  <data name="E-posta adresi minimum 2, maksimum 100 karakter içermelidir." xml:space="preserve">
+    <value>Адрес электронной почты должен быть минимум 2, максимум 100 символов.</value>
+  </data>
+  <data name="E-posta adresi mininmum 2, maksimum 100 karakter içermelidir." xml:space="preserve">
+    <value>Адрес электронной почты должен быть минимум 2, максимум 100 символов.</value>
+  </data>
+  <data name="E-posta Adresiniz" xml:space="preserve">
+    <value>Ваш электронный адрес</value>
+  </data>
+  <data name="E-posta Adresiniz1" xml:space="preserve">
+    <value>Ваш электронный адрес</value>
+  </data>
+  <data name="Fatura Ad Soyad" xml:space="preserve">
+    <value>Счет Имя Фамилия</value>
+  </data>
+  <data name="Fatura İçin Ad Soyad Giriniz" xml:space="preserve">
+    <value>Введите имя Фамилия для счета</value>
+  </data>
+  <data name="Favorilerim" xml:space="preserve">
+    <value>Мои фавориты</value>
+  </data>
+  <data name="Favorilerinize eklediğiniz ürün bulunmamaktadır." xml:space="preserve">
+    <value>В избранное не добавлено ни одного товара.</value>
+  </data>
+  <data name="Girdiğiniz şifreler uyuşmamaktadır." xml:space="preserve">
+    <value>Введенные вами пароли не совпадают.</value>
+  </data>
+  <data name="Girdiğiniz şifreler uyuşmamaktadır.1" xml:space="preserve">
+    <value>Введенные вами пароли не совпадают.</value>
+  </data>
+  <data name="Gizlilik politikası için tıklayınız" xml:space="preserve">
+    <value>Нажмите для политики конфиденциальности</value>
+  </data>
+  <data name="Gizlilik politikası için tıklayınız1" xml:space="preserve">
+    <value>Нажмите для политики конфиденциальности</value>
+  </data>
+  <data name="Kampanyalar" xml:space="preserve">
+    <value>кампании</value>
+  </data>
+  <data name="Kampanyalardan e-posta ile haberdar olmak istiyorum." xml:space="preserve">
+    <value>Я хочу получать информацию об акциях по электронной почте.</value>
+  </data>
+  <data name="Kampanyalardan e-posta ile haberdar olmak istiyorum.1" xml:space="preserve">
+    <value>Я хочу получать информацию об акциях по электронной почте.</value>
+  </data>
+  <data name="Kampanyalardan SMS'le haberdar olmak istiyorum." xml:space="preserve">
+    <value>Я хочу получать информацию об акциях с помощью SMS.</value>
+  </data>
+  <data name="Kampanyalardan SMS'le haberdar olmak istiyorum.1" xml:space="preserve">
+    <value>Я хочу получать информацию об акциях с помощью SMS.</value>
+  </data>
+  <data name="Kullanıcı sözleşmesi için tıklayınız" xml:space="preserve">
+    <value>Нажмите для пользовательского соглашения</value>
+  </data>
+  <data name="Kullanıcı sözleşmesi için tıklayınız1" xml:space="preserve">
+    <value>Нажмите для пользовательского соглашения</value>
+  </data>
+  <data name="Kullanıcı sözleşmesini ve gizlilik politikasını okudum, kabul ediyorum." xml:space="preserve">
+    <value>Я прочитал и принимаю пользовательское соглашение и политику конфиденциальности.</value>
+  </data>
+  <data name="Kullanıcı sözleşmesini ve gizlilik politikasını okudum, kabul ediyorum.1" xml:space="preserve">
+    <value>Я прочитал и принимаю пользовательское соглашение и политику конфиденциальности.</value>
+  </data>
+  <data name="Kullanıcı Türü" xml:space="preserve">
+    <value>Тип пользователя</value>
+  </data>
+  <data name="Kurumsal" xml:space="preserve">
+    <value>Предприятие</value>
+  </data>
+  <data name="Lütfen adres başlığı belirtiniz" xml:space="preserve">
+    <value>Пожалуйста, укажите заголовок адреса</value>
+  </data>
+  <data name="Lütfen adres belirtiniz" xml:space="preserve">
+    <value>Пожалуйста, укажите адрес</value>
+  </data>
+  <data name="Lütfen adınızı ve soyadınızı arasında boşluk bırakarak giriniz" xml:space="preserve">
+    <value>Пожалуйста, введите ваше имя и фамилию с пробелом.</value>
+  </data>
+  <data name="Lütfen adınızı ve soyadınızı giriniz" xml:space="preserve">
+    <value>Пожалуйста, введите свое имя и фамилию</value>
+  </data>
+  <data name="Lütfen adınızı ve soyadınızı giriniz." xml:space="preserve">
+    <value>Пожалуйста, введите ваше имя и фамилию.</value>
+  </data>
+  <data name="Lütfen adınızı ve soyadınızı giriniz.1" xml:space="preserve">
+    <value>Пожалуйста, введите ваше имя и фамилию.</value>
+  </data>
+  <data name="Lütfen E-posta adresinizi giriniz." xml:space="preserve">
+    <value>Пожалуйста, введите свой адрес электронной почты.</value>
+  </data>
+  <data name="Lütfen E-posta adresinizi giriniz.1" xml:space="preserve">
+    <value>Пожалуйста, введите свой адрес электронной почты.</value>
+  </data>
+  <data name="Lütfen en az 5 karakter içeren bir şifre belirtiniz" xml:space="preserve">
+    <value>Пожалуйста, укажите пароль длиной не менее 5 символов.</value>
+  </data>
+  <data name="Lütfen en az 5 karakter içeren bir şifre belirtiniz1" xml:space="preserve">
+    <value>Пожалуйста, укажите пароль длиной не менее 5 символов.</value>
+  </data>
+  <data name="Lütfen geçerli bir e-posta adresi belirtiniz" xml:space="preserve">
+    <value>Пожалуйста, укажите действительный адрес электронной почты</value>
+  </data>
+  <data name="Lütfen geçerli bir e-posta adresi belirtiniz1" xml:space="preserve">
+    <value>Пожалуйста, укажите действительный адрес электронной почты</value>
+  </data>
+  <data name="Lütfen geçerli bir eposta adresi giriniz." xml:space="preserve">
+    <value>Пожалуйста, введите действительный адрес электронной почты.</value>
+  </data>
+  <data name="Lütfen geçerli bir eposta adresi giriniz.1" xml:space="preserve">
+    <value>Пожалуйста, введите действительный адрес электронной почты.</value>
+  </data>
+  <data name="Lütfen geçerli bir T.C. kimlik no belirtiniz" xml:space="preserve">
+    <value>Пожалуйста, введите действительный идентификационный номер</value>
+  </data>
+  <data name="Lütfen geçerli bir telefon numarası belirtiniz" xml:space="preserve">
+    <value>Пожалуйста, укажите действительный номер телефона</value>
+  </data>
+  <data name="Lütfen geçerli bir vergi numarası belirtiniz" xml:space="preserve">
+    <value>Пожалуйста, укажите действительный налоговый номер</value>
+  </data>
+  <data name="Lütfen geçerli bir şifre giriniz" xml:space="preserve">
+    <value>Пожалуйста, введите действительный пароль</value>
+  </data>
+  <data name="Lütfen ilçe seçiniz" xml:space="preserve">
+    <value>Пожалуйста, выберите район</value>
+  </data>
+  <data name="Lütfen kullanıcı sözleşmesini okuyup kabul ettiğinizden emin olun." xml:space="preserve">
+    <value>Пожалуйста, не забудьте прочитать и принять пользовательское соглашение.</value>
+  </data>
+  <data name="Lütfen kullanıcı sözleşmesini okuyup kabul ettiğinizden emin olun.1" xml:space="preserve">
+    <value>Пожалуйста, не забудьте прочитать и принять пользовательское соглашение.</value>
+  </data>
+  <data name="Lütfen vergi dairesi belirtiniz" xml:space="preserve">
+    <value>Пожалуйста, укажите налоговую инспекцию</value>
+  </data>
+  <data name="Lütfen ülke seçiniz" xml:space="preserve">
+    <value>Пожалуйста, выберите страну</value>
+  </data>
+  <data name="Lütfen şehir seçiniz" xml:space="preserve">
+    <value>Пожалуйста, выберите город</value>
+  </data>
+  <data name="Lütfen şifre tekrar alanını giriniz" xml:space="preserve">
+    <value>Пожалуйста, введите поле для повторения пароля</value>
+  </data>
+  <data name="Lütfen şifrenizi giriniz." xml:space="preserve">
+    <value>Пожалуйста, введите ваш пароль</value>
+  </data>
+  <data name="Lütfen şifrenizi giriniz.1" xml:space="preserve">
+    <value>Пожалуйста, введите ваш пароль</value>
+  </data>
+  <data name="Lütfen şifrenizi tekrar giriniz. Şifreler aynı olmalıdır." xml:space="preserve">
+    <value>Пожалуйста, введите ваш пароль еще раз. Пароли должны быть одинаковыми.</value>
+  </data>
+  <data name="Lütfen şifrenizi tekrar giriniz. Şifreler aynı olmalıdır.1" xml:space="preserve">
+    <value>Пожалуйста, введите ваш пароль еще раз. Пароли должны быть одинаковыми.</value>
+  </data>
+  <data name="Marka" xml:space="preserve">
+    <value>марка</value>
+  </data>
+  <data name="premiummedikal.com üye hesabı detay" xml:space="preserve">
+    <value>premiummedikal.com деталь учетной записи участника</value>
+  </data>
+  <data name="Sepete Git" xml:space="preserve">
+    <value>Перейти в корзину</value>
+  </data>
+  <data name="Seçiniz" xml:space="preserve">
+    <value>выбрать</value>
+  </data>
+  <data name="Sil" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
+  <data name="Siparişlerim" xml:space="preserve">
+    <value>Мои заказы</value>
+  </data>
+  <data name="T.C. Kimlik No" xml:space="preserve">
+    <value>ID номер</value>
+  </data>
+  <data name="Telefon Numarası" xml:space="preserve">
+    <value>Номер телефона</value>
+  </data>
+  <data name="User Type" xml:space="preserve">
+    <value>Тип пользователя</value>
+  </data>
+  <data name="Vergi Dairesi" xml:space="preserve">
+    <value>Налоговая инспекция</value>
+  </data>
+  <data name="Vergi Numarası" xml:space="preserve">
+    <value>Налоговый номер</value>
+  </data>
+  <data name="Ülke" xml:space="preserve">
+    <value>страна</value>
+  </data>
+  <data name="Ürün Adı" xml:space="preserve">
+    <value>Наименование продукта</value>
+  </data>
+  <data name="Ürün Görseli" xml:space="preserve">
+    <value>Изображение продукта</value>
+  </data>
+  <data name="Üye işlemlerinizi bu sayfa üzerinden gerçekleştirebilirsiniz." xml:space="preserve">
+    <value>Операции с членами можно выполнять через эту страницу.</value>
+  </data>
+  <data name="Üye Kayıt Formu" xml:space="preserve">
+    <value>Форма регистрации участника</value>
+  </data>
+  <data name="Üye Kayıt Formu1" xml:space="preserve">
+    <value>Форма регистрации участника</value>
+  </data>
+  <data name="Üye Ol" xml:space="preserve">
+    <value>Стать участником</value>
+  </data>
+  <data name="Üye Ol1" xml:space="preserve">
+    <value>Стать участником</value>
+  </data>
+  <data name="Üyelik Bilgilerim" xml:space="preserve">
+    <value>Информация о моем членстве</value>
+  </data>
+  <data name="Üyeliğinize bağlı sipariş bulunamadı." xml:space="preserve">
+    <value>Не найдено заказов, связанных с вашим членством.</value>
+  </data>
+  <data name="İlçe" xml:space="preserve">
+    <value>район</value>
+  </data>
+  <data name="İşlem" xml:space="preserve">
+    <value>действие</value>
+  </data>
+  <data name="Şehir" xml:space="preserve">
+    <value>город</value>
+  </data>
+  <data name="Şifre Değiştir" xml:space="preserve">
+    <value>Изменить пароль</value>
+  </data>
+  <data name="Şifre Tekrarı" xml:space="preserve">
+    <value>Подтвердите пароль</value>
+  </data>
+  <data name="Şifre Tekrarı1" xml:space="preserve">
+    <value>Подтвердите пароль</value>
+  </data>
+  <data name="Şifreniz" xml:space="preserve">
+    <value>пароль</value>
+  </data>
+  <data name="Şifreniz minimum 5, maksimum 20 karakter içermelidir." xml:space="preserve">
+    <value>Ваш пароль должен содержать не менее 5 символов и не более 20 символов.</value>
+  </data>
+  <data name="Şifreniz mininmum 2, maksimum 20 karakter içermelidir." xml:space="preserve">
+    <value>Ваш пароль должен содержать не менее 2 символов и не более 20 символов.</value>
+  </data>
+  <data name="Şifreniz1" xml:space="preserve">
+    <value>пароль</value>
+  </data>
+</root>

@@ -1,0 +1,56 @@
+﻿<!--Category Sidebar Component-->
+@inject IViewLocalizer localizer
+
+@model CategorySidebarDto
+
+@{
+    Layout = "~/Views/Shared/_ComponentLayout.cshtml";
+}
+
+<form action="" method="get" id="filterForm" novalidate="novalidate">
+    <input type="hidden" name="OrderBy" value="" readonly="">
+    <div class="panel-group filter-container">
+        <div class="panel">
+            <div class="panel-heading">
+                <h4 class="panel-title">@ViewBag.filter</h4>
+                <a data-toggle="collapse" href="#filter"><i class="fa fa-bars"></i></a>
+            </div>
+            <div id="filter" class="panel-collapse collapse in">
+                <div class="panel-body">
+
+                    <div class="panel panel-item categories acategory">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">@Model.ComponentTitle</h4>
+                            <a data-toggle="collapse" href="#categories"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                        </div>
+                        <div id="categories" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <ul class="list-unstyled">
+
+                                    <li class="top-category"><a href="" data-value="0"><i class="fa fa-arrow-left" aria-hidden="true"></i>@Model.ComponentTitle</a></li>
+
+                                    @if (Model.CategoryType.Equals("top"))
+                                    {
+                                        @foreach (var item in Model.MiddleCategoryComponentDtos)
+                                        {
+                                            <li><a href="@item.CategoryHref" data-value="170">@item.Name</a></li>
+                                        }
+                                    }
+                                    else if (Model.CategoryType.Equals("mid"))
+                                    {
+                                        @foreach (var item in Model.SubCategoryComponentDtos)
+                                        {
+                                            <li><a href="@item.CategoryHref" data-value="170">@item.Name</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn hide" id="filterTrigger">Filtre</button>
+                    <button type="button" class="btn hide" id="filterReset">Filtre Temizle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,187 @@
+﻿@model RegisterDto
+@inject IViewLocalizer localizer
+
+@section Head {
+    <title>@localizer["premiummedikal.com yeni üye kayıt sayfası"]</title>
+    <meta name="description" content="@localizer["Sitemize üye kaydı yaptırarak güncel kampanyalardan faydalanabilir, ürünlerimizi favorilerinize ve sepetinize ekleyebilirsiniz."]">
+}
+
+@*<cache expires-after="@TimeSpan.FromMinutes(20)" vary-by-culture="true" enabled="true">*@
+
+    <input type="hidden" id="warnsozlesmeChecked" value="@localizer["Lütfen kullanıcı sözleşmesini okuyup kabul ettiğinizden emin olun."]" />
+    <input type="hidden" id="warnnameSurname" value="@localizer["Ad soyad minimum 2, maksimum 100 karakter içermelidir."]" />
+    <input type="hidden" id="warnnameSurnameEmpty" value="@localizer["Lütfen adınızı ve soyadınızı giriniz."]" />
+    <input type="hidden" id="warnpwdVal" value="@localizer["Şifreniz minimum 5, maksimum 20 karakter içermelidir."]" />
+    <input type="hidden" id="warnpwdVal2" value="@localizer["Girdiğiniz şifreler uyuşmamaktadır."]" />
+    <input type="hidden" id="warnpwdValEmpty" value="@localizer["Lütfen şifrenizi giriniz."]" />
+    <input type="hidden" id="warnwrongEmail" value="@localizer["Lütfen geçerli bir eposta adresi giriniz."]" />
+    <input type="hidden" id="warnEmptyEmail" value="@localizer["Lütfen E-posta adresinizi giriniz."]" />
+    <input type="hidden" id="warnemailVal" value="@localizer["E-posta adresi minimum 2, maksimum 100 karakter içermelidir."]" />
+
+    <div class="login-page-v2">
+        <h1 class="theme-h1"><span></span></h1>
+        <ul class="social-connect-buttons modul-content list-unstyled list-inline text-center"></ul>
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                <div class="modul-content new-user">
+                    <h2 class="theme-h2"><span>@localizer["Üye Kayıt Formu"]</span></h2>
+
+                    <form method="post" id="RegisterForm">
+
+                        <div class="form-group">
+                            <label asp-for="NameSurname">@localizer["Adınız Soyadınız"]</label>
+                            <input asp-for="NameSurname" data-rule-required="true" data-rule-adsoyad="true" type="text" data-focus="true" class="form-control" id="AdSoyad" placeholder="@localizer["Adınız Soyadınız"]" data-hata-mesaji="@localizer["Lütfen adınızı ve soyadınızı arasında boşluk bırakarak giriniz"]">
+                            <span asp-validation-for="NameSurname" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="EmailAddress">@localizer["E-posta Adresiniz"]</label>
+                            <input asp-for="EmailAddress" data-rule-required="true" data-rule-email="true" type="email" class="form-control" id="Mail2" placeholder="@localizer["E-posta Adresiniz"]" data-hata-mesaji="@localizer["Lütfen geçerli bir e-posta adresi belirtiniz"]">
+                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-6">
+                                <label asp-for="Password">@localizer["Şifreniz"]</label>
+                                <input asp-for="Password" data-rule-required="true" data-rule-sifre="true" type="password" class="form-control" id="Sifre2" placeholder="@localizer["Şifreniz"]" data-hata-mesaji="@localizer["Lütfen en az 5 karakter içeren bir şifre belirtiniz"]">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+
+                            </div>
+                            <div class="col-xs-6">
+                                <label asp-for="ConfirmPassword">@localizer["Şifre Tekrarı"]</label>
+                                <input asp-for="ConfirmPassword" data-rule-required="true" data-rule-sifre="true" type="password" class="form-control" id="SifreTekrar" placeholder="@localizer["Şifre Tekrarı"]" data-hata-mesaji="@localizer["Lütfen şifrenizi tekrar giriniz. Şifreler aynı olmalıdır."]">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-check aggrement-check">
+                            <label for="Sozlesme" class="form-check-label small"><input class="form-check-input" type="checkbox" name="uyelik_sozlesme" data-rule-required="true" id="Sozlesme"> @localizer["Kullanıcı sözleşmesini ve gizlilik politikasını okudum, kabul ediyorum."]</label>
+                        </div>
+                        <div class="form-group aggrement-text">
+                            <p><a href="@localizer["/tr/hakkimizda"]" target="_blank">@localizer["Kullanıcı sözleşmesi için tıklayınız"]</a> | <a href="@localizer["/tr/hakkimizda"]" target="_blank">@localizer["Gizlilik politikası için tıklayınız"]</a></p>
+                        </div>
+                        <div class="form-check">
+                            <label for="KampanyaMail" class="form-check-label small"><input class="form-check-input" type="checkbox" id="KampanyaMail" name="KampanyaMail"> @localizer["Kampanyalardan e-posta ile haberdar olmak istiyorum."]</label>
+                        </div>
+                        <div class="form-check">
+                            <label for="KampanyaSms" class="form-check-label small"><input class="form-check-input" type="checkbox" id="KampanyaSms" name="KampanyaSms">@localizer["Kampanyalardan SMS'le haberdar olmak istiyorum."]</label>
+                        </div>
+                        <div class="form-group form-button">
+                            <button id="formRegister">@localizer["Üye Ol"]</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+@*</cache>*@
+
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/admin/lib/iCheck/icheck.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#formRegister').click(function (e) {
+                //debugger;
+                e.preventDefault();
+
+                var form = $('#RegisterForm');
+                $.validator.unobtrusive.parse(form);
+                form.validate();
+
+                var nameSurname = document.getElementById('AdSoyad').value;
+                var emailVal = document.getElementById('Mail2').value;
+                var pwdVal = document.getElementById('Sifre2').value;
+                var pwdVal2 = document.getElementById('SifreTekrar').value;
+                var kampanyaMail = document.getElementById('KampanyaMail').checked;
+                var kampanyaSMS = document.getElementById('KampanyaSms').checked;
+                var sozlesmeChecked = document.getElementById('Sozlesme').checked;
+
+                var warnWrongEmail = document.getElementById('warnwrongEmail').value;
+                var warnEmptyEmail = document.getElementById('warnEmptyEmail').value;
+                var warnsozlesmeChecked = document.getElementById('warnsozlesmeChecked').value;
+                var warnnameSurname = document.getElementById('warnnameSurname').value;
+                var warnnameSurnameEmpty = document.getElementById('warnnameSurnameEmpty').value;
+                var warnemailVal = document.getElementById('warnemailVal').value;
+                var warnpwdVal = document.getElementById('warnpwdVal').value;
+                var warnpwdValEmpty = document.getElementById('warnpwdValEmpty').value;
+                var warnpwdVal2 = document.getElementById('warnpwdVal2').value;
+
+                var pattern = /^(([^<>()\[\]\.,;:\s@@\"]+(\.[^<>()\[\]\.,;:\s@@\"]+)*)|(\".+\"))@@(([^<>()[\]\.,;:\s@@\"]+\.)+[^<>()[\]\.,;:\s@@\"]{2,})$/i;
+                var emailValidation = pattern.test(emailVal);
+
+                if (nameSurname.length == 0) {
+                    toastr.error(warnnameSurnameEmpty);
+                    $('#AdSoyad').focus();
+                    return false;
+                }
+                if (nameSurname.length < 2 || nameSurname.length > 100) {
+                    toastr.error(warnnameSurname);
+                    $('#AdSoyad').focus();
+                    return false;
+                }
+                if (emailVal.length == 0) {
+                    toastr.error(warnEmptyEmail);
+                    $('#Mail2').focus();
+                    return false;
+                }
+                if (!emailValidation) {
+                    toastr.error(warnWrongEmail);
+                    $('#Mail2').focus();
+                    return false;
+                }
+                if (emailVal.length < 2 || emailVal.length > 100) {
+                    toastr.error(warnemailVal);
+                    $('#Mail2').focus();
+                    return false;
+                }
+                if (pwdVal.length == 0) {
+                    toastr.error(warnpwdValEmpty);
+                    $('#Sifre2').focus();
+                    return false;
+                }
+                if (pwdVal.length < 5 || pwdVal.length > 20) {
+                    toastr.error(warnpwdVal);
+                    $('#Sifre2').focus();
+                    return false;
+                }
+                if (pwdVal2 != pwdVal) {
+                    toastr.error(warnpwdVal2);
+                    $('#SifreTekrar').focus();
+                    return false;
+                }
+                if (!sozlesmeChecked) {
+                    toastr.error(warnsozlesmeChecked);
+                    $('#Sozlesme').focus();
+                    return false;
+                }
+                if (form.valid()) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "/Account/Register",
+                        data: { email: emailVal, name: nameSurname, password: pwdVal, sms: kampanyaSMS, mail: kampanyaMail },
+                        success: function (response) {
+                            if (response.success) {
+                                //toastr.success(response.responseText, response.title);
+                                window.location.href = response.togo;
+                            }
+                            else {
+                                toastr.warning(response.responseText, response.title);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+}
+
+@section Styles {
+
+    @*<link href="~/admin/lib/iCheck/custom.css" rel="stylesheet" />*@
+
+}

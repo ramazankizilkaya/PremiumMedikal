@@ -1,0 +1,66 @@
+﻿<!--Slider Component-->
+
+@model IEnumerable<SliderDto>
+
+@{
+    Layout = "~/Views/Shared/_ComponentLayout.cshtml";
+}
+
+@if (Model.Count() != 0)
+{
+    @if (ViewBag.culture.Equals("tr"))
+    {
+        <div class="col-xs-12 col-sm-9">
+            <div class="slider">
+
+                @foreach (var slider in Model)
+                {
+                    <div class="item">
+                        <a href="@slider.SliderHref" target="_self">
+                            <img src=~/Images/SliderImages/tr/@slider.PhotoFileName width="1200" height="365" alt=@slider.PhotoAltTag>
+                            <div class="detail" data-thumb="~/Images/SliderImages/tr/@slider.ThumbFileName" title="Sipariş"><img alt=@slider.PhotoAltTag src=~/Images/SliderImages/tr/@slider.ThumbFileName style="width: 75px; height: 50px;" /></div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else if (ViewBag.culture.Equals("ru"))
+    {
+        <div class="col-xs-12 col-sm-9">
+            <div class="slider">
+
+                @foreach (var slider in Model)
+                {
+                    <div class="item">
+                        <a href="@slider.SliderHref" target="_self">
+                            <img src=~/Images/SliderImages/ru/@slider.PhotoFileName width="1200" height="365" alt=@slider.PhotoAltTag>
+                            <div class="detail" data-thumb="~/Images/SliderImages/ru/@slider.ThumbFileName" title="Sipariş"><img alt=@slider.PhotoAltTag src=~/Images/SliderImages/ru/@slider.ThumbFileName style="width: 75px; height: 50px;" /></div>
+                        </a>
+                    </div>
+                }
+
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="col-xs-12 col-sm-9">
+            <div class="slider">
+
+                @foreach (var slider in Model)
+                {
+                    <div class="item">
+                        <a href="@slider.SliderHref" target="_self">
+                            <img src=~/Images/SliderImages/en/@slider.PhotoFileName width="1200" height="365" alt=@slider.PhotoAltTag>
+                            <div class="detail" data-thumb="~/Images/SliderImages/en/@slider.ThumbFileName" title="Sipariş"><img alt=@slider.PhotoAltTag src=~/Images/SliderImages/en/@slider.ThumbFileName style="width: 75px; height: 50px;" /></div>
+                        </a>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    }
+
+}

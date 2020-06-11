@@ -1,0 +1,245 @@
+﻿@model IEnumerable<AdminProductDto>
+@{
+    ViewData["Title"] = "Silinmiş Ürün Listesi";
+}
+
+
+<input type="hidden" value="@ViewBag.success" id="proListSuccess" />
+<input type="hidden" value="@ViewBag.warning" id="proListWarning" />
+
+
+
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Data Tables</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index" asp-area="Admin">Anasayfa</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Ürünler</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Silinmiş Ürün Listesi</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <a class="btn btn-primary btn-xs" href="" id="cleanFilters">Filtreleri Temizle</a>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Sıra No</th>
+                                    <th>Ürün Id</th>
+                                    <th>Vitrin Fotoğrafı</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Ürün Tipi</th>
+                                    <th>Marka</th>
+                                    <th>Üst Kategori</th>
+                                    <th>Orta Kategori</th>
+                                    <th>Alt Kategori</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @{ int i = 1;}
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="gradeX">
+                                        <td class="center">@i</td>
+                                        <td class="center">@item.Id</td>
+                                        @if (item.MainPhotoFileName != null)
+                                        {
+                                            <td class="center"><a href="/Images/ProductImages/Main/@item.MainPhotoFileName" alt="@item.PhotoAltTagTR" target="_blank"><img src="~/Images/ProductImages/Main/@item.MainPhotoFileName" alt="@item.PhotoAltTagTR" style="width:50px; height:50px;" /></a></td>
+                                        }
+                                        else
+                                        {
+                                            <td class="center">Vitrin fotoğrafı yok.</td>
+                                        }
+
+                                        <td class="center">@item.NameTR</td>
+                                        <td class="center">@item.ProductOfferType.GetDisplayName()</td>
+                                        <td class="center">@item.BrandName</td>
+                                        <td class="center">@item.TopCategoryName</td>
+                                        <td class="center">@item.MiddleCategoryName</td>
+                                        <td class="center">@item.SubCategoryName</td>
+                                        <td class="center">
+
+                                           <button type="button" class="btn btn-danger btn-xs hardDeletePro" data-target="/Admin/Product/HardDeleteProduct/@item.Id" data-rowId="@item.Id" title="Kalıcı Sil">&emsp;<i class="fa fa-android"></i>&emsp;</button>
+
+                                            <button type="button" class="btn btn-primary btn-xs undeletePro" data-target="/Admin/Product/UnDeleteProduct/@item.Id" data-rowId="@item.Id" title="Silindi Etiketini Kaldır">&emsp;<i class="fa fa-recycle"></i>&emsp;</button>
+
+                                        </td>
+                                    </tr>
+
+                                    i++;
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Sıra No</th>
+                                    <th>Ürün Id</th>
+                                    <th>Vitrin Fotoğrafı</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Ürün Tipi</th>
+                                    <th>Marka</th>
+                                    <th>Üst Kategori</th>
+                                    <th>Orta Kategori</th>
+                                    <th>Alt Kategori</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Styles {
+
+    @*<link href="~/css/ModalStyle.css" rel="stylesheet" />*@
+
+}
+
+@section Scripts {
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //Datatable
+            $('.dataTables-example').DataTable({
+
+                initComplete: function () {
+                    this.api().columns().every(function (index, element) {
+                        if (index != 0 && index != 1 && index != 2 && index != 8) {
+                            var column = this;
+                            var select = $('<select class="filterS"><option value=""></option></select>')
+                                //.appendTo($(column.header()))
+                                .appendTo($(column.footer()))
+                                .on('change', function () {
+                                    var val = $.fn.dataTable.util.escapeRegex(
+                                        $(this).val()
+                                    );
+
+                                    column
+                                        .search(val ? '^' + val + '$' : '', true, false)
+                                        .draw();
+                                });
+
+                            column.data().unique().sort().each(function (d, j) {
+                                select.append('<option value="' + d + '">' + d + '</option>')
+                            });
+                        }
+
+                    });
+                },
+                "language": {
+
+                    "sDecimal": ",",
+                    "sEmptyTable": "Tabloda herhangi bir veri mevcut değil",
+                    "sInfo": "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
+                    "sInfoEmpty": "Kayıt yok",
+                    "sInfoFiltered": "(_MAX_ kayıt içerisinden bulunan)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "Sayfada _MENU_ kayıt göster",
+                    "sLoadingRecords": "Yükleniyor...",
+                    "sProcessing": "İşleniyor...",
+                    "sSearch": "Ara:",
+                    "sZeroRecords": "Eşleşen kayıt bulunamadı",
+                    "oPaginate": {
+                        "sFirst": "İlk",
+                        "sLast": "Son",
+                        "sNext": "Sonraki",
+                        "sPrevious": "Önceki"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": artan sütun sıralamasını aktifleştir",
+                        "sSortDescending": ": azalan sütun sıralamasını aktifleştir"
+                    },
+                    "select": {
+                        "rows": {
+                            "_": "%d kayıt seçildi",
+                            "0": "",
+                            "1": "1 kayıt seçildi"
+                        }
+                    }
+                },
+                pageLength: 25,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'excel', title: 'ExampleFile' },
+                    { extend: 'pdf', title: 'ExampleFile' },
+
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+            });
+
+            // popup tablarının hepsini valide etmek için
+            $.validator.setDefaults({
+                ignore: ""
+            });
+
+
+            //Datatable filtrelerini temizler
+            $('#cleanFilters').click(function () {
+                var table = $('.dataTables-example').DataTable();
+                table
+                    .search('')
+                    .columns().search('')
+                    .draw();
+            });
+
+            //gelen başarı uyarısını verir
+            var successText = $('#proListSuccess').val();
+
+            if (successText.length>0 ) {
+                toastr.success(successText, "Başarılı");
+                $('#proListSuccess').val("")
+            }
+            var failText = $('#proListWarning').val();
+
+            if (failText.length>0) {
+                toastr.error(failText, "Hata");
+                $('#proListWarning').val("")
+            }
+
+        });
+    </script>
+
+
+
+
+
+
+
+}

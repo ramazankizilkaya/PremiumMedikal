@@ -1,0 +1,285 @@
+﻿@inject IViewLocalizer localizer
+@model CustomerDto
+
+
+@section Head {
+    <title>@localizer["premiummedikal.com üye hesabı detay"]</title>
+    <meta name="description" content="@localizer["Üye işlemlerinizi bu sayfa üzerinden gerçekleştirebilirsiniz."]">
+}
+
+<input type="hidden" id="warnnameSurname" value="@localizer["Ad soyad minimum 2, maksimum 100 karakter içermelidir."]" />
+<input type="hidden" id="warnnameSurnameEmpty" value="@localizer["Lütfen adınızı ve soyadınızı giriniz."]" />
+<input type="hidden" id="warnemailVal" value="@localizer["E-posta adresi minimum 2, maksimum 100 karakter içermelidir."]" />
+<input type="hidden" id="warnpwdVal" value="@localizer["Şifreniz minimum 5, maksimum 20 karakter içermelidir."]" />
+<input type="hidden" id="warnpwdVal2" value="@localizer["Girdiğiniz şifreler uyuşmamaktadır."]" />
+<input type="hidden" id="warnpwdValEmpty" value="@localizer["Lütfen şifrenizi giriniz."]" />
+<input type="hidden" id="warnwrongEmail" value="@localizer["Lütfen geçerli bir eposta adresi giriniz."]" />
+<input type="hidden" id="warnEmptyEmail" value="@localizer["Lütfen E-posta adresinizi giriniz."]" />
+<input type="hidden" id="urlPath" value="@Context.Request.Path" />
+
+
+<div class="container">
+    <div class="tabs-group my-account">
+        <ul class="nav nav-tabs">
+            <li class="informations active"><a href="#tab01" data-toggle="tab"><span>@localizer["Bilgilerim"]</span></a></li>
+            <li class="campaigns"><a href="#tab03" data-toggle="tab"><span>@localizer["Kampanyalar"]</span></a></li>
+            <li class="orders"><a href="#tab04" data-toggle="tab"><span>@localizer["Favorilerim"]</span></a></li>
+        </ul>
+        <div class="tab-content">
+            <div id="tab01" class="tab-pane fade in active ">
+
+                <form method="post" id="UpdateUserForm">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2 class="theme-h2"><span>@localizer["Üyelik Bilgilerim"]</span></h2>
+                            <div class="form-group row">
+                                <label asp-for="NameSurname" class="col-xs-12 col-md-4 col-form-label">@localizer["Adınız Soyadınız"]</label>
+                                <div class="col-xs-12 col-md-8">
+                                    <input asp-for="NameSurname" data-rule-required="true" data-rule-adsoyad="true" type="text" class="form-control" id="AdSoyad" placeholder="@localizer["Adınız Soyadınız"]" data-hata-mesaji="@localizer["Lütfen adınızı ve soyadınızı giriniz."]">
+                                </div>
+                                <span asp-validation-for="NameSurname" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group row">
+                                <label asp-for="EmailAddress" class="col-xs-12 col-md-4 col-form-label">@localizer["E-posta Adresiniz"]</label>
+                                <div class="col-xs-12 col-md-8">
+                                    <input asp-for="EmailAddress" data-rule-required="true" data-rule-email="true" type="email" class="form-control" id="Mail" placeholder="@localizer["E-posta Adresiniz"]" data-hata-mesaji="@localizer["Lütfen geçerli bir e-posta adresi belirtiniz"]">
+                                    <span asp-validation-for="NameSurname" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label asp-for="CellPhoneNumber" class="col-xs-12 col-md-4 col-form-label">@localizer["Telefon Numarası"]</label>
+                                <div class="col-xs-12 col-md-8">
+                                    <input asp-for="CellPhoneNumber" type="text" class="form-control" id="Telefon" placeholder="@localizer["Telefon Numarası"]" data-hata-mesaji="@localizer["Lütfen geçerli bir telefon numarası belirtiniz"]" maxlength="17">
+                                    <span asp-validation-for="CellPhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label asp-for="Address" class="col-xs-12 col-md-4 col-form-label">Adres</label>
+                                <div class="col-xs-12 col-md-8">
+                                    <textarea asp-for="Address" class="form-control" id="Adres" placeholder="Adres"></textarea>
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+
+                            <h2 class="theme-h2"><span>@localizer["Bildirim Ayarlarım"]</span></h2>
+
+                            <div class="form-check">
+                                <label for="KampanyaMail" class="form-check-label small"><input class="form-check-input" checked="@Model.IsSubscribedToEmail" type="checkbox" id="KampanyaMail" name="KampanyaMail"> @localizer["Kampanyalardan e-posta ile haberdar olmak istiyorum."]</label>
+                            </div>
+                            <div class="form-check">
+                                <label for="KampanyaSms" class="form-check-label small"><input class="form-check-input" checked="@Model.IsSubscribedToSMS" type="checkbox" id="KampanyaSms" name="KampanyaSms">@localizer["Kampanyalardan SMS'le haberdar olmak istiyorum."]</label>
+                            </div>
+
+                            <hr>
+                            <h2 class="theme-h2"><span>@localizer["Şifre Değiştir"]</span></h2>
+                            <div class="form-group row">
+                                <label asp-for="Password" class="col-xs-12 col-md-4 col-form-label">@localizer["Şifreniz"]</label>
+                                <div class="col-xs-12 col-md-8">
+                                    <input asp-for="Password" data-rule-sifre="true" type="password" class="form-control" value="@Model.Password" id="Sifre" placeholder="@localizer["Şifreniz"]" data-hata-mesaji="@localizer["Lütfen geçerli bir şifre giriniz"]">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label asp-for="ConfirmPassword" class="col-xs-12 col-md-4 col-form-label">@localizer["Şifre Tekrarı"]</label>
+                                <div class="col-xs-12 col-md-8">
+                                    <input asp-for="ConfirmPassword" data-rule-sifre="true" type="password" class="form-control" id="SifreTekrar" value="@Model.Password" placeholder="@localizer["Şifre Tekrarı"]" data-hata-mesaji="@localizer["Lütfen şifre tekrar alanını giriniz"]">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center button-container"><button class="btn" type="submit" id="userUpdateSubmit">@localizer["Bilgilerimi Güncelle"]</button></div>
+                </form>
+            </div>
+
+            <div id="tab03" class="tab-pane fade">
+                <div class="campaign-list">
+                    <div class="row">
+
+                    </div>
+                </div>
+                <div class="well text-center">
+                </div>
+            </div>
+            <div id="tab04" class="tab-pane fade">
+
+                <div id="myOrders">
+                    @*<div class="modul-content text-center">*@
+                    @if (Model.FavoriteProductDtos.Count() > 0)
+                    {
+                        <table class="table table-striped table-bordered table-hover table-responsive" style="table-layout:fixed;width:100%;" id="userTable">
+                            <thead class="table" style="background-color:bisque; height:60px;">
+                                <tr>
+                                    <th style="text-align:center;"><b>@localizer["Ürün Görseli"]</b></th>
+                                    <th style="text-align:center;"><b>@localizer["Ürün Adı"]</b></th>
+                                    <th style="text-align:center;"><b>@localizer["Marka"]</b></th>
+                                    <th>@localizer["İşlem"]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.FavoriteProductDtos.OrderByDescending(x => x.CreatedDate))
+                                {
+                                    <tr id="@item.Id">
+                                        <td style="vertical-align:middle; word-break: break-all;"><img style="" src="~/Images/ProductImages/Main/@item.MainPhotoFileName" alt="@item.PhotoAltTag" /></td>
+                                        <td style="vertical-align:middle; word-break: break-all;"><a target="_blank" href="@item.ProductHref">@item.ProductName</a></td>
+                                        <td style="vertical-align:middle; word-break: break-all;"><a target="_blank" href="@item.BrandHref">@item.BrandName</a></td>
+                                        <td style="vertical-align:middle; word-break: break-all;"><a href="#" class="deleteFav" data-id="@item.Id">@localizer["Sil"]</a></td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+
+                    }
+                    else
+                    { <br />
+                        <text>@localizer["Favorilerinize eklediğiniz ürün bulunmamaktadır."]</text>
+                        <br /><br />
+                    }
+                </div>
+                @*</div>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+            //Kullanıcı Bilgileri Güncelleme
+            $('#userUpdateSubmit').click(function (e) {
+                debugger;
+                e.preventDefault();
+
+                var form = $('#UpdateUserForm');
+                $.validator.unobtrusive.parse(form);
+                form.validate();
+
+                var nameSurname = document.getElementById('AdSoyad').value;
+                var emailVal = document.getElementById('Mail').value;
+                var phoneVal = document.getElementById('Telefon').value;
+                var adresVal = document.getElementById('Adres').value;
+                var pwdVal = document.getElementById('Sifre').value;
+                var pwdVal2 = document.getElementById('SifreTekrar').value;
+                var kampanyaMail = document.getElementById('KampanyaMail').checked;
+                var kampanyaSMS = document.getElementById('KampanyaSms').checked;
+
+                var warnWrongEmail = document.getElementById('warnwrongEmail').value;
+                var warnEmptyEmail = document.getElementById('warnEmptyEmail').value;
+                var warnemailVal = document.getElementById('warnemailVal').value;
+                var warnnameSurname = document.getElementById('warnnameSurname').value;
+                var warnnameSurnameEmpty = document.getElementById('warnnameSurnameEmpty').value;
+                var warnpwdVal = document.getElementById('warnpwdVal').value;
+                var warnpwdValEmpty = document.getElementById('warnpwdValEmpty').value;
+                var warnpwdVal2 = document.getElementById('warnpwdVal2').value;
+
+                var pattern = /^(([^<>()\[\]\.,;:\s@@\"]+(\.[^<>()\[\]\.,;:\s@@\"]+)*)|(\".+\"))@@(([^<>()[\]\.,;:\s@@\"]+\.)+[^<>()[\]\.,;:\s@@\"]{2,})$/i;
+                var emailValidation = pattern.test(emailVal);
+
+                if (nameSurname.length == 0) {
+                    toastr.error(warnnameSurnameEmpty);
+                    $('#AdSoyad').focus();
+                    return false;
+                }
+                if (nameSurname.length < 2 || nameSurname.length > 100) {
+                    toastr.error(warnnameSurname);
+                    $('#AdSoyad').focus();
+                    return false;
+                }
+                if (emailVal.length == 0) {
+                    toastr.error(warnEmptyEmail);
+                    $('#Mail').focus();
+                    return false;
+                }
+                if (!emailValidation) {
+                    toastr.error(warnWrongEmail);
+                    $('#Mail').focus();
+                    return false;
+                }
+                if (emailVal.length < 2 || emailVal.length > 100) {
+                    toastr.error(warnemailVal);
+                    $('#Mail').focus();
+                    return false;
+                }
+                if (pwdVal.length == 0) {
+                    toastr.error(warnpwdValEmpty);
+                    $('#Sifre2').focus();
+                    return false;
+                }
+                if (pwdVal.length < 5 || pwdVal.length > 20) {
+                    toastr.error(warnpwdVal);
+                    $('#Sifre').focus();
+                    return false;
+                }
+                if (pwdVal2 != pwdVal) {
+                    toastr.error(warnpwdVal2);
+                    $('#SifreTekrar').val('');
+                    $('#SifreTekrar').focus();
+                    return false;
+                }
+                if (form.valid()) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "/Account/UpdateUserInfo",
+                        data: { email: emailVal, name: nameSurname, password: pwdVal, sms: kampanyaSMS, mail: kampanyaMail, address: adresVal, phoneNumber: phoneVal },
+                        success: function (response) {
+                            if (response.success == false && response.info == "emailCrash") {
+
+                                toastr.error(response.responseText, response.title);
+                                $('#Mail').focus();
+                            }
+                            if (response.success == false && response.info == "updateFail") {
+                                toastr.error(response.responseText, response.title);
+                            }
+                            if (response.success == true && response.info == "updateSuccess") {
+                                toastr.success(response.responseText, response.title);
+                            }
+                        }
+                    });
+                }
+            });
+
+
+            //Favori Ürün Silme
+            $(document).ready(function () {
+                $('a.deleteFav').click(function (e) {
+                    debugger;
+                    var myData = $(this).attr("data-id");
+
+                    $('tr#' + myData).css("background-color", "wheat");
+                    var eleman = $('tr#' + myData);
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "/Product/DeleteFavoriteProduct",
+                        data: { fpId: $(this).attr("data-id") },
+                        success: function (response) {
+                            if (response.success) {
+                                toastr.success(response.responseText);
+                                $(eleman).fadeOut('slow', function () {
+                                    $(eleman).remove();
+                                });
+                            }
+                            if (!response.success) {
+                                toastr.error(response.responseText);
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+}
+

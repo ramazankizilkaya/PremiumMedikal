@@ -1,0 +1,141 @@
+﻿@inject IViewLocalizer localizer
+@model IEnumerable<ProductDto>
+
+@{
+    string cateType = "mid";
+    int cateId = ViewBag.cateId;
+}
+@section Head {
+    <title>@ViewBag.metaTitle</title>
+    <meta name="description" content="@ViewBag.metaDesc">
+}
+<input type="hidden" data-url="@Context.Request.Path" id="pageRouteVal" />
+
+<!--Breadcrumb-->
+<div class="breadcrumb">
+    <ul class="list-unstyled">
+        <li><a href="/"><span>@localizer["Ana Sayfa"]</span></a></li>
+        <li class="last"><a href="@localizer["/tr/kategoriler/"]@ViewBag.topcategoryNameUrl/@localizer["sayfa"]/1"><h1>@ViewBag.topcategoryName</h1></a></li>
+        <li class="last"><a href="/tr/kategoriler/@ViewBag.topcategoryNameUrl/@ViewBag.midcategoryNameUrl/@localizer["sayfa"]/1"><h1>@ViewBag.midcategoryName</h1></a></li>
+    </ul>
+</div>
+
+
+<div class="container products-list-container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-3 products-left-column">
+
+            <!--Last Visited Products Component-->
+            @*@await Component.InvokeAsync("LastVisitedProducts")*@
+
+            <!--Category Sidebar Component-->
+            @*<cache expires-after="@TimeSpan.FromMinutes(20)" vary-by-culture="true" enabled="true" vary-by-route="@cateType, @cateId">*@
+
+                @await Component.InvokeAsync("CategorySidebar", new { categoryType = cateType, id = cateId })
+
+            @*</cache>*@
+
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-9 products-right-column">
+
+            <!--Order By-->
+            <div class="page-options">
+                <div class="view-style">
+                    <span id="list" data-col="col-xs-12 col-sm-12 col-md-12 col-lg-12"><i class="fa fa-th-list" aria-hidden="true"></i></span>
+                    <span id="grid" data-col="col-xs-6 col-sm-6 col-md-4 col-lg-4"><i class="fa fa-th" aria-hidden="true"></i></span>
+                </div>
+                <select id="OrderBySelectt" class="form-control" style="display:inline;">
+
+                    <option selected="@ViewBag.selectedDefault" data-val="0">@localizer["Varsayılan sıralama"]</option>
+
+                    <option selected="@ViewBag.selectedByProductName" data-val="1">@localizer["Ürün adına göre sıralama"]</option>
+
+                    <option selected="@ViewBag.selectedByBrandName" data-val="2">@localizer["Markaya göre sıralama"]</option>
+
+                    <option selected="@ViewBag.selectedByNew" data-val="3">@localizer["Önce en yeni"]</option>
+
+                    <option selected="@ViewBag.selectedBySale" data-val="4">@localizer["Önce İndirimdekiler"]</option>
+                </select>
+
+            </div>
+
+            <div class="category-detail"></div>
+
+            <!--Product List-->
+            <div class="products-list" data-view="grid">
+                <ul class="row">
+                    @foreach (var item in Model)
+                    {
+                        <li class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+                            <div class="products-item" data-satis="0" data-stock="" data-urun-id="5326">
+                                @if (item.HasNewBadge)
+                                {
+                                    <div class="new" data-value="0">@localizer["Yeni"]</div>
+                                }
+                                <div class="image">
+                                    <a href="@item.ProductHref" class="image-href">
+                                        <img class="b-lazy b-loaded" src="~/Images/ProductImages/Main/@item.MainPhotoFileName" alt="@item.PhotoAltTag">
+                                    </a>
+                                </div>
+                                <div class="detail">
+                                    @if (item.IsFreeShipping)
+                                    {
+                                        <div class="ucretsiz-kargo" data-value="">@localizer["Ücretsiz Kargo"]</div>
+                                    }
+                                    <a href="@localizer["/tr/markalar/"]@item.BrandNameUrl/@localizer["sayfa"]/1" class="brand">@item.BrandName</a>
+                                    <a href="@item.ProductHref" class="name">@item.Name</a>
+                                    <div class="price" data-active=""></div>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+
+            <!--Pagination-->
+
+            <nav aria-label="Page navigation" class="pagination-container">
+                <ul class="pagination pagination-lg">
+                    @if (ViewBag.currentPage != 1)
+                    {
+                        int pageNum = ViewBag.currentPage - 1;
+                        <li><a href="@localizer["/tr/kategoriler/"]@ViewBag.topCategoryNameUrl/@ViewBag.midcategoryNameUrl/@localizer["sayfa/1"]"><b><span style="font-size:x-large">&lt;&lt;</span></b></a></li>
+                        <li><a href="/tr/kategoriler/@ViewBag.topCategoryNameUrl/@ViewBag.midcategoryNameUrl/@localizer["sayfa"]/@pageNum"><strong><span style="font-size:x-large">&lt;</span></strong></a></li>
+                    }
+
+                    @foreach (var item in ViewBag.numbers)
+                    {
+                        if (item == ViewBag.currentPage)
+                        {
+                            <li class="active page-item number"><a href="@localizer["/tr/kategoriler/"]@ViewBag.topCategoryNameUrl/@ViewBag.midcategoryNameUrl/@localizer["sayfa"]/@item">@item</a></li>
+                        }
+                        else
+                        {
+                            <li class="page-item number"><a href="@localizer["/tr/kategoriler/"]@ViewBag.topCategoryNameUrl/@ViewBag.midcategoryNameUrl/@localizer["sayfa"]/@item">@item</a></li>
+                        }
+                    }
+
+                    @if (ViewBag.currentPage != ViewBag.paginationCount)
+                    {
+                        int pageNum = ViewBag.currentPage + 1;
+                        <li><a href="@localizer["/tr/kategoriler/"]@ViewBag.topCategoryNameUrl/@ViewBag.midcategoryNameUrl/@localizer["sayfa"]/@pageNum"><strong><span style="font-size:x-large">></span></strong></a></li>
+
+                        <li><a href="@localizer["/tr/kategoriler/"]@ViewBag.topCategoryNameUrl/@ViewBag.midcategoryNameUrl/@localizer["sayfa"]/@ViewBag.paginationCount"><b><span style="font-size:x-large">>></span></b></a></li>
+                    }
+
+                </ul>
+            </nav>
+
+            <div class="up"><i class="fa fa-angle-up" aria-hidden="true"></i><span>@localizer["En Üste Git"]</span></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/assets/js/filtre.v1.min.js"></script>
+    <script src="~/assets/js/urun.liste.min.js"></script>
+    <script src="~/assets/js/theme-list.min.js"></script>
+
+}

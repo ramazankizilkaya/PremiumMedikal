@@ -1,0 +1,96 @@
+﻿@model AdminCateDto
+
+<form class="form-horizontal bv-form" asp-area="Admin" asp-controller="Category" asp-action="UpdateCategory" method="POST" enctype="multipart/form-data" id="updateCategoryPopupForm">
+    
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="CategoryType" />
+    <input type="hidden" asp-for="TopCategoryId" />
+    <input type="hidden" asp-for="MiddleCategoryId" />
+    
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <!--Türkçe Kategori Adı-->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" asp-for="NameTR"><b>Türkçe Kategori Adı</b></label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" asp-for="NameTR">
+                <span asp-validation-for="NameTR" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!--İngilizce Kategori Adı-->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" asp-for="NameEN"><b>İngilizce Kategori Adı</b></label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" asp-for="NameEN">
+                <span asp-validation-for="NameEN" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!--Rusça Kategori Adı-->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" asp-for="NameRU"><b>Rusça Kategori Adı</b></label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" asp-for="NameRU">
+                <span asp-validation-for="NameRU" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!--Türkçe Meta Head Title Açıklaması-->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" asp-for="HeadTitleTR"><b>Türkçe Meta Title</b></label>
+            <div class="col-sm-9">
+                <textarea rows="3" cols="50" asp-for="HeadTitleTR" style="display:block;" disabled></textarea>
+                <span asp-validation-for="HeadTitleTR" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!--İngilizce Meta Head Title Açıklaması-->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" asp-for="HeadTitleEN"><b>İngilizce Meta Title</b></label>
+            <div class="col-sm-9">
+                <textarea rows="3" cols="50" asp-for="HeadTitleEN" style="display:block;" disabled></textarea>
+                <span asp-validation-for="HeadTitleEN" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!--Rusça Meta Head Title Açıklaması-->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" asp-for="HeadTitleRU"><b>Rusça Meta Title</b></label>
+            <div class="col-sm-9">
+                <textarea rows="3" cols="50" asp-for="HeadTitleRU" style="display:block;" disabled></textarea>
+                <span asp-validation-for="HeadTitleRU" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!--Türkçe Meta Head Description Açıklaması-->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" asp-for="HeadDescriptionTR"><b>Türkçe Meta Description </b></label>
+            <div class="col-sm-9">
+                <textarea rows="3" cols="50" asp-for="HeadDescriptionTR" style="display:block;" disabled></textarea>
+                <span asp-validation-for="HeadDescriptionTR" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!--İngilizce Meta Head Description Açıklaması-->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" asp-for="HeadDescriptionEN"><b>İngilizce Meta Description</b></label>
+            <div class="col-sm-9">
+                <textarea rows="3" cols="50" asp-for="HeadDescriptionEN" style="display:block;" disabled></textarea>
+                <span asp-validation-for="HeadDescriptionEN" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!--Rusça Meta Head Description Açıklaması-->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" asp-for="HeadDescriptionRU"><b>Rusça Meta Description</b></label>
+            <div class="col-sm-9">
+                <textarea rows="3" cols="50" asp-for="HeadDescriptionRU" style="display:block;" disabled></textarea>
+                <span asp-validation-for="HeadDescriptionRU" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="box-footer" style="text-align:right">
+            <button type="submit" class="btn btn-danger btn-xl">Değişiklikleri Kaydet</button>
+        </div>
+</form>

@@ -1,0 +1,45 @@
+﻿@model Dictionary<string, int>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Admin Paneli Bilgiler</h1>
+
+
+    <div class="row">
+        <div class="col-lg-6 col-sm-12" style="float:left; text-align:left">
+            <ol class="steps">
+                @foreach (var item in Model)
+                {
+                    <li>@item.Key @item.Value</li>
+                }
+            </ol>
+        </div>
+       
+    </div>
+
+
+@section Styles{
+
+    <style>
+        ol {
+            list-style: none;
+            counter-reset: my-awesome-counter;
+            line-height:2;
+            font-size:medium;
+        }
+
+            ol li {
+                counter-increment: my-awesome-counter;
+            }
+
+                ol li::before {
+                    content: counter(my-awesome-counter) ". ";
+                    color: red;
+                    font-weight: bold;
+                }
+    </style>
+
+
+}

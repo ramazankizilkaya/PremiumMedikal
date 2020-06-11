@@ -1,0 +1,318 @@
+﻿@model AdminCreateProductDto
+
+@{
+    ViewData["Title"] = "Ürün Ekleme";
+}
+
+<input type="hidden" value="@ViewBag.success" id="createProSuccess" />
+<input type="hidden" value="@ViewBag.warning" id="createProWarning" />
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Data Tables</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index" asp-area="Admin">Anasayfa</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Ürünler</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Yeni Ürün Ekleme Formu</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h4 style="text-align:center"><b>Ürün Ekleme Formu</b></h4>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <form enctype="multipart/form-data" asp-area="Admin" asp-controller="Product" asp-action="CreateProduct" method="post">
+
+                            <div asp-validation-summary="All" class="text-danger"></div>
+
+                            <!--Türkçe Ürün Adı-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="NameTR"><b>Türkçe Ürün Adı</b></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" asp-for="NameTR">
+                                    <span asp-validation-for="NameTR" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--İngilizce Ürün Adı-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="NameEN"><b>İngilizce Ürün Adı</b></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" asp-for="NameEN">
+                                    <span asp-validation-for="NameEN" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--Rusça Ürün Adı-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="NameRU"><b>Rusça Ürün Adı</b></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" asp-for="NameRU">
+                                    <span asp-validation-for="NameRU" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--Türkçe Ürün Açıklaması-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="ProductDescriptionTR"><b>Türkçe Ürün Açıklaması</b></label>
+                                <div class="col-sm-6">
+                                    <textarea rows="3" cols="50" asp-for="ProductDescriptionTR" style="display:block;" class="form-control"></textarea>
+                                    <span asp-validation-for="ProductDescriptionTR" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--İngilizce Ürün Açıklaması-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="ProductDescriptionEN"><b>İngilizce Ürün Açıklaması</b></label>
+                                <div class="col-sm-6">
+                                    <textarea rows="3" cols="50" asp-for="ProductDescriptionEN" style="display:block;" class="form-control"></textarea>
+                                    <span asp-validation-for="ProductDescriptionEN" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--Rusça Ürün Açıklaması-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="ProductDescriptionRU"><b>Rusça Ürün Açıklaması</b></label>
+                                <div class="col-sm-6">
+                                    <textarea rows="3" cols="50" asp-for="ProductDescriptionRU" style="display:block;" class="form-control"></textarea>
+                                    <span asp-validation-for="ProductDescriptionRU" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--Ürün Kodu-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="ProductCode"><b>Ürün Kodu</b></label>
+                                <div class="col-sm-6">
+                                    <input type="text" asp-for="ProductCode" class="form-control">
+                                    <span asp-validation-for="ProductCode" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--İndirim Oranı-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="DiscountRate"><b>İndirim Oranı</b></label>
+                                <div class="col-sm-6">
+                                    <input type="number" asp-for="DiscountRate" class="form-control" />
+                                    <span asp-validation-for="DiscountRate" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--Stok Numarası-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="StockNumber"><b>Stok Numarası</b></label>
+                                <div class="col-sm-6">
+                                    <input type="number" asp-for="StockNumber" class="form-control" />
+                                    <span asp-validation-for="StockNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--Stok Mevcudu-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="NumberInStock"><b>Stok Mevcudu</b></label>
+                                <div class="col-sm-6">
+                                    <input type="number" asp-for="NumberInStock" class="form-control" />
+                                    <span asp-validation-for="NumberInStock" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--Yeni Amblemi Var mı?-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="HasNewBadge"><b>Yeni Amblemi Var mı</b></label>
+                                <div class="col-sm-6">
+                                    <div class="i-checks">
+                                        <input class="form-check-input form-control" type="checkbox" asp-for="HasNewBadge">
+                                        <span asp-validation-for="HasNewBadge" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--Ücretsiz Kargo mu?-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="IsFreeShipping"><b>Ücretsiz Kargo mu?</b></label>
+                                <div class="col-sm-6">
+                                    <div class="i-checks">
+                                        <input type="checkbox" class="form-check-input form-control" asp-for="IsFreeShipping">
+                                        <span asp-validation-for="IsFreeShipping" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--TopKategori Selectlist-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="SelectedTopCategoryId"><b>Ana Kategori</b></label>
+                                <div class="col-sm-6">
+                                    <select class="form-control topCat" asp-for="SelectedTopCategoryId" asp-items="@(new SelectList(Model.TopCategories, "Id", "NameTR"))">
+                                        <option value="" style="color:red;">Lütfen Ana Kategori Seçiniz</option>
+                                    </select>
+                                    <span asp-validation-for="SelectedTopCategoryId" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--MiddleKategori Selectlist-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="SelectedMiddleCategoryId"><b>Orta Kategori</b></label>
+                                <div class="col-sm-6">
+                                    <select class="form-control midCat" asp-for="SelectedMiddleCategoryId" asp-items="@(new SelectList(Model.MiddleCategories, "Id", "NameTR"))">
+                                        <option value="" style="color:red;">Lütfen Orta Kategori Seçiniz</option>
+                                    </select>
+                                    <span asp-validation-for="SelectedMiddleCategoryId" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--SubKategori Selectlist-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="SelectedSubCategoryId"><b>Alt Kategori</b></label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" asp-for="SelectedSubCategoryId" asp-items="@(new SelectList(Model.SubCategories, "Id", "NameTR"))">
+                                        <option value="" style="color:red;">Lütfen Alt Kategori Seçiniz</option>
+                                    </select>
+                                    <span asp-validation-for="SelectedSubCategoryId" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--Marka Selectlist-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="SelectedBrandId"><b>Marka</b></label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" asp-for="SelectedBrandId" asp-items="@(new SelectList(Model.Brands, "Id", "BrandName"))">
+                                        <option value="" style="color:red;">Lütfen Marka Seçiniz</option>
+                                    </select>
+                                    <span asp-validation-for="SelectedBrandId" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--Anasayfa Ürün Tipi-->
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label" asp-for="SelectedProductOfferType"><b>Anasayfa Ürün Reklam Tipi</b></label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" asp-for="SelectedProductOfferType" asp-items="Html.GetEnumSelectList<ProductOfferType>().OrderBy(x => x.Text)">
+                                        <option value="" style="color:red;">Lütfen Ürün Reklam Tipi Seçiniz</option>
+                                    </select>
+                                    <span asp-validation-for="SelectedProductOfferType" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--Vitrin Fotoğrafı-->
+                            <div class="form-group row" id="mainPhotoGroup">
+                                <label class="col-sm-3 col-form-label" asp-for="MainPhoto"><b>Vitrin Fotoğrafı Yükle</b></label>
+                                <div class="col-sm-6 align-content-start">
+                                    <div class="custom-file">
+                                        <input type="file" asp-for="MainPhoto" class="custom-file-input form-control" id="mainUpload" accept=".png, .jpeg, .jpg, .bmp" data-urunId="@Model.Id" />
+                                        <label class="custom-file-label" asp-for="AdditionalPhotos" id="mainUploadLabel">Vitrin Fotoğrafını Seçiniz</label>
+                                    </div>
+                                    <span asp-validation-for="MainPhoto" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            <!--İlave Fotoğraflar-->
+                            <div class="form-group row" id="additionalPhotoGroup">
+                                <label class="col-sm-3 col-form-label" asp-for="AdditionalPhotos"><b>Ürün Detay Sayfası Fotoğrafları Yükle</b></label>
+                                <div class="col-sm-6 align-content-start">
+                                    <div class="custom-file">
+                                        <input type="file" asp-for="AdditionalPhotos" class="custom-file-input form-control" id="additionalUpload" multiple accept=".png, .jpeg, .jpg, .bmp" />
+                                        <label class="custom-file-label" asp-for="AdditionalPhotos" id="additionalUploadLabel">Lütfen Ürün Detay Fotoğraflarını Seçiniz</label>
+                                    </div>
+                                    <span asp-validation-for="AdditionalPhotos" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="hr-line-dashed"></div>
+
+                            @*Description
+                                <div class="form-group  row">
+                                    <label class="col-sm-2 col-form-label" asp-for="Description"><b>Ürün Açıklaması</b></label>
+                                    <div class="col-sm-10">
+                                        <textarea class="ckeditor" asp-for="Description"> </textarea>
+                                        <span asp-validation-for="Description" class="text-danger"></span>
+                                    </div>*@
+
+                            <div class="form-group row">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <a class="btn btn-danger btn-sm" href="/Admin/product/productlist">İptal et</a>
+                                    <button class="btn btn-primary btn-sm" type="submit">Ürünü Kaydet</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .form-group:hover {
+            background-color: #f3f6eb;
+        }
+    </style>
+
+}
+
+@section Scripts {
+
+    <script>
+        //gelen başarı uyarısını verir
+        var successText = $('#createProSuccess').val();
+
+        if (successText.length > 0) {
+            toastr.success(successText, "Başarılı");
+            $('#createProSuccess').val("")
+        }
+        var failText = $('#createProtWarning').val();
+
+        if (failText.length > 0) {
+            toastr.error(failText, "Hata");
+            $('#createProWarning').val("")
+        }
+    </script>
+}
+

@@ -1,0 +1,99 @@
+﻿@model IEnumerable<AdminProductDto>
+@{
+    ViewData["Title"] = "ProductList";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Data Tables</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index" asp-area="Admin">Anasayfa</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Ürünler</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Ürün Listesi</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    @*<a class="btn btn-primary btn-xs" href="" id="cleanFilters">Filtreleri Temizle</a>*@
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table id="data-table" class="table table-striped table-bordered table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Ürün Tipi</th>
+                                    <th>Marka</th>
+                                    <th>Üst Kategori</th>
+                                    <th>Orta Kategori</th>
+                                    <th>Alt Kategori</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Ürün Tipi</th>
+                                    <th>Marka</th>
+                                    <th>Üst Kategori</th>
+                                    <th>Orta Kategori</th>
+                                    <th>Alt Kategori</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section Styles {
+
+
+}
+
+@section Scripts {
+
+    
+
+    <script>
+        $(document).ready(function () {
+            debugger;
+            
+             
+            $('#data-table').DataTable({
+                "ajax": "/Products.Json",
+                "columns": [
+                    { "data": "Id" },
+                    { "data": "NameTR" },
+                    { "data": "ProductOfferType" },
+                    { "data": "BrandName" },
+                    { "data": "TopCategoryName" },
+                    { "data": "MiddleCategoryName" },
+                    { "data": "SubCategoryName" },
+                ]
+            });
+        });  
+    </script>
+
+}

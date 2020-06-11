@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Aldığınız her ürün, üretici firmasının garantisi altındadır." xml:space="preserve">
+    <value>Each product that you take is under the guarantee by the manufacturer.</value>
+  </data>
+  <data name="Almış olduğunuz ürününü ambalajını açmadan/tahrip etmeden//bozmadan, ürünü kullanmadan teslim tarihinden itibaren yedi (7) günlük süre içinde teslim aldığınız şekli ile iade edebilirsiniz. Ürünü, ürün faturası, sipariş numarınızıda içeren bir dilekçe veya iade formu ile iade ediniz." xml:space="preserve">
+    <value>You can return the product you have bought, without unpacking / destroying it / destroying it, without using the product, within the seven (7) days from the date of delivery. Return the product with a petition or a return form containing your product invoice, order number.</value>
+  </data>
+  <data name="Alıcı İsmi:" xml:space="preserve">
+    <value>Recipient Name:</value>
+  </data>
+  <data name="Ambalajı açılmış, kullanılmış, tahrip edilmiş vesair şekildeki ürünlerin iadesi kabul edilmez." xml:space="preserve">
+    <value>Returns of products that have been opened, used, destroyed, etc. are not accepted.</value>
+  </data>
+  <data name="Ayrıca, kredi kartı numarası gibi hassas kişisel bilgileri İnternet üzerinden ilettiğimizde, bunları Güvenli Yuva Katmanı (SSL) protokolü gibi şifreleme yöntemleriyle koruruz. Ayrıca Kredi kartı bilgilerinizi herhangi bir şekilde sistemlerimizde saklamayız.Kullanılan Kredi kartları özel crypto yöntemleri ile şifrelenerek ilgili bankaya iletilir." xml:space="preserve">
+    <value>In addition, when we transmit sensitive personal information such as credit card numbers over the Internet, we protect them with encryption methods such as Secure Sockets Layer (SSL) protocol. In addition, we do not store your credit card information in our systems in any way. The credit cards used are encrypted with special crypto methods and sent to the relevant bank.</value>
+  </data>
+  <data name="Ayrıca, size diğer Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara ürünleri ve hizmetleri hakkında bilgiler SMS veya e-posta aracılığı ile gönderebiliriz. Araştırma amacıyla, site ziyaretleriyle ilgili verileri anonim demografik bilgilerle birleştiririz ve bu bilgileri daha yararlı içerik sağlamak üzere toplu bir şekilde kullanabiliriz." xml:space="preserve">
+    <value>In addition, we can send you information about other Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara products and services via SMS or e-mail. For research purposes, we combine data about site visits with anonymous demographic information and we can use this information collectively to provide more useful content.</value>
+  </data>
+  <data name="Bir haber bültenine kaydolduğunuzda veya tanıtım e-postaları almayı kabul ettiğinizde www.premiummedikal.com, tıklattığınız e-postaları izlemek için özelleştirilmiş bağlantılar veya benzeri teknolojiler kullanabilir. Her e-posta, bu tür iletilerin gelmesini durdurmanıza olanak veren, abonelik iptal bağlantıları içerir." xml:space="preserve">
+    <value>When you sign up for a newsletter or agree to receive promotional emails, www.premiummedikal.com may use customized links or similar technologies to track emails you click. Each email includes unsubscribe links that allow you to stop receiving such messages.</value>
+  </data>
+  <data name="Bu gizlilik bildirimi, www.premiummedikal.com web sitesinin veri toplama ve kullanma uygulamalarını açıklamaktadır. Bu Siteye erişmeniz bu gizlilik bildiriminde tanımlanan, bilgi toplama ve kullanma uygulamalarını kabul ediyor olduğunuzu gösterir." xml:space="preserve">
+    <value>This privacy statement describes the data collection and use practices of the www.premiummedikal.com website. Access to this Site indicates that you accept the information collection and use practices described in this privacy statement.</value>
+  </data>
+  <data name="Bu Gizlilik Bildiriminde Yapılabilecek Değişiklikler" xml:space="preserve">
+    <value>Changes to This Privacy Statement</value>
+  </data>
+  <data name="Bu gizlilik bildirimini zaman zaman güncelleştirebiliriz. Topladığımız kişisel bilgileri korumak için hangi yöntemlerden yararlandığımız konusunda bilgi sahibi olmak için bu gizlilik bildirimini düzenli aralıklarla gözden geçirmenizi öneririz. Hizmeti sürekli şekilde kullanmanız bu gizlilik bildirimini ve yapılabilecek güncelleştirmeleri kabul ettiğiniz anlamına gelir." xml:space="preserve">
+    <value>We may update this privacy statement from time to time. We encourage you to periodically review this privacy statement to learn about what methods we use to protect the personal information we collect. Your continued use of the service means that you accept this privacy statement and any updates that can be made.</value>
+  </data>
+  <data name="Bu internet sitesi Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara;in kontrolü altında olmayan başka internet sitelerine bağlantı veya referans içerebilir. Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, bu sitelerin içerikleri veya içerdikleri diğer bağlantılardan sorumlu değildir." xml:space="preserve">
+    <value>This website may contain links or references to other websites that are not under the control of Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara. Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara is not responsible for the content of these sites or any other links they contain.</value>
+  </data>
+  <data name="Giriş sayfasındaki Şifremi unuttum linkine tıklayın ve siteye kaydınızı yaparken kullanmış olduğunuz e-mail adresinizi girin, çok kısa bir sürede size, siteye giriş yaparken, bize bildirmiş olduğunuz şifrenizi içeren bir e-mail gönderilecektir." xml:space="preserve">
+    <value>Click the I forgot my password link on the login page and enter the e-mail address you used to register on the site, and an e-mail containing your password will be sent to you in a very short time.</value>
+  </data>
+  <data name="Gizli bilgilerin istendiği bölümlerde SSL (Secure Socket Layer) yöntemini kullanarak bilgilerinizin üçüncü şahısların eline geçmesini engeller." xml:space="preserve">
+    <value>It prevents the access of your information to third parties by using SSL (Secure Socket Layer) method in the sections where confidential information is requested.</value>
+  </data>
+  <data name="Gizlilik ve Güvenlik" xml:space="preserve">
+    <value>Prıvacy and Securıty</value>
+  </data>
+  <data name="Güvenli ortamda yapacağınız işlemlerde siz ve kredi kartını size tahsis esen banka haricinde hiçbir kişi , kurum ve kuruluş tarafından bilgilerinize ulaşamamaktadır. Kredi kartı işlem sayfası kart bilgilerini doğrudan banka POS sistemine iletmekte ve işlem sonucunu müşteriye bildirmektedir. Kredi kartı bilgileri e-posta veya benzeri yöntemlerle aktarılmamaktadır. Online işlemin bir sonucu olarak aktarılan kredi kart bilgilerine tarafımızdan dahi erişilmesi mümkün değildir." xml:space="preserve">
+    <value>No person, institution or organization can access your information, except for the bank that allocates you and your credit card for transactions in a secure environment. The credit card transaction page transmits the card information directly to the bank POS system and reports the transaction result to the customer. Credit card information is not transferred by e-mail or similar methods. It is not possible for us to access the credit card information transferred as a result of the online transaction.</value>
+  </data>
+  <data name="Güvenlik Bildirimi" xml:space="preserve">
+    <value>Security Notice</value>
+  </data>
+  <data name="Hakkımızda" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="Havale iadeleri 2 iş günü içinde Kredi Kartı iadeleri 3 iş günü içinde yapılacaktır. Bankanız kredi kartı iadelerini aynı gün hesabınıza yansıtmayabilir. Bu durumda bankanızın kredi kartı servisini aramanız gereklidir. Siparişinizle ilgili  İptal Edildi uyarısı çıktıktan sonra tüm bedel kredi kartınıza veya havale yaptığınız bankanıza iade edilmektedir. Taksitli satışlarda yapılan iadeler bankanız tarafından kredi kartınıza her ay artı bakiye olarak yansıtılmaktadır." xml:space="preserve">
+    <value>Money transfer returns will be made within 2 business days. Credit Card returns will be made within 3 business days. Your bank may reflect the refund on your credit card account on the same day. In this situation you need to call the credit-card services of your bank. After the Cancellation warning about your order is issued, the entire amount will be refunded to your credit card or to your bank that you made the transfer. Refunds made in installments are reflected to your credit card by your bank every month as a plus balance.</value>
+  </data>
+  <data name="Hesap Numaralarımız" xml:space="preserve">
+    <value>Our Account Numbers</value>
+  </data>
+  <data name="itemizde kredi kartı işlemi için haberleşmede her aşama güvenlik altına alınmıştır." xml:space="preserve">
+    <value>Each stage of the item is secured in communication for credit card transactions.</value>
+  </data>
+  <data name="Kargo ücreti ne kadar?" xml:space="preserve">
+    <value>What is the shipping fee?</value>
+  </data>
+  <data name="Kişisel Bilgilerinizin Güvenliği" xml:space="preserve">
+    <value>Security of Your Personal Information</value>
+  </data>
+  <data name="Kişisel Bilgilerinizin Kullanımı" xml:space="preserve">
+    <value>Use of Your Personal Information</value>
+  </data>
+  <data name="Kişisel Bilgilerinizin Toplanması" xml:space="preserve">
+    <value>Collection of Your Personal Information</value>
+  </data>
+  <data name="Kredi kartı bilgilerinin siteden bankaya aktarılması ile ilgili güvenlik, bankanın sunduğu maksimum güvenlik ile gerçekleşmektedir. Sözkonusu güvenliğin çok sayıda bileşenin yanında, CVV2/CVC2 kodu da çalıntı kart veya kart bilgileri ile alışverişe karşı önlem olarak sitemizde kullanılmaktadır." xml:space="preserve">
+    <value>Security related to transfer of credit card information from the site to the bank is realized with the maximum security offered by the bank. Besides the many components of this security, CVV2 / CVC2 code is also used on our site as a precaution against shopping with stolen card or card information.</value>
+  </data>
+  <data name="Kredi kartı bilgilerinin verileceği sayfada bu haberleşme biçiminin bulunup bulunmadığını, sayfaya erişildiğinde adres çubuğunda yazan ifadenin http://.. biçiminde değil, https://.. biçiminde oluşu ifade etmektedir. Bu nitelikteki sayfalara eriştiğinizde tarayıcının sağ alt köşesinde kilit işareti de yer almaktadır." xml:space="preserve">
+    <value>It indicates whether there is this communication format on the page where credit card information will be given, and that the expression written in the address bar when the page is accessed is not in http: // .. format, but in https: // .. format. When you access pages of this nature, there is a lock sign in the lower right corner of the browser.</value>
+  </data>
+  <data name="Kullanım Koşulları" xml:space="preserve">
+    <value>Terms of Use</value>
+  </data>
+  <data name="Mağazalarımız" xml:space="preserve">
+    <value>Our Stores</value>
+  </data>
+  <data name="MENÜ" xml:space="preserve">
+    <value>MENU</value>
+  </data>
+  <data name="Mesafeli Sözleşmeler Yönetmeliği" xml:space="preserve">
+    <value>Dıstance Contracts Regulatıon</value>
+  </data>
+  <data name="Müşteri, ürünü kendisine teslim edildiği andaki durumu ile geri vermekle ve kullanım söz konusu ise kullanma dolayısıyla malın ticari değerindeki kaybı tazminle yükümlüdür." xml:space="preserve">
+    <value>The customer is obliged to return the product with the condition at the time of delivery and to compensate for the loss of the commercial value of the goods due to use.</value>
+  </data>
+  <data name="Müşterinin ürünü iade etmesi veya alışverişinden cayması halinde, iade edilen ürün Bize ulaştığı andan itibaren on (10) gün içerisinde ürün bedeli iade edilir. Kredi kartına ürün iade bedeli bankanız tarafından 2-6 hafta arasında yapılmaktadır. Bu sürede firmamızın tasarrufu bulunmamaktadır." xml:space="preserve">
+    <value>In the event that the customer returns or withdraws the product, the returned product will be returned within ten (10) days from the date of receipt. The product return fee to the credit card is made by your bank between 2-6 weeks. During this period, our company does not have any savings.</value>
+  </data>
+  <data name="Nasıl sipariş verebilirim?" xml:space="preserve">
+    <value>How can I order?</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara bu internet sitesinin genel görünüm ve dizaynı ile internet sitesindeki tüm bilgi, resim, Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara markası ve diğer markalar, www.premiummedikal.com alan adı, logo, ikon, demonstratif, yazılı, elektronik, grafik veya makinede okunabilir şekilde sunulan teknik veriler, bilgisayar yazılımları, uygulanan satış sistemi, iş metodu ve iş modeli de dahil tüm materyallerin ve bunlara ilişkin fikri ve sınai mülkiyet haklarının sahibi veya lisans sahibidir ve yasal koruma altındadır. Internet sitesinde bulunan hiçbir Materyal; önceden izin alınmadan ve kaynak gösterilmeden, kod ve yazılım da dahil olmak üzere, değiştirilemez, kopyalanamaz, çoğaltılamaz, başka bir lisana çevrilemez, yeniden yayımlanamaz, başka bir bilgisayara yüklenemez, postalanamaz, iletilemez, sunulamaz ya da dağıtılamaz. Internet sitesinin bütünü veya bir kısmı başka bir internet sitesinde izinsiz olarak kullanılamaz. Aksine hareketler hukuki ve cezai sorumluluğu gerektirir. Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara;in burada açıkça belirtilmeyen diğer tüm hakları saklıdır." xml:space="preserve">
+    <value>Premium Medical - Online Medical Market - Premium Health Products - Medikal Ankara The general look and design of this website and all the information, pictures, Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara brand and other brands, www.premiummedikal. com domain name, logo, icon, demonstrative, written, electronic, graphic or machine readable technical data, computer software, applied sales system, business method and business model, including all intellectual and industrial property rights or license and is under legal protection. No Material on the website; It may not be modified, copied, reproduced, translated into another language, republished, installed on another computer, mailed, transmitted, presented or distributed without prior consent and without reference. The whole or part of the website cannot be used on another website without permission. Unlike actions require legal and criminal liability. Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara, all other rights not expressly granted herein are reserved.</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara işbu site ve www.premiummedikal.com uzantısında mevcut her tür hizmet, ürün, siteyi kullanma koşulları ile sitede sunulan bilgileri önceden bir ihtara gerek olmaksızın değiştirme, siteyi yeniden organize etme, yayını durdurma hakkını saklı tutar. Değişiklikler sitede yayım anında yürürlüğe girer. Sitenin kullanımı ya da siteye giriş ile bu değişiklikler de kabul edilmiş sayılır. Bu koşullar link verilen diğer web sayfaları için de geçerlidir." xml:space="preserve">
+    <value>Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara to change all kinds of services, products, conditions of use and information provided on this site and www.premiummedikal.com extension without prior notice, reorganize the site, stop broadcasting reserves the right. The changes take effect at the time of publication on the site. These changes are deemed to have been accepted by the use of the site or access to the site. These conditions also apply to other linked web pages.</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, dilediği zaman bu yasal uyarı sayfasının içeriğini güncelleme yetkisini saklı tutmaktadır ve kullanıcılarına siteye her girişte yasal uyarı sayfasını ziyaret etmelerini tavsiye etmektedir." xml:space="preserve">
+    <value>Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara reserves the right to update the content of this legal notice page at any time and recommends users to visit the legal notice page every time they enter the site.</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, erişim şifresi gibi bilgilerin sizin tarafınızdan belirlenmesine olanak sağlar. Erişim şifresinin unutulması durumunda kayıt olurken vermiş olduğunuz e-posta adresine yeni şifre oluşturma bağlantısı gönderilir." xml:space="preserve">
+    <value>Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara allows you to determine information such as access password by you. If the access password is forgotten, a link to create a new password is sent to the e-mail address you provided while registering.</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, kişisel bilgilerinizi yasal bir zorunluluk olarak istendiğinde veya (a) yasal gereklere uygun hareket etmek veya Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara ya da siteye tebliğ edilen yasal işlemlere uymak; (b) Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara haklarını ve mülkiyetini korumak ve savunmak; (c) Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara çalışanlarının veya aracılarının, Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara ürünü kullananların veya kamu güvenliği açısından acil durumlarda harekete geçmek için gerekli olduğuna iyi niyetle kanaat getirdiği hallerde açıklayabilir." xml:space="preserve">
+    <value>Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara, when your personal information is requested as a legal obligation or (a) acting in accordance with legal requirements or Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara or legally communicated to the site comply with transactions; (b) Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara to protect and defend its rights and property; (c) Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara employees or intermediaries believe that it is necessary for those who use Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara product or to take action in emergency situations in terms of public safety. can explain in cases.</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, kişisel bilgilerinizi yetkisiz erişime, kullanıma veya açığa çıkmaya karşı korumak için çok çeşitli güvenlik teknolojileri ve yordamları kullanır. Örneğin, sağladığınız bilgileri kontrol altındaki tesislerde bulunan ve sınırlı erişimi olan bilgisayar sunucularında depolarız." xml:space="preserve">
+    <value>Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara uses a wide variety of security technologies and procedures to protect your personal information from unauthorized access, use or exposure. For example, we store the information you provide on computer servers with limited access located in controlled facilities.</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, sözleşmenin ihlali, haksız fiil, ihmal veya diğer sebepler neticesinde; işlemin kesintiye uğraması, hata, ihmal, kesinti, silinme, kayıp, işlemin veya iletişimin gecikmesi, bilgisayar virüsü, iletişim hatası, hırsızlık, imha veya izinsiz olarak kayıtlara girilmesi, değiştirilmesi veya kullanılması hususunda herhangi bir sorumluluk kabul etmez." xml:space="preserve">
+    <value>Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara, as a result of breach of contract, wrongful act, negligence or other reasons; It does not accept any responsibility for interruption of the process, error, negligence, interruption, deletion, loss, delay of the transaction or communication, computer virus, communication error, theft, destruction or unauthorized entry, modification or use.</value>
+  </data>
+  <data name="Premium medikal hakkında bilgi sahibi olmak için sitemizi ziyaret ediniz." xml:space="preserve">
+    <value>Visit our site to learn about premium medical.</value>
+  </data>
+  <data name="Premium medikal Türkiye'nin en büyük medikal ürün satış platformudur. Yurtdşında birçok ülkeye medikal ürün ithal etmektedir. Firmamız hakkında genel bilgilere bu sayfada ulaşabilirsiniz." xml:space="preserve">
+    <value>Premium Medical is Turkey's largest medical product sales platform. It imports medical products to many countries abroad. You can find general information about our company on this page.</value>
+  </data>
+  <data name="Sevkiyat sırasında zarar gördüğünü düşündüğünüz paketleri teslim aldığınız firma yetkilisi önünde açıp kontrol ediniz. Eğer üründe herhangi bir zarar varsa kargo firmasına tutanak tuttururarak ürünü teslim almayınız. Ürün teslim alındıktan sonra kargo firmasının görevini tam olarak yerine getirdiğini kabul etmiş olduğunuzu unutmayınız" xml:space="preserve">
+    <value>Open and check the packages that you think are damaged during shipment in front of the company representative you receive. If there is any damage to the product, do not take delivery of the product by keeping a report on the cargo company. Do not forget that you have accepted that the cargo company fully fulfills its duty after the product is received.</value>
+  </data>
+  <data name="Sevkiyat sırasında zarar gördüğünü düşündüğünüz paketleri, teslim aldığınız kargo yetkilisi önünde açıp kontrol ediniz. Eğer üründe herhangi bir zarar varsa kargo firmasına tutanak tuttururarak ürünü teslim almayınız. Ürün teslim alındıktan sonra kargo firmasının görevini tam olarak yerine getirdiğini kabul etmiş olduğunuzu unutmayınız." xml:space="preserve">
+    <value>Open and check the packages that you think are damaged during shipment in front of the cargo authority you receive. If there is any damage to the product, do not take delivery of the product by keeping a report on the cargo company. Please note that after the product is received, you agree that the cargo company fully fulfills its duty.</value>
+  </data>
+  <data name="Sipariş verirken nelere dikkat etmeliyim?" xml:space="preserve">
+    <value>What should I consider when ordering?</value>
+  </data>
+  <data name="Sipariş, Teslimat ve İade" xml:space="preserve">
+    <value>Order, Delıvery and Returns</value>
+  </data>
+  <data name="Siparişim hangi kargo şirketi ile gönderilecek?" xml:space="preserve">
+    <value>With which shipping company will my order be sent?</value>
+  </data>
+  <data name="Siparişim kargoya verilmiş. Durumunu nasıl kontrol edebilirim?" xml:space="preserve">
+    <value>My order has been shipped. How can I check his condition?</value>
+  </data>
+  <data name="Siparişimi verdim, bundan sonra ne olacak?" xml:space="preserve">
+    <value>I placed my order, what happens next?</value>
+  </data>
+  <data name="Siparişimin durumunu nasıl takip edebilirim?" xml:space="preserve">
+    <value>How can I track the status of my order?</value>
+  </data>
+  <data name="Siparişiniz sorunsuz bir şekilde sistemimize ulaştıktan sonra, sitemize üyelik oluştururken kullandığınız email adresinize tarafımızdan siparişinizin detayını belirten bir mail gönderilecektir. Müşteri temsilcilerimiz siparişinizi en kısa sürede sorunsuz bir şekilde size ulaştırmak üzere ürünlerinizi hazırlayacak ve kargoya verecektir. Siparişiniz elimize ulaştıktan sonra en geç 4 iş günü içerisinde kargoya verilecektir. Ürününüz kargo firmasına teslim edildiğinde tarafımızdan size tekrar bir mail yollanacak ve kargo hakkında bilgilendirilmeniz sağlanacaktır. Ödemelerinizi Visa, Visa Electron ve Mastercard kredi kartları, Banka Havalesi veya Kapıdan Ödeme seçeneklerinden birisi ile yapabilirsiniz." xml:space="preserve">
+    <value>After your order reaches our system without any problems, we will send an e-mail indicating the details of your order to your e-mail address used when creating a membership to our site. Our customer representatives will prepare and ship your products to deliver your order to you as soon as possible without any problem. Your order will be shipped within 4 business days at the latest after we receive it. When your product is delivered to the cargo company, we will send you an e-mail again and you will be informed about the cargo. You can make your payments with Visa, Visa Electron and Mastercard credit cards, Bank Transfer or Door Payment.</value>
+  </data>
+  <data name="Site içi Veri Güvenliği" xml:space="preserve">
+    <value>In-Site Data Security</value>
+  </data>
+  <data name="Site-Banka Haberleşme Güvenliği" xml:space="preserve">
+    <value>Site-Bank Communication Security</value>
+  </data>
+  <data name="Site-Ziyaretçi Haberleşme Güvenliği" xml:space="preserve">
+    <value>Site-Visitor Communication Security</value>
+  </data>
+  <data name="Sitede toplanan kişisel bilgiler, Sitenin işletilmesi ve istediğiniz veya yetkilendirdiğiniz hizmetlerin sağlanması ya da işlemlerin yerine getirilmesi için kullanılır. Kişisel bilgilerinizi, bildirimleri de içerecek şekilde, kullanmakta olduğunuz ürün veya hizmetler hakkında bilgiler sağlamak için kullanabiliriz." xml:space="preserve">
+    <value>Personal information collected on the Site is used to operate the Site and to provide services you want or authorize, or to perform transactions. We may use your personal information to provide information about the products or services you are using, including notices.</value>
+  </data>
+  <data name="Sitemiz üzerinden sipariş verebilmeniz için öncelikle sitemize üye olmanız gerekmektedir. Üyeliğinizi oluşturduktan sonra satın almak istediğiniz ürünün sayfasına giderek beğenmiş olduğunuz renk, beden tercihinizi yapıp Sepete Ekle butonuna basarak, ürünü sepetinize ekleyebilirsiniz. Daha sonrasında sayfamızın sağ üst tarafında bulunan Sepetim e tıklayarak, sistemin size soracağı kargo ve teslimat bilgilerinden sonra ödeme bilgilerinizi yazıp siparişinizi verebilirsiniz." xml:space="preserve">
+    <value>In order to place an order on our site, you must first become a member of our site. After creating your membership, you can add the product to your cart by going to the page of the product you want to buy, making your color and size preferences and pressing the Add to Cart button. Then, you can click on My Basket on the top right of our page, after the shipping and delivery information that the system will ask you, write your payment information and place your order.</value>
+  </data>
+  <data name="Sitemiz üzerinden vereceğiniz siparişlerinizin gönderileceği kargo şirketleri sipariş aşamalarında karşınıza çıkacak olup, seçim yapmanız gerekmektedir." xml:space="preserve">
+    <value>The cargo companies that you will send your orders on our site will appear in the order stages and you have to choose.</value>
+  </data>
+  <data name="Sitemiz üzerinden vermiş olduğunuz siparişinizin takibini üyelik girişi yaptıktan sonra, hesabım sayfanızda siparişleriniz listelenmektedir. Kargoya verilen siparişinizin yanındaki kargo linkine tıklayarak, siparişinizin kargodaki durumunu takip edebilirsiniz." xml:space="preserve">
+    <value>After you sign up for your order on our site, your orders are listed on your account page. You can follow the status of your order by clicking the shipping link next to your order.</value>
+  </data>
+  <data name="Sitemiz üzerinden yapacağınız alışverişe istinaden sistem tarafından hesaplanacak kargo ücreti, sipariş aşamalarında kargo seçimi sırasında belirtilecektir." xml:space="preserve">
+    <value>The shipping fee to be calculated by the system based on your shopping on our site will be specified during the selection of the cargo at the order stages.</value>
+  </data>
+  <data name="Sitemizde istenen kişisel bilgileriniz hizmetlerimizin sunulabilmesi, bilgilendirme, iletişim vb. durumlar için kayıt altında tutulmaktadır. Topladığımız kişisel bilgiler arasında adınız, e-posta adresiniz, telefonunuz, iş veya ev adresiniz, şirketinizle ve kredi kartınızla ile ilgili bilgiler olabilir. Site, ziyaretleriniz hakkında, siteye erişmek için kullandığınız internet servis sağlayıcısının adı ve internet protokol (IP) adresi, siteye erişme tarihi ve saatiniz, sitede bulunduğunuz sırada eriştiğiniz sayfalar ve sitemize doğrudan bağlanmanızı sağlayan web sitesinin internet adresi gibi birtakım bilgiler toplayabilir. Bu bilgiler sitenin iyileştirilmesi, eğilimlerin analiz edilmesi ve sitenin yönetilmesi için kullanılır." xml:space="preserve">
+    <value>Your personal information requested on our site can be provided by our services, information, communication, etc. are kept in record for situations. Personal information we collect may include information about your name, e-mail address, phone, work or home address, company, and credit card. The site may collect certain information about your visits, such as the name and internet protocol (IP) address of the internet service provider you use to access the site, the date and time of access to the site, the pages you accessed while you were on the site, and the website of the website that allows you to connect directly to our site. This information is used to improve the site, analyze trends and manage the site.</value>
+  </data>
+  <data name="Sitemizin sipariş sayfalarında site ile ziyaretçi arasındaki haberleşme 128 bit SSL standartında gerçekleşmektedir. Sözkonusu haberleşme standardı çok sayıda işlem gören sitelerde dahi güvenle kullanılan bir niteliktedir." xml:space="preserve">
+    <value>The communication between the site and the visitor on the order pages of our site takes place in 128 bit SSL standard. The communication standard in question is of a quality that can be used safely even on a large number of processed sites.</value>
+  </data>
+  <data name="Tıbbi Cihaz Satış Reklam ve Tanıtım Yönetmeliği" xml:space="preserve">
+    <value>Medical Device Sales Advertising and Promotion Regulation</value>
+  </data>
+  <data name="www.premiummedikal.com sitesine girilmesi, sitenin ya da sitedeki bilgilerin ve diğer verilerin programların vs. kullanılması sebebiyle, sözleşmenin ihlali, haksız fiil, ya da başkaca sebeplere binaen, doğabilecek doğrudan ya da dolaylı hiçbir zarardan Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara sorumlu değildir. Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, sözleşmenin ihlali, haksız fiil, ihmal veya diğer sebepler neticesinde; işlemin kesintiye uğraması, hata, ihmal, kesinti hususunda herhangi bir sorumluluk kabul etmez." xml:space="preserve">
+    <value>Entering the www.premiummedikal.com site, the site or the information and other data on the site, the programs etc. Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara is not responsible for any direct or indirect damages that may arise due to violation of the contract, unfair act or other reasons. Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara, as a result of breach of contract, wrongful act, negligence or other reasons; It does not accept any responsibility for the interruption of the transaction, error, neglect, interruption.</value>
+  </data>
+  <data name="www.premiummedikal.com sitesine girmeniz veya bu internet sitesindeki herhangi bir bilgiyi kullanmanız aşağıdaki koşulları kabul ettiğiniz anlamına gelir." xml:space="preserve">
+    <value>Entering the www.premiummedikal.com site or using any information on this website means that you accept the following conditions.</value>
+  </data>
+  <data name="Yukarıdaki şartlara uygun hallerde iade edilen ürünlerde kargo ücreti müşteri tarafından ödenecektir." xml:space="preserve">
+    <value>For the products returned in accordance with the above conditions, the shipping fee will be paid by the customer.</value>
+  </data>
+  <data name="Öncelikle üye olurken dolduracağınız üye formunun eksiksiz ve güncel bilgiler içermesine dikkat etmeniz gerekmektedir. Siparişiniz sonrasında doğacak herhangi bir sorunda müşteri temsilcilerimiz, üyelik bilgilerinizdeki iletişim bilgilerinizden yararlanarak sizinle irtibata geçecektir. Siparişiniz, girmiş olduğunuz teslimat adresinize gönderilecektir. Kargo teslimatı sırasında herhangi bir sorun yaşanmaması için adresinizi tüm detaylarıyla yazmanız gerekmektedir." xml:space="preserve">
+    <value>First of all, you need to pay attention to the fact that the member form that you will fill in when registering contains complete and updated information. In case of any problem after your order, our customer representatives will contact you by making use of your contact information in your membership information. Your order will be sent to the delivery address you entered. You should write your address in full details in order to avoid any problems during the delivery of the cargo.</value>
+  </data>
+  <data name="Ürün müşteriye ulaştıktan sonra ortaya çıkabilecek arızalar için, üretici firmanın yetkili servislerine başvurulmalıdır." xml:space="preserve">
+    <value>For malfunctions that may occur after the product reaches the customer, the authorized services of the manufacturer should be contacted.</value>
+  </data>
+  <data name="Üründe ve ambalajında herhangi bir açılma, bozulma, kırılma, tahrip, yırtılma, kullanılma ve sair durumları tespit ettiği hallerde ve ürünün müşteriye teslim edildiği andaki hali ile iade edilememesi halinde ürünü iade almayacak ve bedelini iade etmeyecektir." xml:space="preserve">
+    <value>In cases where any opening, deterioration, breakage, destruction, tearing, use and other conditions are detected in the product and its packaging, and if the product cannot be returned as it was delivered to the customer, it will not return the product and will not refund the price.</value>
+  </data>
+  <data name="Ürünü teslim alırken nelere dikkat etmeliyim?" xml:space="preserve">
+    <value>What should I pay attention to when I receive the product?</value>
+  </data>
+  <data name="İade Bilgileri" xml:space="preserve">
+    <value>Return Information</value>
+  </data>
+  <data name="Şifremi Unuttum?" xml:space="preserve">
+    <value>I forgot my password?</value>
+  </data>
+</root>

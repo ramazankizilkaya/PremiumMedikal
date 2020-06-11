@@ -1,0 +1,47 @@
+﻿<!--Mini Slider Component-->
+
+@model IEnumerable<MiniSliderDto>
+
+@{
+    Layout = "~/Views/Shared/_ComponentLayout.cshtml";
+}
+
+@if (ViewBag.culture.Equals("tr"))
+{
+    <div class="col-xs-12 col-sm-3">
+        <div class="product-intro">
+
+            @foreach (var miniSlider in Model)
+            {
+                <div class="item"><a href="@miniSlider.SliderHref" target="_self"><img src="~/Images/MiniSliderImages/tr/@miniSlider.PhotoFileName" width="280" height="355" alt=@miniSlider.PhotoAltTag></a></div>
+            }
+
+        </div>
+    </div>
+}
+else if (ViewBag.culture.Equals("ru"))
+{
+    <div class="col-xs-12 col-sm-3">
+        <div class="product-intro">
+
+            @foreach (var miniSlider in Model)
+            {
+                <div class="item"><a href="@miniSlider.SliderHref" target="_self"><img src="~/Images/MiniSliderImages/ru/@miniSlider.PhotoFileName" width="280" height="355" alt=@miniSlider.PhotoAltTag></a></div>
+            }
+
+        </div>
+    </div>
+}
+else
+{
+    <div class="col-xs-12 col-sm-3">
+        <div class="product-intro">
+
+            @foreach (var miniSlider in Model)
+            {
+                <div class="item"><a href="@miniSlider.SliderHref" target="_self"><img src="~/Images/MiniSliderImages/en/@miniSlider.PhotoFileName" width="280" height="355" alt=@miniSlider.PhotoAltTag></a></div>
+            }
+
+        </div>
+    </div>
+}

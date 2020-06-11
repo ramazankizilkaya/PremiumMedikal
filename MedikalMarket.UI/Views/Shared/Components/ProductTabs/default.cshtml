@@ -1,0 +1,187 @@
+﻿<!--Product Tabs Component-->
+
+@model ProductTabsDto
+
+@{
+    Layout = "~/Views/Shared/_ComponentLayout.cshtml";
+}
+
+<div class="tabs-group">
+    <ul class="nav nav-tabs">
+
+        <li class="kampanya active"><a data-toggle="tab" href="#tab-slider-1"><i></i><span>@Model.CampaignProductsTitle</span></a></li>
+
+
+        <li class="haftaninurunleri"><a data-toggle="tab" href="#tab-slider-2"><i></i><span>@Model.WeeklyDealProductsTitle</span></a></li>
+
+
+        <li class="indirimdekiler"><a data-toggle="tab" href="#tab-slider-3"><i></i><span>@Model.OnSaleProductsTitle</span></a></li>
+
+
+        <li class="yeniurunler"><a data-toggle="tab" href="#tab-slider-4"><i></i><span>@Model.NewProductsTitle</span></a></li>
+
+    </ul>
+    <div class="products-list tab-content">
+
+        <div id="tab-slider-1" data-index="1" class="tab-pane fade in active">
+            <div class="row">
+
+                @foreach (var item in Model.CampaignProducts)
+                {
+                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                        <div class="products-item" data-satis="0" data-stock="" data-urun-id="4895">
+                            @if (item.HasNewBadge)
+                            {
+                            <div class="new" data-value="1"><small>@Model.NewBadgeText</small></div>
+                            }
+                            <div class="image">
+                                <a href="@item.SingleProductHref">
+                                    <img src="/images/ProductImages/Main/@item.MainPhotoFileName" alt="@item.PhotoAltTag">
+                                </a>
+                            </div>
+                            <div class="detail">
+                                @if (item.IsFreeShipping)
+                                {
+                                    @if (ViewBag.cul.Equals("ru"))
+                                    {
+                                        <div class="ucretsiz-kargo" data-value="1" style="font-size:xx-small;">@Model.FreeShippingText</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="ucretsiz-kargo" data-value="1">@Model.FreeShippingText</div>
+                                    }
+                                }
+                                <a href="@item.BrandHref" class="brand">@item.BrandName</a>
+                                <a href="@item.SingleProductHref" class="name">@item.Name</a>
+                                <div class="price" data-active="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+
+        <div id="tab-slider-2" data-index="2" class="tab-pane fade">
+            <div class="row">
+
+                @foreach (var item in Model.WeeklyDealProducts)
+                {
+                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                        <div class="products-item" data-satis="0" data-stock="" data-urun-id="4892">
+                            @if (item.HasNewBadge)
+                            {
+                            <div class="new" data-value="1"><small>@Model.NewBadgeText</small></div>
+                            }
+                            <div class="image">
+                                <a href="@item.SingleProductHref">
+                                    <img src="/images/ProductImages/Main/@item.MainPhotoFileName" alt="@item.PhotoAltTag">
+                                </a>
+                            </div>
+                            <div class="detail">
+                                @if (item.IsFreeShipping)
+                                {
+                                    @if (ViewBag.cul.Equals("ru"))
+                                    {
+                                        <div class="ucretsiz-kargo" data-value="1" style="font-size:xx-small;">@Model.FreeShippingText</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="ucretsiz-kargo" data-value="1">@Model.FreeShippingText</div>
+                                    }
+                                }
+                                <a href="@item.BrandHref" class="brand">@item.BrandName</a>
+                                <a href="@item.SingleProductHref" class="name">@item.Name</a>
+                                <div class="price" data-active="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+
+        <div id="tab-slider-3" data-index="3" class="tab-pane fade">
+            <div class="row">
+
+                @foreach (var item in Model.OnSaleProducts)
+                {
+                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                        <div class="products-item" data-satis="0" data-stock="" data-urun-id="4892">
+                            @if (item.HasNewBadge)
+                            {
+                            <div class="new" data-value="1"><small>@Model.NewBadgeText</small></div>
+                            }
+                            <div class="image">
+                                <a href="@item.SingleProductHref">
+                                    <img src="/images/ProductImages/Main/@item.MainPhotoFileName" alt="@item.PhotoAltTag">
+                                </a>
+                            </div>
+                            <div class="detail">
+                                @if (item.IsFreeShipping)
+                                {
+                                    @if (ViewBag.cul.Equals("ru"))
+                                    {
+                                        <div class="ucretsiz-kargo" data-value="1" style="font-size:xx-small;">@Model.FreeShippingText</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="ucretsiz-kargo" data-value="1">@Model.FreeShippingText</div>
+                                    }
+                                }
+                                <a href="@item.BrandHref" class="brand">@item.BrandName</a>
+                                <a href="@item.SingleProductHref" class="name">@item.Name</a>
+                                <div class="price" data-active="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+
+        <div id="tab-slider-4" data-index="4" class="tab-pane fade">
+            <div class="row">
+
+                @foreach (var item in Model.NewProducts)
+                {
+                    <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
+                        <div class="products-item" data-satis="0" data-stock="" data-urun-id="4892">
+                            @if (item.HasNewBadge)
+                            {
+                            <div class="new" data-value="1">@Model.NewBadgeText</div>
+                            }
+                            <div class="image">
+                                <a href="@item.SingleProductHref">
+                                    <img src="/images/ProductImages/Main/@item.MainPhotoFileName" alt="@item.PhotoAltTag">
+                                </a>
+                            </div>
+                            <div class="detail">
+                                @if (item.IsFreeShipping)
+                                {
+                                    @if (ViewBag.cul.Equals("ru"))
+                                    {
+                                        <div class="ucretsiz-kargo" data-value="1" style="font-size:xx-small;">@Model.FreeShippingText</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="ucretsiz-kargo" data-value="1">@Model.FreeShippingText</div>
+                                    }
+                                }
+                                <a href="@item.BrandHref" class="brand">@item.BrandName</a>
+                                <a href="@item.SingleProductHref" class="name">@item.Name</a>
+                                <div class="price" data-active="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>

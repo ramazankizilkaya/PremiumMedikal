@@ -1,0 +1,138 @@
+﻿@model AdminAdProductDto
+
+
+<form class="form-horizontal bv-form" asp-area="Admin" asp-controller="AdProduct" asp-action="UpdateAdProduct" method="POST" enctype="multipart/form-data" id="updateAdProductPopupForm">
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="PhotoFileName" />
+    <input type="hidden" asp-for="TargetProductId" />
+
+    <div class="box box-success">
+        <div class="box-body">
+            <div class="tabs-container">
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <!--Fotoğraf Alt Tag'i-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="PhotoAltTag"><b>Fotoğraf Alt Tag'i</b></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="PhotoAltTag" disabled>
+                        <span asp-validation-for="PhotoAltTag" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--AdProduct hedef türü Türü-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="AdproTargetType"><b>Reklam Hedef  Türü</b></label>
+                    <div class="col-sm-9">
+                        <select class="form-control" asp-for="AdproTargetType" asp-items="Html.GetEnumSelectList<SliderTargetType>().OrderBy(x=>x.Text)">
+                            <option value="" selected="selected" style="color:red;">Lütfen Reklam hedef türü seçiniz</option>
+                        </select>
+                        <span asp-validation-for="AdproTargetType" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--TopKategori Selectlist-->
+                <div class="form-group row" id="topCateSelectList" style="display:none; background-color:wheat;">
+                    <label class="col-sm-3 col-form-label" asp-for="TargetTopCategoryId"><b>Hedef Ana Kategori</b></label>
+                    <div class="col-sm-9">
+                        <select class="form-control topCat" asp-for="TargetTopCategoryId" asp-items="@(new SelectList(Model.TopCategories, "Id", "NameTR"))">
+                            <option value="" style="color:red;" selected="selected">Lütfen Ana Kategori Seçiniz</option>
+                        </select>
+                        <span asp-validation-for="TargetTopCategoryId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--MiddleKategori Selectlist-->
+                <div class="form-group row" id="midCateSelectList" style="display:none;background-color:wheat;">
+                    <label class="col-sm-3 col-form-label" asp-for="TargetMiddleCategoryId"><b>Hedef Orta Kategori</b></label>
+                    <div class="col-sm-9">
+                        <select class="form-control midCat" asp-for="TargetMiddleCategoryId" asp-items="@(new SelectList(Model.MiddleCategories, "Id", "NameTR"))">
+                            <option value="" style="color:red;" selected="selected">Lütfen Orta Kategori Seçiniz</option>
+                        </select>
+                        <span asp-validation-for="TargetMiddleCategoryId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--SubKategori Selectlist-->
+                <div class="form-group row" id="subCateSelectList" style="display:none;background-color:wheat;">
+                    <label class="col-sm-3 col-form-label" asp-for="TargetSubCategoryId"><b>Hedef Alt Kategori</b></label>
+                    <div class="col-sm-9">
+                        <select class="form-control" asp-for="TargetSubCategoryId" asp-items="@(new SelectList(Model.SubCategories, "Id", "NameTR"))">
+                            <option value="" style="color:red;" selected="selected">Lütfen Alt Kategori Seçiniz</option>
+                        </select>
+                        <span asp-validation-for="TargetSubCategoryId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Marka Selectlist-->
+                <div class="form-group row" id="brandSelectList" style="display:none;background-color: wheat;">
+                    <label class="col-sm-3 col-form-label" asp-for="TargetBrandId"><b>Hedef Marka</b></label>
+                    <div class="col-sm-9">
+                        <select class="form-control" asp-for="TargetBrandId" asp-items="@(new SelectList(Model.Brands, "Id", "BrandName"))">
+                            <option value="" style="color:red;" selected="selected">Lütfen Marka Seçiniz</option>
+                        </select>
+                        <span asp-validation-for="TargetBrandId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Hedef Ürün Adı-->
+                <div class="form-group row" style="display:none;" id="productSearchBox">
+                    <label class="col-sm-3 col-form-label" asp-for="TargetProductName" style="background-color: wheat;"><b>Hedef Ürün Adı</b></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="TargetProductName" id="searchProName">
+                        <span asp-validation-for="TargetProductName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Reklam Kültür-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="Culture"><b>Reklam Kültürü</b></label>
+                    <div class="col-sm-9">
+                        <select class="form-control" asp-for="Culture">
+                            <option value="" selected="selected" style="color:red;">Lütfen Reklam kültürünü seçiniz</option>
+                            <option value="tr">Türkçe</option>
+                            <option value="en">İngilizce</option>
+                            <option value="ru">Rusça</option>
+                        </select>
+                        <span asp-validation-for="Culture" class="text-danger"></span>
+                    </div>
+                </div>
+
+                @if (!String.IsNullOrEmpty(Model.PhotoFileName))
+                {
+                    <!--Reklam Ana Fotoğraf-->
+                    <div class="form-group row" data-divId="main">
+                        <label class="col-sm-3 col-form-label" asp-for="PhotoFileName"><b>Reklam Fotoğrafı</b></label>
+                        <div class="col-sm-9">
+                            <img src="~/Images/AdProductImages/@Model.Culture/@Model.PhotoFileName" alt="@Model.PhotoAltTag" title="Reklam Fotoğrafı" style="border:1px solid black; width:500px;height:200px;" />
+                            &emsp;
+                            <a href="#" class="delAdProductPhoto" data-proId="@Model.Id"><i class="fa fa-trash-o fa-2x" title="Reklam Fotoğrafını Sil"></i></a>
+                            &emsp;
+                        </div>
+                    </div>
+                }
+
+
+                <!--Reklam Fotoğrafı Yükleme-->
+                <div class="form-group row" id="mainPhotoGroup">
+                    <label class="col-sm-3 col-form-label" asp-for="AdProductPhoto"><b>Reklam Fotoğrafı Yükle</b></label>
+                    <div class="col-sm-9 align-content-start">
+                        <div class="custom-file">
+                            <input type="file" asp-for="AdProductPhoto" class="custom-file-input form-control" id="adproPhotoUpload" accept=".png, .jpeg, .jpg, .bmp" data-urunId="@Model.Id" />
+                            <label class="custom-file-label" asp-for="AdProductPhoto" id="adproPhotoUploadLabel">Reklam Fotoğrafını Seçiniz</label>
+                        </div>
+                        <span asp-validation-for="AdProductPhoto" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-footer" style="text-align:right">
+        <button type="submit" class="btn btn-danger btn-xl">Değişiklikleri Kaydet</button>
+    </div>
+</form>
+
+

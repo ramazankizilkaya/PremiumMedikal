@@ -1,0 +1,64 @@
+﻿@inject IViewLocalizer _localizer
+
+<input type="hidden" id="alertInput" value="@ViewBag.Alert" />
+<input type="hidden" id="successInput" value="@ViewBag.Success" />
+
+@section Head {
+    <title>@_localizer["Premium Medikal-Online Medikal Market-Ubsis Sağlık Ürünleri-Medikal Ankara, Türkiye"]</title>
+    <meta name="description" content="@_localizer["Türkiye´nin en çok tıklanan, ucuz, kaliteli ve güvenilir ONLİNE MEDİKAL marketi. Tıbbi sarf malzemeler, tıbbi cihazlar, cerrahi aletler ve aklınıza gelebilecek tüm medikal ürünler. Ubsis Sağlık Ürünleri-Güvenevler Mah. Cinnah Cad. Alaçam Sok. No:1/22 Çankaya/Ankara"]">
+}
+
+@*<cache expires-after="@TimeSpan.FromMinutes(20)" vary-by-culture="true" enabled="true">*@
+    <div class="container">
+        <div class="row">
+
+            <!--Slider Component-->
+            @await Component.InvokeAsync("SliderComponent")
+
+
+            <!--Mini Slider Component-->
+            @await Component.InvokeAsync("MiniSliderComponent")
+
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-9"><h1 class="kalimed" style="text-transform:none;">@_localizer["SAĞLIĞININZ İÇİN SİZLERLEYİZ <strong>PremiumMEDIKAL.COM"]</strong></h1></div>
+            <div class="col-xs-12 col-sm-3"><a class="catalog">@_localizer["Ürün Katalog"]</a></div>
+        </div>
+
+        <!--Showcase Products Component-->
+        @await Component.InvokeAsync("ShowcaseProducts")
+
+
+        <!--Product Tabs Component-->
+        @await Component.InvokeAsync("ProductTabs")
+
+
+        <a href="#" class="stores">@_localizer["MAĞAZALARIMIZIN TÜMÜNÜ GÖRMEK İÇİN BURAYA TIKLAYIN"]</a>
+
+        <!--Commercilal Products-->
+        @await Component.InvokeAsync("AdsProductComponent")
+    </div>
+
+@*</cache>*@
+
+@section Scripts{
+
+    <script>
+        //anasayfa toast ları
+        $(document).ready(function () {
+            var myAlertVal = document.getElementById('alertInput').value;
+            var mySuccessVal = document.getElementById('successInput').value;
+            if (myAlertVal.length > 0) {
+                toastr.error(myAlertVal);
+                document.getElementById('alertInput').value = "";
+            }
+            if (mySuccessVal.length > 0) {
+                toastr.success(mySuccessVal);
+                document.getElementById('successInput').value = "";
+            }
+        });
+
+
+    </script>
+}
+

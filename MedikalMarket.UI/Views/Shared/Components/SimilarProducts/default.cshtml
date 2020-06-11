@@ -1,0 +1,40 @@
+﻿<!--Similar Products Component-->
+
+@model IEnumerable<SmilarProductDto>
+
+@{
+    Layout = "~/Views/Shared/_ComponentLayout.cshtml";
+}
+
+
+    <div class="benzer-urunler product-detail-products-list">
+        <h3 class="theme-h3"><span>@ViewBag.Title</span></h3>
+        <div class="products-carousel">
+
+            @foreach (var item in Model)
+            {
+            <div class="item">
+                <div class="products-item">
+                    @if (item.HasNewBadge)
+                    {
+                        <div class="new" data-value="1"><small>@ViewBag.newBadge</small> </div>
+                    }
+                    <div>
+                        <a href="@item.SingleProductHref">
+                            <img class="b-lazy" src="/images/placeholder.gif" data-src="/Images/ProductImages/Main/@item.MainPhotoFileName" alt="@item.PhotoAltTag">
+                            @*<img src="/Images/ProductImages/thumb/@item.MainPhotoPath" alt="@item.MainPhotoPathAltTag">*@
+                        </a>
+                    </div>
+                    <div class="detail">
+                        <div class="ucretsiz-kargo" data-value="0">@ViewBag.freeShipping</div>
+                        @*<a href="@item.BrandHref" class="brand">@item.BrandName</a>*@
+                        <a href="@item.SingleProductHref" class="name">@item.Name</a>
+                        <div class="price" data-active="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+
+        </div>
+    </div>

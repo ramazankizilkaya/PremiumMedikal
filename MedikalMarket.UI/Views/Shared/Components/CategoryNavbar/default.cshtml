@@ -1,0 +1,172 @@
+﻿<!--Category Navbar Component-->
+@model IEnumerable<TopCategoryComponentDto>
+
+@{
+    Layout = "~/Views/Shared/_ComponentLayout.cshtml";
+}
+
+@if (ViewBag.culture.Equals("tr"))
+{
+    <nav class="mainmenu">
+        <div class="nav">
+            <div class="container">
+                <div class="mobile-menu-buttons">
+                    <button class="mainmenu-toggle"><span aria-hidden="true">&times;</span></button>
+                    <a href="/" class="logo"><img src="~/Images/mobilLogoTR.png" width="240" height="60" alt="Premium Medikal - Online Medikal Market - Medikal Ankara"></a>
+                </div>
+                <ul class="categories-nav list-unstyled">
+                    @foreach (var topCate in Model)
+                    {
+                        <li>
+                            <a href="/tr/kategoriler/@topCate.TopCategoryNameUrl/sayfa/1" data-title="@topCate.Name"><span>@topCate.Name</span></a>
+                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+                            @if (topCate.MiddleCategoryComponentDtos.Any())
+                            {
+                                <ul class="list-unstyled">
+
+                                    @foreach (var middleCate in topCate.MiddleCategoryComponentDtos)
+                                    {
+                                        <li>
+                                            <a href="/tr/kategoriler/@topCate.TopCategoryNameUrl/@middleCate.MiddleCategoryNameUrl/sayfa/1" data-title="@middleCate.Name">@middleCate.Name</a>
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+                                            @if (middleCate.SubCategoryComponentDtos.Any())
+                                            {
+                                                <ul class="list-unstyled">
+
+                                                    @foreach (var subCate in middleCate.SubCategoryComponentDtos)
+                                                    {
+                                                        <li>
+                                                            <a href="/tr/kategoriler/@topCate.TopCategoryNameUrl/@middleCate.MiddleCategoryNameUrl/@subCate.SubCategoryNameUrl/sayfa/1" data-title="@subCate.Name">@subCate.Name</a>
+
+                                                        </li>
+                                                    }
+
+                                                </ul>
+                                            }
+
+                                        </li>
+                                    }
+
+                                </ul>
+                            }
+
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+}
+else if (ViewBag.culture.Equals("ru"))
+{
+    <nav class="mainmenu">
+        <div class="nav">
+            <div class="container">
+                <div class="mobile-menu-buttons">
+                    <button class="mainmenu-toggle"><span aria-hidden="true">&times;</span></button>
+                    <a href="/" class="logo"><img src="~/Images/mobilLogoRu.png" width="240" height="60" alt="Premium Medical - Online Medical Store - Medical Ankara"></a>
+                </div>
+                <ul class="categories-nav list-unstyled">
+                    @foreach (var topCate in Model)
+                    {
+                        <li>
+                            <a href="/ru/categories/@topCate.TopCategoryNameUrl/page/1" data-title="@topCate.Name"><span><small>@topCate.Name</small></span></a>
+                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+                            @if (topCate.MiddleCategoryComponentDtos.Any())
+                            {
+                                <ul class="list-unstyled">
+
+                                    @foreach (var middleCate in topCate.MiddleCategoryComponentDtos)
+                                    {
+                                        <li>
+                                            <a href="/ru/categories/@topCate.TopCategoryNameUrl/@middleCate.MiddleCategoryNameUrl/page/1" data-title="@middleCate.Name">@middleCate.Name</a>
+                                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+                                            @if (middleCate.SubCategoryComponentDtos.Any())
+                                            {
+                                                <ul class="list-unstyled">
+
+                                                    @foreach (var subCate in middleCate.SubCategoryComponentDtos)
+                                                    {
+                                                        <li>
+                                                            <a href="/ru/categories/@topCate.TopCategoryNameUrl/@middleCate.MiddleCategoryNameUrl/@subCate.SubCategoryNameUrl/page/1" data-title="@subCate.Name">@subCate.Name</a>
+
+                                                        </li>
+                                                    }
+
+                                                </ul>
+                                            }
+
+                                        </li>
+                                    }
+
+                                </ul>
+                            }
+
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+}
+else
+{
+<nav class="mainmenu">
+    <div class="nav">
+        <div class="container">
+            <div class="mobile-menu-buttons">
+                <button class="mainmenu-toggle"><span aria-hidden="true">&times;</span></button>
+                <a href="/" class="logo"><img src="~/Images/mobilLogoEn.png" width="240" height="60" alt="Premium Medical - Online Medical Store - Medical Ankara"></a>
+            </div>
+            <ul class="categories-nav list-unstyled">
+                @foreach (var topCate in Model)
+                {
+                    <li>
+                        <a href="/en/categories/@topCate.TopCategoryNameUrl/page/1" data-title="@topCate.Name"><span>@topCate.Name</span></a>
+                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+                        @if (topCate.MiddleCategoryComponentDtos.Any())
+                        {
+                            <ul class="list-unstyled">
+
+                                @foreach (var middleCate in topCate.MiddleCategoryComponentDtos)
+                                {
+                                    <li>
+                                        <a href="/en/categories/@topCate.TopCategoryNameUrl/@middleCate.MiddleCategoryNameUrl/page/1" data-title="@middleCate.Name">@middleCate.Name</a>
+                                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+                                        @if (middleCate.SubCategoryComponentDtos.Any())
+                                        {
+                                            <ul class="list-unstyled">
+
+                                                @foreach (var subCate in middleCate.SubCategoryComponentDtos)
+                                                {
+                                                    <li>
+                                                        <a href="/en/categories/@topCate.TopCategoryNameUrl/@middleCate.MiddleCategoryNameUrl/@subCate.SubCategoryNameUrl/page/1" data-title="@subCate.Name">@subCate.Name</a>
+
+                                                    </li>
+                                                }
+
+                                            </ul>
+                                        }
+
+                                    </li>
+                                }
+
+                            </ul>
+                        }
+
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+</nav>    
+}

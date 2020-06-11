@@ -1,0 +1,177 @@
+﻿@model LoginDto
+@inject IViewLocalizer localizer
+
+@section Head {
+    <title>@localizer["premiummedikal.com üye giriş sayfası"]</title>
+    <meta name="description" content="@localizer["Lütfen eposta adresinizi ve şifrenizi giriniz."]">
+}
+
+
+<input type="hidden" id="registerSuccess" value="@ViewBag.RegAlert" />
+<input type="hidden" id="registerSuccessTitle" value="@ViewBag.warnTitle" />
+<input type="hidden" id="warnwrongEmail" value="@localizer["Lütfen geçerli bir eposta adresi giriniz."]" />
+<input type="hidden" id="warnEmptyEmail" value="@localizer["Lütfen E-posta adresinizi giriniz."]" />
+<input type="hidden" id="warnemailVal" value="@localizer["E-posta adresi minimum 2, maksimum 100 karakter içermelidir."]" />
+
+<div class="login-page-v2">
+    <h1 class="theme-h1"><span></span></h1>
+    <ul class="social-connect-buttons modul-content list-unstyled list-inline text-center"></ul>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+            <div class="modul-content user-login">
+                <h2 class="theme-h2"><span>@localizer["Üye Girişi"]</span></h2>
+                <form method="post" id="loginForm">
+
+                    <div class="form-group">
+                        <label asp-for="Email">@localizer["E-Posta Adresiniz"]</label>
+                        <input type="email" class="form-control" id="inputEmail" data-rule-required="true" data-rule-email="true" name="Mail" placeholder="@localizer["E-Posta Adresiniz"]" data-focus="true" data-hata-mesaji="@localizer["Lütfen geçerli bir e-posta adresi belirtiniz"]" asp-for="Email">
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password">@localizer["Şifreniz"]</label>
+                        <input type="password" class="form-control" id="inputPassword" data-rule-required="true" data-rule-sifre="true" name="Sifre" placeholder="@localizer["Şifreniz"]" data-hata-mesaji="@localizer["Lütfen geçerli bir şifre belirtiniz"]" asp-for="Password">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="i-checks" style="display:inline;">
+                            <input type="checkbox" class="form-control" id="rememberMe" checked="@Model.RememberMe">
+                            @*<button onclick="alert(document.getElementById('rememberMe').checked);"></button>*@
+                        </div>
+                        <label asp-for="RememberMe">&emsp;@localizer["Beni Hatırla"]</label>
+
+                        <label style="float:right;"><a href="#" data-toggle="modal" data-target="#myEmailModal" class="forgot-pass">@localizer["Şifremi Unuttum"]</a></label>
+                    </div>
+
+                    <div class="form-group form-button">
+                        <button id="loginFormSubmit" type="submit">@localizer["Giriş Yap"]</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myEmailModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">@localizer["Lütfen eposta adresinizi giriniz."]</h4>
+            </div>
+            <div class="modal-body">
+                <input type="email" class="form-control" id="inputForgotEmail" data-rule-required="true" data-rule-email="true" name="Mail" placeholder="@localizer["E-Posta Adresiniz"]" data-focus="true" data-hata-mesaji="@localizer["Lütfen geçerli bir e-posta adresi belirtiniz"]" asp-for="Email" maxlength="100">
+                <p class="text-danger"></p>
+                <div id="warnResult"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left;">@localizer["Kapat"]</button>
+                <button type="button" class="btn btn-default" id="btnSendMyPwd" style="float:right;">@localizer["Şifre Gönder"]</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            //LoginCheck Ajax
+            $('#loginFormSubmit').click(function (e) {
+                //debugger;
+                e.preventDefault();
+
+                var form = $('#loginForm');
+                $.validator.unobtrusive.parse(form);
+                form.validate();
+
+                var emailVal = document.getElementById('inputEmail').value;
+                var pwdVal = document.getElementById('inputPassword').value;
+                var remember = document.getElementById('rememberMe').checked;
+
+                if (form.valid()) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "/Account/LoginCheck",
+                        data: { email: emailVal, password: pwdVal, rememberMe: remember },
+                        success: function (response) {
+                            if (response.success) {
+                                toastr.success(response.responseText, response.title);
+                                var delayInMilliseconds = 1000;
+
+                                setTimeout(function () {
+                                    window.location.href = "/";
+                                }, delayInMilliseconds);
+                            }
+                            else {
+                                toastr.warning(response.responseText, response.title);
+                            }
+                        }
+                    });
+                }
+            });
+
+
+            //Şifremi unuttum
+            $('#btnSendMyPwd').click(function (e) {
+                debugger;
+                var emailVal = $('#inputForgotEmail').val();
+                var warnWrongEmail = document.getElementById('warnwrongEmail').value;
+                var warnEmptyEmail = document.getElementById('warnEmptyEmail').value;
+                var warnemailVal = document.getElementById('warnemailVal').value;
+
+
+                var pattern = /^(([^<>()\[\]\.,;:\s@@\"]+(\.[^<>()\[\]\.,;:\s@@\"]+)*)|(\".+\"))@@(([^<>()[\]\.,;:\s@@\"]+\.)+[^<>()[\]\.,;:\s@@\"]{2,})$/i;
+
+
+                var emailValidation = pattern.test(emailVal);
+
+                if (emailVal.length == 0) {
+                    $('#warnResult').html("<div class='alert alert-danger' role='alert'>" + warnEmptyEmail + "</div>");
+                    $('#Mail').focus();
+                    return false;
+                }
+                if (!emailValidation) {
+                    $('#warnResult').html("<div class='alert alert-danger' role='alert'>" + warnWrongEmail + "</div>");
+                    $('#Mail').focus();
+                    return false;
+                }
+                if (emailVal.length < 2 || emailVal.length > 100) {
+                    $('#warnResult').html("<div class='alert alert-danger' role='alert'>" + warnemailVal + "</div>");
+                    $('#Mail').focus();
+                    return false;
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: "/Account/SendMyPassword",
+                    data: { userEmail: emailVal },
+                    success: function (response) {
+                        if (response.success) {
+                            $('#warnResult').html(response.responseText);
+                        }
+                        if (!response.success) {
+                            $('#warnResult').html(response.responseText);
+                        }
+                    }
+                }).fail(function () {
+                    $('#warnResult').html(response.responseText);
+                });
+            });
+        });
+
+    </script>
+}
+

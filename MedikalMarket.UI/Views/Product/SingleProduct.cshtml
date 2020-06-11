@@ -1,0 +1,479 @@
+﻿@inject IViewLocalizer localizer
+@using Microsoft.AspNetCore.Http
+ 
+@model SingleProductDto
+
+@{
+    ViewData["Title"] = "SingleProduct";
+    string facePath = "https://www.facebook.com/sharer/sharer.php?u=" + Context.Request.Host + Context.Request.Path;
+    string twitterPath = "https://twitter.com/share?url=" + Context.Request.Host + Context.Request.Path;
+    string googlePath = "https://plus.google.com/share?url=" + Context.Request.Host + Context.Request.Path;
+    var useSessionVal = Context.Session.GetObject<SessionDto>("customerInfo") != null ? "yes" : "no";
+}
+
+@section Head {
+    <title>@ViewBag.metaTitle</title>
+    <meta name="description" content="@ViewBag.metaDesc">
+}
+
+
+<input type="hidden" id="singleProId" value="@Model.Id" />
+<input type="hidden" id="remFav" value="@localizer["Favorilerden Çıkar"]" />
+<input type="hidden" id="addFav" value="@localizer["Favorilere Ekle"]" />
+<input type="hidden" id="ifFav" value="@Model.IsFavorite" />
+<input type="hidden" id="userSessionInfo" value="@useSessionVal" />
+<input type="hidden" id="plzLoginWarn" value="@localizer["Ürünü favorilerinize eklemek için lütfen üye girişi yapınız"]" />
+
+<div class="product-detail-container">
+
+    <div class="breadcrumb">
+        <ul class="list-unstyled">
+            <li><a href="/"><span>@localizer["Ana Sayfa"]</span></a></li>
+            <li><a href="@localizer["/tr/kategoriler/"]@Model.TopCategoryNameUrl/@localizer["sayfa"]/1"><span>@Model.TopCategoryName</span></a></li>
+            @if (Model.MiddleCategoryName != null)
+            {
+                <li><a href="@localizer["/tr/kategoriler/"]@Model.TopCategoryNameUrl/@Model.MiddleCategoryNameUrl/@localizer["sayfa"]/1"><span>@Model.MiddleCategoryName</span></a></li>
+            }
+            @if (Model.SubCategoryName != null)
+            {
+                <li><a href="@localizer["/tr/kategoriler/"]@Model.TopCategoryNameUrl/@Model.MiddleCategoryNameUrl/@Model.SubCategoryNameUrl/@localizer["sayfa"]/1"><span>@Model.SubCategoryName</span></a></li>
+            }
+            <li><h1>@Model.Name</h1></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="cacık w3-content w3-display-container" data-satis="0">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-5">
+
+                    <div class="w3-content w3-display-container">
+
+                        @foreach (var item in Model.ProductPhotoDtos)
+                        {
+                            <div class="w3-display-container mySlides">
+                                <img src="~/Images/ProductImages/Additional/@item.PhotoFileName" style="width:100%" alt="@item.AltTag" class="elevasyon" data-zoom-image="/Images/ProductImages/Additional/@item.PhotoFileName">
+                            </div>
+                        }
+
+                        <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)" style="z-index:999999">  &#10094;</button>
+                        <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)" style="z-index:999999">&#10095;</button>
+                    </div>
+                    
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-7">
+                    <div class="product-detail" style="margin-top:20px;">
+                        <h2 style="padding-left:20px;">@Model.Name</h2>
+                        <div class="price" data-active="">
+                            <div class="item">
+                            </div>
+                            <p class="baslayan-fiyatlarla">Bu ürünü <span></span>'den başlayan taksitlerle satın alabilirsiniz.</p>
+                        </div>
+
+                        <ul class="info list-unstyled" style="border-left:none;">
+
+                            <li><label>@localizer["Marka"]</label> <a href="erkent.html" class="brand">@Model.BrandName</a></li>
+                            <li><label>@localizer["Ürün Kodu"]</label> <span id="kod">@Model.ProductCode</span></li>
+                            <li class="stok-durumu"><label>@localizer["Stok Durumu"]</label> <span id="stok"><span style='color: red;'>@localizer["TÜKENDİ"]</span></span></li>
+                            <ul class="labels list-unstyled list-inline">
+                                @if (Model.HasNewBadge)
+                                {
+                                    <li class="yeni" data-value="">@localizer["Yeni"]</li>
+                                }
+                                @if (Model.IsFreeShipping)
+                                {
+                                    <li class="firsat" data-value="">@localizer["Ücretsiz Kargo"]</li>
+                                }
+                                @if (Model.DiscountRate > 0)
+                                {
+                                    <li class="firsat" data-value="">@localizer["İndirimli"]</li>
+                                }
+                            </ul>
+                        </ul>
+                        <div class="description"></div>
+
+                        <div class="siparis">
+                            <div class="amount" data-birim="Adet">
+                                <span>
+                                    <span class="adet-arttir"><i class="fa fa-angle-up" aria-hidden="true"></i></span>
+                                    <span class="adet-azalt"><i class="fa fa-angle-down" aria-hidden="true"></i></span>
+                                </span>
+                                <input type="text" name="Adet" value="1">
+                            </div>
+                            <button class="SepeteEkleButtonDetay" data-urun-id="1502" data="SepeteEkle.html" role="button">@localizer["Sepete Ekle"]</button>
+                            <button class="HemenAlButtonDetay" data-urun-id="1502" data="SepeteEkle.html" data-satin-al="true" role="button">@localizer["Hemen Al"]</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="share">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-5">
+                    <ul class="share-this list-unstyled">
+
+                        <li><a class="facebook" href="@facePath" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Facebook">Facebook</a></li>
+                        <li><a class="twitter" href="@twitterPath" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" title="Share on Twitter">Twitter</a></li>
+                        <li><a class="google" href="@googlePath" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=480');return false;" target="_blank" title="Share on Google+">Google+</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-7">
+                    <a href="javascript:void(0);" class="YorumOku" id="YorumOku"><span class="text">@localizer["Yorum Oku"]</span></a>
+
+                    <a href="javascript:void(0);" class="FavoriEkleSilButtonDetay" id="addToFav" data-param="FavorilereEkle" data-type="1"><span class="text"> </span></a>
+                </div>
+            </div>
+        </div>
+        <div class="product-detail-tabs">
+            <div class="tabs-group urun-detay-tab">
+                <ul class="nav nav-tabs">
+                    <li class="bilgi-tab-baslik active"><a data-toggle="tab" href="#tab01"><span>@localizer["Ürün Bilgisi"]</span></a></li>
+                    <li class="yorum-tab-baslik"><a data-toggle="tab" href="#tab03"><span>@localizer["Yorumlar"] <small>(0)</small></span></a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab01" class="bilgi-tab-icerik tab-pane fade in active">
+                        <div> <span style="font-size:20px;">@Model.ProductDescription</span></div> <
+
+
+                        <div class="kategori-urun-bilgi"></div>
+
+                        <table class="data-table attributes-table values-table">
+                            <colgroup>
+                                <col width="25%">
+                                <col>
+                            </colgroup>
+                        </table>
+                    </div>
+
+                    <div id="tab03" class="yorum-tab-icerik tab-pane fade">
+
+
+                        @*<script src="themes/cdn/v2/scripts/yorum.listele.min8fcd.js?v=15247"></script>*@
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+
+                                <div id="YorumYokContainer">
+                                    <p>@localizer["Ürüne ait yorum bulunmamaktadır."]</p>
+                                </div>
+
+                                <div id="YorumContainer">
+
+                                </div>
+
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+
+                                @*<script src="themes/cdn/v2/scripts/yorum.ekle.min8fcd.js?v=15247"></script>*@
+                                <form method="post" id="YorumForm">
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="AdSoyad" data-rule-required="true" placeholder="Adınız Soyadınız">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Mail" data-rule-required="true" data-rule-email="true" placeholder="E-Mail Adresiniz">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="Baslik" data-rule-required="true" placeholder="Yorum Konusu">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="Mesaj" class="form-control" id="Mesaj" data-rule-required="true" placeholder="Yorumunuz"></textarea>
+                                    </div>
+
+                                    <div class="form-group security-code">
+                                        <img src="~/images/yorum.png" width="65" height="28" alt="Güvenlik Kodu" class="securitycode" name="GuvenlikKodu" id="GuvenlikKodu">
+                                        <a class="btn btn-sm refresh" href="javascript:void(0);" onclick="javascript:RefreshCaptcha('img.securitycode');"><i class="fa fa-refresh"></i></a>
+                                        <input class="form-control" type="number" name="GuvenlikKodu" placeholder="Güvenlik Kodu" data-rule-required="true" data-rule-guvenlikkodu="true">
+                                    </div>
+
+                                    <div class="form-group text-right">
+                                        <button type="button" id="YorumEkle">@localizer["Yorum Yap"]</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @await Component.InvokeAsync("SimilarProducts", new { proId = Model.Id })
+
+
+
+    </div>
+</div>
+
+@section Styles{
+    @*<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">*@
+    <style>
+
+        .cacık {
+            background-color: #f3f3f3;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(184,184,184,0.35);
+            overflow: hidden;
+            margin: 15px 0;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+            .cacık > div {
+                display: block;
+            }
+
+        .mySlides {
+            display: none;
+        }
+
+        .w3-tooltip, .w3-display-container {
+            position: relative
+        }
+
+            .w3-tooltip .w3-text {
+                display: none
+            }
+
+            .w3-tooltip:hover .w3-text {
+                display: inline-block
+            }
+
+            .w3-display-container:hover .w3-display-hover {
+                display: block
+            }
+
+            .w3-display-container:hover span.w3-display-hover {
+                display: inline-block
+            }
+
+        .w3-display-hover {
+            display: none
+        }
+
+        .w3-display-position {
+            position: absolute
+        }
+
+        .w3-content, .w3-auto {
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        /* .w3-content {
+            max-width: 980px
+        }*/
+
+        .w3-auto {
+            max-width: 1140px
+        }
+
+        .w3-btn, .w3-button {
+            border: none;
+            display: inline-block;
+            padding: 8px 16px;
+            vertical-align: middle;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            background-color: inherit;
+            text-align: center;
+            cursor: pointer;
+            white-space: nowrap
+        }
+
+            .w3-btn:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)
+            }
+
+        .w3-btn, .w3-button {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+            .w3-disabled, .w3-btn:disabled, .w3-button:disabled {
+                cursor: not-allowed;
+                opacity: 0.3
+            }
+
+                .w3-disabled *, :disabled * {
+                    pointer-events: none
+                }
+
+        .w3-dropdown-hover:hover > .w3-button:first-child, .w3-dropdown-click:hover > .w3-button:first-child {
+            background-color: #ccc;
+            color: #000
+        }
+
+        .w3-bar-block .w3-dropdown-hover .w3-button, .w3-bar-block .w3-dropdown-click .w3-button {
+            width: 100%;
+            text-align: left;
+            padding: 8px 16px
+        }
+
+        .w3-bar .w3-button {
+            white-space: normal
+        }
+
+        .w3-dropdown-hover.w3-mobile, .w3-dropdown-hover.w3-mobile .w3-btn, .w3-dropdown-hover.w3-mobile .w3-button, .w3-dropdown-click.w3-mobile, .w3-dropdown-click.w3-mobile .w3-btn, .w3-dropdown-click.w3-mobile .w3-button {
+            width: 100%
+        }
+
+        .w3-button:hover {
+            color: #000 !important;
+            background-color: #ccc !important
+        }
+
+        .w3-display-left {
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            transform: translate(0%,-50%);
+            -ms-transform: translate(-0%,-50%)
+        }
+
+        .w3-display-right {
+            position: absolute;
+            top: 50%;
+            right: 0%;
+            transform: translate(0%,-50%);
+            -ms-transform: translate(0%,-50%)
+        }
+
+        .w3-black, .w3-hover-black:hover {
+            color: #fff !important;
+            background-color: #000 !important
+        }
+    </style>
+}
+
+
+@section Scripts{
+
+
+    <script src="~/assets/js/theme-detail.min.js"></script>
+    <script src="~/assets/js/urun.detay.min.js"></script>
+    <script src="~/assets/js/yorum.ekle.min.js"></script>
+    <script src="~/assets/js/yorum.listele.min.js"></script>*
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.min.js"></script>
+
+
+
+
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex - 1].style.display = "block";
+        }
+    </script>
+
+    @*<script>
+            var slideIndex = 1;
+            showDivs(slideIndex);
+
+            function plusDivs(n) {
+                showDivs(slideIndex += n);
+            }
+
+            function showDivs(n) {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                if (n > x.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = x.length }
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                x[slideIndex - 1].style.display = "block";
+            }
+        </script>*@
+
+    <script>
+
+        $(document).ready(function () {
+
+            $(".elevasyon").elevateZoom({
+
+            });
+
+            //debugger;
+            if ($('#ifFav').val()) {
+
+                $('#addToFav').html($('#remFav').val());
+            }
+            else {
+                $('#addToFav').html($('#addFav').val());
+            }
+
+            $("#addToFav").click(function () {
+                if ($('#userSessionInfo').val() == "no") {
+                    toastr.warning($('#plzLoginWarn').val());
+                }
+                else {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: "/Product/AddRemoveToFavorites",
+                        data: { productId: $('#singleProId').val() },
+                        success: function (response) {
+                            if (response.success) {
+                                toastr.success(response.responseText, response.responseTitle);
+                                if (response.typO == "create") {
+                                    $('#addToFav').html($('#remFav').val());
+                                    $('#ifFav').val(true);
+                                }
+                                if (response.typO == "delete") {
+                                    $('#addToFav').html($('#addFav').val());
+                                    $('#ifFav').val(false)
+                                }
+                            }
+                            else {
+                                toastr.error(response.responseText, response.responseTitle);
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+    </script>
+
+
+
+    <script>
+        var BuyukFotoSayfalama = 0,
+            BuyukFotoOkKontrol = 0,
+            KucukFotoOkKontrol = 1,
+            KucukFotoSlideYonu = 1,
+            KucukFotoYol = '85x85',
+            Var1Seo = 0,
+            Var2Seo = 0,
+            Var3Seo = 0,
+            satisakapalitext = 'Fiyat bilgisi ve sipariş işlemleri için lütfen giriş yapınız';
+
+        $('body').attr('data-siparis', '0');
+
+    </script>
+
+
+}
+

@@ -1,0 +1,68 @@
+﻿@inject IViewLocalizer localizer
+
+<input type="hidden" value='@localizer["Lütfen eposta adresinizi giriniz"]' id="enterMail" />
+<input type="hidden" value='@localizer["Lütfen geçerli bir eposta adresi giriniz"]' id="enterValidMail" />
+<input type="hidden" value='@localizer["Hata oluştu. Lütfen tekrar deneyin."]' id="errorMail" />
+
+
+
+@await Component.InvokeAsync("BrandsSlider")
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8">
+
+                <ul class="list-unstyled footer-nav">
+                    @await Component.InvokeAsync("FooterTopCategories")
+
+                    <li>
+                        <h3><a href="javascript:void(0);" target="_self">@localizer["KURUMSAL"]</a></h3>
+                        <ul class="list-unstyled">
+                            <li><a href="@localizer["/tr/hakkimizda"]" target="_self">@localizer["Hakkımızda"]</a></li>
+                            <li><a href="@localizer["/tr/iletisim"]" target="_self">@localizer["İletişim"]</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="social-media">
+                    <h3>@localizer["Bizi takip edin"]</h3>
+                    <ul class="list-unstyled">
+
+                        <li><a href="https://www.facebook.com/" class="facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="https://twitter.com/" class="twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.instagram.com/" class="instagram" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="https://tr.pinterest.com/" class="pinterest" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                        <li><a href="https://tr.linkedin.com/" class="linkedin" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="ebulletin">
+                    <h3>@localizer["E-Bülten"]</h3>
+                    <p>@localizer["Premium Medikal ile ilgili en güncel kampanya ve yeniliklerden haberdar olmak için e-bültene abone olun."]</p>
+                    <form>
+                        <input type="email" class="form-control" maxlength="150" placeholder='@localizer["Eposta"]' name="BultenMail" id="widget-subscribe-form-email">
+                        <button class="btn" onclick="return validateNewsletter()">@localizer["Gönder"]</button>
+                    </form>
+                </div>
+                <h4>@localizer["Mobil Uyumlu Websitesi"]</h4>
+            </div>
+        </div>
+        <p class="description">@localizer["Sitemizde yer alan ürünleri mağazalarımızda bulabilirsiniz.<br>Üretici, ithalatçı ya da dağıtıcı firmalardan temin edilerek müşterilerimize sunulan ürün görselleri ve bilgilerinde yer alabilecek hatalardan dolayı firmamız sorumlu değildir."]</p>
+        <div class="bottom">
+            <div class="row">
+                <div class="col-xs-12 col-sm-5 col-lg-6">
+                    <p>@localizer["© Copyright 2020 Premium Medikal-Online Medikal Market-Ankara"]</p>
+                </div>
+                <div class="col-xs-12 col-sm-7 col-lg-6">
+                    <img src="/images/cards.png" width="575" height="35" alt="3d Secure, World, Maximum, Bonus, American Express, Mastercard, Visa">
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<a href="http://www.healthwebsoftware.com/" target="_blank" id="Premium"><img src="~/images/footerminilogo.png" width="15" height="19" alt="Premium yazılım"> <span>@localizer["UBSİS Yazılım Tarafından Hazırlanmıştır."]</span></a>
+

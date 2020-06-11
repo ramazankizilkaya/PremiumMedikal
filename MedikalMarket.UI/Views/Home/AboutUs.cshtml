@@ -1,0 +1,319 @@
+﻿@inject IViewLocalizer localizer
+
+@{
+    ViewData["Title"] = "AboutUs";
+}
+
+@section Head {
+
+    <title>@localizer["Premium medikal hakkında bilgi sahibi olmak için sitemizi ziyaret ediniz."]</title>
+    <meta name="description" content="@localizer["Premium medikal Türkiye'nin en büyük medikal ürün satış platformudur. Yurtdşında birçok ülkeye medikal ürün ithal etmektedir. Firmamız hakkında genel bilgilere bu sayfada ulaşabilirsiniz."]">
+    }
+
+    @*<cache expires-after="@TimeSpan.FromMinutes(20)" vary-by-culture="true" enabled="true">*@
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-3 content-left-column">
+                    <div class="panel-group content-menu">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">@localizer["MENÜ"]</h4>
+                                <a data-toggle="collapse" href="#content-menu"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                            </div>
+                            <div id="content-menu" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <ul class="list-unstyled">
+
+                                        <li><a href="javascript:void(0);" onclick="sendVal('aboutus');">@localizer["Hakkımızda"]</a></li>
+
+                                        <li><a href="javascript:void(0);" onclick="sendVal('stores');">@localizer["Mağazalarımız"]</a></li>
+
+                                        <li><a href="javascript:void(0);" onclick="sendVal('account-numbers');">@localizer["Hesap Numaralarımız"]</a></li>
+
+                                        <li><a href="javascript:void(0);" onclick="sendVal('privacyandsecurity');">@localizer["Gizlilik ve Güvenlik"]</a></li>
+
+                                        <li><a href="javascript:void(0);" onclick="sendVal('orderanddelivery');">@localizer["Sipariş, Teslimat ve İade"]</a></li>
+
+                                        <li><a href="javascript:void(0);" onclick="sendVal('termsofuse');">@localizer["Kullanım Koşulları"]</a></li>
+
+                                        <li><a href="javascript:void(0);" onclick="sendVal('mesafeliYonetmelik');">@localizer["Mesafeli Sözleşmeler Yönetmeliği"]</a></li>
+
+                                        <li><a href="javascript:void(0);" onclick="sendVal('tibbiYonetmelik');">@localizer["Tıbbi Cihaz Satış Reklam ve Tanıtım Yönetmeliği"]</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-9 content-right-column">
+
+
+                    <!--Hakkımızda-->
+                    <div class="content-detail" id="aboutus">
+                        <h1 class="theme-h1"><span>@localizer["Hakkımızda"]</span></h1>
+                    </div>
+
+                    <!--Mağazalarımız-->
+                    <div class="content-detail" id="stores">
+                        <h1 class="theme-h1"><span>@localizer["Mağazalarımız"]</span></h1>
+                    </div>
+
+                    <!--Hesap Numaralarımız-->
+                    <div class="content-detail" id="account-numbers">
+                        <h1 class="theme-h1"><span>@localizer["Hesap Numaralarımız"]</span></h1>
+                        <p style="margin-bottom: 0cm">
+                            <span style="font-size:20px;">@localizer["Alıcı İsmi:"]<strong>Premium Sağlık Ürünleri Ltd.Şti.</strong></span><br />
+                            &nbsp;
+                        </p>
+                        &nbsp;
+                        <table border="1" bordercolor="#000000" cellpadding="5" cellspacing="0" width="100%">
+                            <colgroup>
+                                <col width="128*" />
+                                <col width="128*" />
+                            </colgroup>
+                            <tbody>
+                                <tr valign="TOP">
+                                    <td width="50%"><span style="color:#ff0000;"><font size="2"><b>Akbank -</b></font><font size="2"><b>&nbsp;Maltepe Şubesi</b></font></span></td>
+                                    <td width="50%">
+                                        <div><span style="font-family:verdana,geneva,sans-serif;"><span style="font-size:14px;">IBAN: TR86 0004 6001 1288 8000 0551 69</span></span></div>
+                                    </td>
+                                </tr>
+                                <tr valign="TOP">
+                                    <td width="50%">
+                                        <p><b style="color: rgb(0, 174, 0); font-size: small;">Garanti Bankası &ndash; Necatibey Şubesi</b></p>
+                                    </td>
+                                    <td width="50%">
+                                        <div><span style="font-size:14px;">IBAN: TR20 0006 2000 1300 0006 2017 94</span></div>
+                                    </td>
+                                </tr>
+                                <tr valign="TOP">
+                                    <td width="50%">
+                                        <p><b style="color: rgb(0, 132, 209); font-size: small;">T. İş Bankası &ndash; Emek Şubesi<span id="cke_bm_132S" style="display: none;">&nbsp;</span><span style="display: none;">&nbsp;</span></b></p>
+                                    </td>
+                                    <td width="50%">
+                                        <div><span style="font-size:14px;">IBAN: TR73 0006 4000 0014 2070 4610 26<span id="cke_bm_132E" style="display: none;">&nbsp;</span></span></div>
+                                    </td>
+                                </tr>
+                                <tr valign="TOP">
+                                    <td width="50%">
+                                        <p><span style="color:#ffff00;"><b style="color: rgb(153, 51, 102); font-size: small;">T. Vakıflar Bankası </b></span><span style="color:#ffd700;"><b style="color: rgb(153, 51, 102); font-size: small;">&ndash; Kızılay </b></span><span style="color:#ffa500;"><b style="color: rgb(153, 51, 102); font-size: small;">Şubesi</b></span></p>
+                                    </td>
+                                    <td width="50%">
+                                        <div><span style="font-size:14px;">IBAN: TR24 0001 5001 5800 7306 6564 30</span></div>
+                                    </td>
+                                </tr>
+                                <tr valign="TOP">
+                                    <td width="50%">
+                                        <p>&nbsp;</p>
+                                    </td>
+                                    <td width="50%">&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="margin-bottom: 0cm">&nbsp;</div>
+
+                        <p>&nbsp;</p>
+                    </div>
+
+                    <!--Gizlilik ve Güvenlik-->
+                    <div class="content-detail" id="privacyandsecurity">
+                        <h1 class="theme-h1"><span>@localizer["Gizlilik ve Güvenlik"]</span></h1>
+                        <p><strong>@localizer["Gizlilik ve Güvenlik"]</strong></p>
+
+                        <p>@localizer["Bu gizlilik bildirimi, www.premiummedikal.com web sitesinin veri toplama ve kullanma uygulamalarını açıklamaktadır. Bu Siteye erişmeniz bu gizlilik bildiriminde tanımlanan, bilgi toplama ve kullanma uygulamalarını kabul ediyor olduğunuzu gösterir."]</p>
+
+                        <p><strong>@localizer["Kişisel Bilgilerinizin Toplanması"]</strong></p>
+
+                        <p>@localizer["Sitemizde istenen kişisel bilgileriniz hizmetlerimizin sunulabilmesi, bilgilendirme, iletişim vb. durumlar için kayıt altında tutulmaktadır. Topladığımız kişisel bilgiler arasında adınız, e-posta adresiniz, telefonunuz, iş veya ev adresiniz, şirketinizle ve kredi kartınızla ile ilgili bilgiler olabilir. Site, ziyaretleriniz hakkında, siteye erişmek için kullandığınız internet servis sağlayıcısının adı ve internet protokol (IP) adresi, siteye erişme tarihi ve saatiniz, sitede bulunduğunuz sırada eriştiğiniz sayfalar ve sitemize doğrudan bağlanmanızı sağlayan web sitesinin internet adresi gibi birtakım bilgiler toplayabilir. Bu bilgiler sitenin iyileştirilmesi, eğilimlerin analiz edilmesi ve sitenin yönetilmesi için kullanılır."]</p>
+
+                        <p><strong>@localizer["Kişisel Bilgilerinizin Kullanımı"]</strong></p>
+
+                        <p>@localizer["Sitede toplanan kişisel bilgiler, Sitenin işletilmesi ve istediğiniz veya yetkilendirdiğiniz hizmetlerin sağlanması ya da işlemlerin yerine getirilmesi için kullanılır. Kişisel bilgilerinizi, bildirimleri de içerecek şekilde, kullanmakta olduğunuz ürün veya hizmetler hakkında bilgiler sağlamak için kullanabiliriz."]</p>
+
+                        <p>@localizer["Ayrıca, size diğer Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara ürünleri ve hizmetleri hakkında bilgiler SMS veya e-posta aracılığı ile gönderebiliriz. Araştırma amacıyla, site ziyaretleriyle ilgili verileri anonim demografik bilgilerle birleştiririz ve bu bilgileri daha yararlı içerik sağlamak üzere toplu bir şekilde kullanabiliriz."]</p>
+
+                        <p>@localizer["Bir haber bültenine kaydolduğunuzda veya tanıtım e-postaları almayı kabul ettiğinizde www.premiummedikal.com, tıklattığınız e-postaları izlemek için özelleştirilmiş bağlantılar veya benzeri teknolojiler kullanabilir. Her e-posta, bu tür iletilerin gelmesini durdurmanıza olanak veren, abonelik iptal bağlantıları içerir."]</p>
+
+                        <p>@localizer["Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, kişisel bilgilerinizi yasal bir zorunluluk olarak istendiğinde veya (a) yasal gereklere uygun hareket etmek veya Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara ya da siteye tebliğ edilen yasal işlemlere uymak; (b) Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara haklarını ve mülkiyetini korumak ve savunmak; (c) Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara çalışanlarının veya aracılarının, Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara ürünü kullananların veya kamu güvenliği açısından acil durumlarda harekete geçmek için gerekli olduğuna iyi niyetle kanaat getirdiği hallerde açıklayabilir."]</p>
+
+                        <p><strong>@localizer["Kişisel Bilgilerinizin Güvenliği"]</strong></p>
+
+                        <p>@localizer["Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, kişisel bilgilerinizi yetkisiz erişime, kullanıma veya açığa çıkmaya karşı korumak için çok çeşitli güvenlik teknolojileri ve yordamları kullanır. Örneğin, sağladığınız bilgileri kontrol altındaki tesislerde bulunan ve sınırlı erişimi olan bilgisayar sunucularında depolarız."]</p>
+
+                        <p>@localizer["Ayrıca, kredi kartı numarası gibi hassas kişisel bilgileri İnternet üzerinden ilettiğimizde, bunları Güvenli Yuva Katmanı (SSL) protokolü gibi şifreleme yöntemleriyle koruruz. Ayrıca Kredi kartı bilgilerinizi herhangi bir şekilde sistemlerimizde saklamayız.Kullanılan Kredi kartları özel crypto yöntemleri ile şifrelenerek ilgili bankaya iletilir."]</p>
+
+                        <p><strong>@localizer["Bu Gizlilik Bildiriminde Yapılabilecek Değişiklikler"]</strong></p>
+
+                        <p>@localizer["Bu gizlilik bildirimini zaman zaman güncelleştirebiliriz. Topladığımız kişisel bilgileri korumak için hangi yöntemlerden yararlandığımız konusunda bilgi sahibi olmak için bu gizlilik bildirimini düzenli aralıklarla gözden geçirmenizi öneririz. Hizmeti sürekli şekilde kullanmanız bu gizlilik bildirimini ve yapılabilecek güncelleştirmeleri kabul ettiğiniz anlamına gelir."]</p>
+
+                        <p><strong>@localizer["Güvenlik Bildirimi"]</strong></p>
+
+                        <p>@localizer["Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, erişim şifresi gibi bilgilerin sizin tarafınızdan belirlenmesine olanak sağlar. Erişim şifresinin unutulması durumunda kayıt olurken vermiş olduğunuz e-posta adresine yeni şifre oluşturma bağlantısı gönderilir."]</p>
+
+                        <p>@localizer["Gizli bilgilerin istendiği bölümlerde SSL (Secure Socket Layer) yöntemini kullanarak bilgilerinizin üçüncü şahısların eline geçmesini engeller."]</p>
+
+                        <p>@localizer["Sitemizde kredi kartı işlemi için haberleşmede her aşama güvenlik altına alınmıştır."]</p>
+
+                        <p><strong>@localizer["Site-Ziyaretçi Haberleşme Güvenliği"]</strong></p>
+
+                        <p>@localizer["Sitemizin sipariş sayfalarında site ile ziyaretçi arasındaki haberleşme 128 bit SSL standartında gerçekleşmektedir. Sözkonusu haberleşme standardı çok sayıda işlem gören sitelerde dahi güvenle kullanılan bir niteliktedir."]</p>
+
+                        <p>@localizer["Kredi kartı bilgilerinin verileceği sayfada bu haberleşme biçiminin bulunup bulunmadığını, sayfaya erişildiğinde adres çubuğunda yazan ifadenin http://.. biçiminde değil, https://.. biçiminde oluşu ifade etmektedir. Bu nitelikteki sayfalara eriştiğinizde tarayıcının sağ alt köşesinde kilit işareti de yer almaktadır."]</p>
+
+                        <p><strong>@localizer["Site-Banka Haberleşme Güvenliği"]</strong></p>
+
+                        <p>@localizer["Kredi kartı bilgilerinin siteden bankaya aktarılması ile ilgili güvenlik, bankanın sunduğu maksimum güvenlik ile gerçekleşmektedir. Sözkonusu güvenliğin çok sayıda bileşenin yanında, CVV2/CVC2 kodu da çalıntı kart veya kart bilgileri ile alışverişe karşı önlem olarak sitemizde kullanılmaktadır."]</p>
+
+                        <p><strong>@localizer["Site içi Veri Güvenliği"]</strong></p>
+
+                        <p>@localizer["Güvenli ortamda yapacağınız işlemlerde siz ve kredi kartını size tahsis esen banka haricinde hiçbir kişi , kurum ve kuruluş tarafından bilgilerinize ulaşamamaktadır. Kredi kartı işlem sayfası kart bilgilerini doğrudan banka POS sistemine iletmekte ve işlem sonucunu müşteriye bildirmektedir. Kredi kartı bilgileri e-posta veya benzeri yöntemlerle aktarılmamaktadır. Online işlemin bir sonucu olarak aktarılan kredi kart bilgilerine tarafımızdan dahi erişilmesi mümkün değildir."]</p>
+
+                    </div>
+
+                    <!--Sipariş, Teslimat ve İade-->
+                    <div class="content-detail" id="orderanddelivery">
+                        <h1 class="theme-h1"><span>@localizer["Sipariş, Teslimat ve İade"]</span></h1>
+                        <p>
+                            <strong>@localizer["Sipariş verirken nelere dikkat etmeliyim?"]</strong><br />
+                            @localizer["Öncelikle üye olurken dolduracağınız üye formunun eksiksiz ve güncel bilgiler içermesine dikkat etmeniz gerekmektedir. Siparişiniz sonrasında doğacak herhangi bir sorunda müşteri temsilcilerimiz, üyelik bilgilerinizdeki iletişim bilgilerinizden yararlanarak sizinle irtibata geçecektir. Siparişiniz, girmiş olduğunuz teslimat adresinize gönderilecektir. Kargo teslimatı sırasında herhangi bir sorun yaşanmaması için adresinizi tüm detaylarıyla yazmanız gerekmektedir."]
+                        </p>
+
+                        <p>&nbsp;</p>
+
+                        <p>
+                            <strong>@localizer["Nasıl sipariş verebilirim?"]</strong><br />
+                            @localizer["Sitemiz üzerinden sipariş verebilmeniz için öncelikle sitemize üye olmanız gerekmektedir. Üyeliğinizi oluşturduktan sonra satın almak istediğiniz ürünün sayfasına giderek beğenmiş olduğunuz renk, beden tercihinizi yapıp Sepete Ekle butonuna basarak, ürünü sepetinize ekleyebilirsiniz. Daha sonrasında sayfamızın sağ üst tarafında bulunan Sepetim e tıklayarak, sistemin size soracağı kargo ve teslimat bilgilerinden sonra ödeme bilgilerinizi yazıp siparişinizi verebilirsiniz."]
+                        </p>
+
+                        <p>
+                            <br />
+                            <strong>@localizer["Siparişim hangi kargo şirketi ile gönderilecek?"]</strong><br />
+                            @localizer["Sitemiz üzerinden vereceğiniz siparişlerinizin gönderileceği kargo şirketleri sipariş aşamalarında karşınıza çıkacak olup, seçim yapmanız gerekmektedir."]
+                        </p>
+
+                        <p>
+                            <br />
+                            <strong>@localizer["Kargo ücreti ne kadar?"]</strong><br />
+                            @localizer["Sitemiz üzerinden yapacağınız alışverişe istinaden sistem tarafından hesaplanacak kargo ücreti, sipariş aşamalarında kargo seçimi sırasında belirtilecektir."]
+                        </p>
+
+                        <p>
+                            <br />
+                            <strong>@localizer["Siparişimi verdim, bundan sonra ne olacak?"]</strong><br />
+                            @localizer["Siparişiniz sorunsuz bir şekilde sistemimize ulaştıktan sonra, sitemize üyelik oluştururken kullandığınız email adresinize tarafımızdan siparişinizin detayını belirten bir mail gönderilecektir. Müşteri temsilcilerimiz siparişinizi en kısa sürede sorunsuz bir şekilde size ulaştırmak üzere ürünlerinizi hazırlayacak ve kargoya verecektir. Siparişiniz elimize ulaştıktan sonra en geç 4 iş günü içerisinde kargoya verilecektir. Ürününüz kargo firmasına teslim edildiğinde tarafımızdan size tekrar bir mail yollanacak ve kargo hakkında bilgilendirilmeniz sağlanacaktır. Ödemelerinizi Visa, Visa Electron ve Mastercard kredi kartları, Banka Havalesi veya Kapıdan Ödeme seçeneklerinden birisi ile yapabilirsiniz."]
+                        </p>
+
+                        <p>
+                            <br />
+                            <strong>@localizer["Siparişimin durumunu nasıl takip edebilirim?"]</strong><br />
+                            @localizer["Sitemiz üzerinden vermiş olduğunuz tüm siparişleri üyelik girişi yaptıktan sonra, hesabım sayfanızda bulunan siparişlerim bölümünden takip edebilirsiniz."]
+                        </p>
+
+                        <p>
+                            <br />
+                            <strong>@localizer["Siparişim kargoya verilmiş. Durumunu nasıl kontrol edebilirim?"]</strong><br />
+                            @localizer["Sitemiz üzerinden vermiş olduğunuz siparişinizin takibini üyelik girişi yaptıktan sonra, hesabım sayfanızda siparişleriniz listelenmektedir. Kargoya verilen siparişinizin yanındaki kargo linkine tıklayarak, siparişinizin kargodaki durumunu takip edebilirsiniz."]
+                        </p>
+
+                        <p>
+                            <br />
+                            <strong>@localizer["Ürünü teslim alırken nelere dikkat etmeliyim?"]</strong><br />
+                            @localizer["Sevkiyat sırasında zarar gördüğünü düşündüğünüz paketleri, teslim aldığınız kargo yetkilisi önünde açıp kontrol ediniz. Eğer üründe herhangi bir zarar varsa kargo firmasına tutanak tuttururarak ürünü teslim almayınız. Ürün teslim alındıktan sonra kargo firmasının görevini tam olarak yerine getirdiğini kabul etmiş olduğunuzu unutmayınız."]
+                        </p>
+
+                        <p>
+                            <br />
+                            <strong>@localizer["Şifremi Unuttum?"]</strong><br />
+                            @localizer["Giriş sayfasındaki Şifremi unuttum linkine tıklayın ve siteye kaydınızı yaparken kullanmış olduğunuz e-mail adresinizi girin, çok kısa bir sürede size, siteye giriş yaparken, bize bildirmiş olduğunuz şifrenizi içeren bir e-mail gönderilecektir."]
+                        </p>
+
+                        <p>
+                            <br />
+                            <strong>@localizer["İade Bilgileri"]</strong><br />
+                            <br />
+                            @localizer["Aldığınız her ürün, üretici firmasının garantisi altındadır."]&nbsp;
+                        </p>
+
+                        <p>@localizer["Almış olduğunuz ürününü ambalajını açmadan/tahrip etmeden//bozmadan, ürünü kullanmadan teslim tarihinden itibaren yedi (7) günlük süre içinde teslim aldığınız şekli ile iade edebilirsiniz. Ürünü, ürün faturası, sipariş numarınızıda içeren bir dilekçe veya iade formu ile iade ediniz."]&nbsp;</p>
+
+                        <p>@localizer["Sevkiyat sırasında zarar gördüğünü düşündüğünüz paketleri teslim aldığınız firma yetkilisi önünde açıp kontrol ediniz. Eğer üründe herhangi bir zarar varsa kargo firmasına tutanak tuttururarak ürünü teslim almayınız. Ürün teslim alındıktan sonra kargo firmasının görevini tam olarak yerine getirdiğini kabul etmiş olduğunuzu unutmayınız"]&nbsp;</p>
+
+                        <p>@localizer["Ambalajı açılmış, kullanılmış, tahrip edilmiş vesair şekildeki ürünlerin iadesi kabul edilmez."]&nbsp;</p>
+
+                        <p>@localizer["Müşteri, ürünü kendisine teslim edildiği andaki durumu ile geri vermekle ve kullanım söz konusu ise kullanma dolayısıyla malın ticari değerindeki kaybı tazminle yükümlüdür."]&nbsp;</p>
+
+                        <p>@localizer["Müşterinin ürünü iade etmesi veya alışverişinden cayması halinde, iade edilen ürün Bize ulaştığı andan itibaren on (10) gün içerisinde ürün bedeli iade edilir. Kredi kartına ürün iade bedeli bankanız tarafından 2-6 hafta arasında yapılmaktadır. Bu sürede firmamızın tasarrufu bulunmamaktadır."]&nbsp;</p>
+
+                        <p>@localizer["Üründe ve ambalajında herhangi bir açılma, bozulma, kırılma, tahrip, yırtılma, kullanılma ve sair durumları tespit ettiği hallerde ve ürünün müşteriye teslim edildiği andaki hali ile iade edilememesi halinde ürünü iade almayacak ve bedelini iade etmeyecektir."]&nbsp;</p>
+
+                        <p>@localizer["Ürün müşteriye ulaştıktan sonra ortaya çıkabilecek arızalar için, üretici firmanın yetkili servislerine başvurulmalıdır."]&nbsp;</p>
+
+                        <p>@localizer["Yukarıdaki şartlara uygun hallerde iade edilen ürünlerde kargo ücreti müşteri tarafından ödenecektir."]&nbsp;</p>
+
+                        <p>@localizer["Havale iadeleri 2 iş günü içinde Kredi Kartı iadeleri 3 iş günü içinde yapılacaktır. Bankanız kredi kartı iadelerini aynı gün hesabınıza yansıtmayabilir. Bu durumda bankanızın kredi kartı servisini aramanız gereklidir. Siparişinizle ilgili  İptal Edildi uyarısı çıktıktan sonra tüm bedel kredi kartınıza veya havale yaptığınız bankanıza iade edilmektedir. Taksitli satışlarda yapılan iadeler bankanız tarafından kredi kartınıza her ay artı bakiye olarak yansıtılmaktadır."]</p>
+                    </div>
+
+                    <!--Kullanım Koşulları-->
+                    <div class="content-detail" id="termsofuse">
+                        <h1 class="theme-h1"><span>@localizer["Kullanım Koşulları"]</span></h1>
+                        <p>&nbsp;&nbsp;&nbsp; @localizer["www.premiummedikal.com sitesine girmeniz veya bu internet sitesindeki herhangi bir bilgiyi kullanmanız aşağıdaki koşulları kabul ettiğiniz anlamına gelir."]</p>
+
+                        <p>&nbsp;&nbsp;&nbsp; @localizer["www.premiummedikal.com sitesine girilmesi, sitenin ya da sitedeki bilgilerin ve diğer verilerin programların vs. kullanılması sebebiyle, sözleşmenin ihlali, haksız fiil, ya da başkaca sebeplere binaen, doğabilecek doğrudan ya da dolaylı hiçbir zarardan Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara sorumlu değildir. Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, sözleşmenin ihlali, haksız fiil, ihmal veya diğer sebepler neticesinde; işlemin kesintiye uğraması, hata, ihmal, kesinti hususunda herhangi bir sorumluluk kabul etmez."]</p>
+
+                        <p>&nbsp;&nbsp;&nbsp; @localizer["Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara işbu site ve www.premiummedikal.com uzantısında mevcut her tür hizmet, ürün, siteyi kullanma koşulları ile sitede sunulan bilgileri önceden bir ihtara gerek olmaksızın değiştirme, siteyi yeniden organize etme, yayını durdurma hakkını saklı tutar. Değişiklikler sitede yayım anında yürürlüğe girer. Sitenin kullanımı ya da siteye giriş ile bu değişiklikler de kabul edilmiş sayılır. Bu koşullar link verilen diğer web sayfaları için de geçerlidir."]</p>
+
+                        <p>&nbsp;&nbsp;&nbsp; @localizer["Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, sözleşmenin ihlali, haksız fiil, ihmal veya diğer sebepler neticesinde; işlemin kesintiye uğraması, hata, ihmal, kesinti, silinme, kayıp, işlemin veya iletişimin gecikmesi, bilgisayar virüsü, iletişim hatası, hırsızlık, imha veya izinsiz olarak kayıtlara girilmesi, değiştirilmesi veya kullanılması hususunda herhangi bir sorumluluk kabul etmez."]</p>
+
+                        <p>&nbsp;&nbsp;&nbsp; @localizer["Bu internet sitesi Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara;in kontrolü altında olmayan başka internet sitelerine bağlantı veya referans içerebilir. Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, bu sitelerin içerikleri veya içerdikleri diğer bağlantılardan sorumlu değildir."]</p>
+
+                        <p>&nbsp;&nbsp;&nbsp; @localizer["Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara bu internet sitesinin genel görünüm ve dizaynı ile internet sitesindeki tüm bilgi, resim, Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara markası ve diğer markalar, www.premiummedikal.com alan adı, logo, ikon, demonstratif, yazılı, elektronik, grafik veya makinede okunabilir şekilde sunulan teknik veriler, bilgisayar yazılımları, uygulanan satış sistemi, iş metodu ve iş modeli de dahil tüm materyallerin ve bunlara ilişkin fikri ve sınai mülkiyet haklarının sahibi veya lisans sahibidir ve yasal koruma altındadır. Internet sitesinde bulunan hiçbir Materyal; önceden izin alınmadan ve kaynak gösterilmeden, kod ve yazılım da dahil olmak üzere, değiştirilemez, kopyalanamaz, çoğaltılamaz, başka bir lisana çevrilemez, yeniden yayımlanamaz, başka bir bilgisayara yüklenemez, postalanamaz, iletilemez, sunulamaz ya da dağıtılamaz. Internet sitesinin bütünü veya bir kısmı başka bir internet sitesinde izinsiz olarak kullanılamaz. Aksine hareketler hukuki ve cezai sorumluluğu gerektirir. Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara;in burada açıkça belirtilmeyen diğer tüm hakları saklıdır."]</p>
+
+                        <p>&nbsp;&nbsp;&nbsp; @localizer["Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, dilediği zaman bu yasal uyarı sayfasının içeriğini güncelleme yetkisini saklı tutmaktadır ve kullanıcılarına siteye her girişte yasal uyarı sayfasını ziyaret etmelerini tavsiye etmektedir."]</p>
+                    </div>
+
+                    <!--Mesafeli Sözleşmeler Yönetmeliği-->
+                    <div class="content-detail" id="mesafeliYonetmelik">
+                        <h1 class="theme-h1"><span>@localizer["Mesafeli Sözleşmeler Yönetmeliği"]</span></h1>
+                        <iframe src="https://drive.google.com/file/d/1hccHcxxzOb8P6x_q16kQKcveoh2CjmqK/preview" style="position: relative; height: 1000px; width: 100%;"></iframe>
+                    </div>
+
+                    <!--Tıbbi Cihaz Satış Reklam ve Tanıtım Yönetmeliği-->
+                    <div class="content-detail" id="tibbiYonetmelik">
+                        <h1 class="theme-h1"><span>@localizer["Tıbbi Cihaz Satış Reklam ve Tanıtım Yönetmeliği"]</span></h1>
+                        <iframe src="https://drive.google.com/file/d/1QPL1Z1O5TMhVk4n811F_SlF-qb0iHuvo/preview" style="position: relative; height: 1000px; width: 100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @*</cache>*@
+
+
+    @section Scripts{
+        <script>
+            $(document).ready(function () {
+                var divs = $('.content-right-column').find('div');
+
+                divs.each(function () {
+                    $(this).css("display", "none");
+                });
+
+                $("#privacyandsecurity").css("display", "");
+
+            });
+        </script>
+
+        <script>
+            function sendVal(coming) {
+                var divs = $('.content-right-column').find('div');
+
+                divs.each(function () {
+                    $(this).css("display", "none");
+                    if (this.id == coming) {
+                        $(this).css("display", "");
+                    }
+                });
+            }
+        </script>
+    }
+

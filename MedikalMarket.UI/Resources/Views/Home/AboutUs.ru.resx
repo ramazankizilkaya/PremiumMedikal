@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Aldığınız her ürün, üretici firmasının garantisi altındadır." xml:space="preserve">
+    <value>Каждый продукт, который вы покупаете, находится под гарантией производителя.</value>
+  </data>
+  <data name="Almış olduğunuz ürününü ambalajını açmadan/tahrip etmeden//bozmadan, ürünü kullanmadan teslim tarihinden itibaren yedi (7) günlük süre içinde teslim aldığınız şekli ile iade edebilirsiniz. Ürünü, ürün faturası, sipariş numarınızıda içeren bir dilekçe veya iade formu ile iade ediniz." xml:space="preserve">
+    <value>Вы можете вернуть купленный вами товар, не распаковывая / не уничтожая его / не используя продукт, в течение семи (7) дней с даты поставки.Пожалуйста, верните товар с помощью ходатайства или формы возврата, содержащей счет-фактуру продукта и номер заказа.</value>
+  </data>
+  <data name="Alıcı İsmi:" xml:space="preserve">
+    <value>Имя покупателя:</value>
+  </data>
+  <data name="Ambalajı açılmış, kullanılmış, tahrip edilmiş vesair şekildeki ürünlerin iadesi kabul edilmez." xml:space="preserve">
+    <value>Возврат товаров, которые были открыты, использованы, уничтожены и т. Д., Не принимаются.</value>
+  </data>
+  <data name="Ayrıca, kredi kartı numarası gibi hassas kişisel bilgileri İnternet üzerinden ilettiğimizde, bunları Güvenli Yuva Katmanı (SSL) protokolü gibi şifreleme yöntemleriyle koruruz. Ayrıca Kredi kartı bilgilerinizi herhangi bir şekilde sistemlerimizde saklamayız.Kullanılan Kredi kartları özel crypto yöntemleri ile şifrelenerek ilgili bankaya iletilir." xml:space="preserve">
+    <value>Кроме того, когда мы передаем конфиденциальную личную информацию, такую как номера кредитных карт, через Интернет, мы защищаем их с помощью методов шифрования, таких как протокол SSL. Кроме того, мы никоим образом не храним информацию о вашей кредитной карте в наших системах: используемые кредитные карты шифруются специальными криптографическими методами и отправляются в соответствующий банк.</value>
+  </data>
+  <data name="Ayrıca, size diğer Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara ürünleri ve hizmetleri hakkında bilgiler SMS veya e-posta aracılığı ile gönderebiliriz. Araştırma amacıyla, site ziyaretleriyle ilgili verileri anonim demografik bilgilerle birleştiririz ve bu bilgileri daha yararlı içerik sağlamak üzere toplu bir şekilde kullanabiliriz." xml:space="preserve">
+    <value>Кроме того, мы можем отправить вам информацию о других продуктах Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara и услугах по SMS или по электронной почте. В исследовательских целях мы объединяем данные о посещениях сайта с анонимной демографической информацией и можем коллективно использовать эту информацию для предоставления более полезного контента.</value>
+  </data>
+  <data name="Bir haber bültenine kaydolduğunuzda veya tanıtım e-postaları almayı kabul ettiğinizde www.premiummedikal.com, tıklattığınız e-postaları izlemek için özelleştirilmiş bağlantılar veya benzeri teknolojiler kullanabilir. Her e-posta, bu tür iletilerin gelmesini durdurmanıza olanak veren, abonelik iptal bağlantıları içerir." xml:space="preserve">
+    <value>Когда вы подписываетесь на новостную рассылку или соглашаетесь получать рекламные электронные письма, www.premiummedikal.com может использовать настраиваемые ссылки или аналогичные технологии для отслеживания электронных сообщений, на которые вы нажимаете. Каждое письмо содержит ссылки для отмены подписки, которые позволяют вам прекратить получать такие сообщения.</value>
+  </data>
+  <data name="Bu gizlilik bildirimi, www.premiummedikal.com web sitesinin veri toplama ve kullanma uygulamalarını açıklamaktadır. Bu Siteye erişmeniz bu gizlilik bildiriminde tanımlanan, bilgi toplama ve kullanma uygulamalarını kabul ediyor olduğunuzu gösterir." xml:space="preserve">
+    <value>Это заявление о конфиденциальности описывает методы сбора и использования данных на сайте www.premiummedikal.com. Доступ к этому сайту означает, что вы принимаете методы сбора и использования информации, описанные в данном заявлении о конфиденциальности.</value>
+  </data>
+  <data name="Bu Gizlilik Bildiriminde Yapılabilecek Değişiklikler" xml:space="preserve">
+    <value>Изменения в этом заявлении о конфиденциальности</value>
+  </data>
+  <data name="Bu gizlilik bildirimini zaman zaman güncelleştirebiliriz. Topladığımız kişisel bilgileri korumak için hangi yöntemlerden yararlandığımız konusunda bilgi sahibi olmak için bu gizlilik bildirimini düzenli aralıklarla gözden geçirmenizi öneririz. Hizmeti sürekli şekilde kullanmanız bu gizlilik bildirimini ve yapılabilecek güncelleştirmeleri kabul ettiğiniz anlamına gelir." xml:space="preserve">
+    <value>Мы можем обновлять это заявление о конфиденциальности время от времени. Мы рекомендуем вам периодически просматривать это заявление о конфиденциальности, чтобы узнать, какие методы мы используем для защиты личной информации, которую мы собираем. Ваше дальнейшее использование сервиса означает, что вы принимаете это заявление о конфиденциальности и любые обновления, которые могут быть сделаны.</value>
+  </data>
+  <data name="Bu internet sitesi Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara;in kontrolü altında olmayan başka internet sitelerine bağlantı veya referans içerebilir. Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, bu sitelerin içerikleri veya içerdikleri diğer bağlantılardan sorumlu değildir." xml:space="preserve">
+    <value>Этот веб-сайт может содержать ссылки или ссылки на другие веб-сайты, которые не находятся под контролем Premium Medical - Online Medical Market - Premium Health Products - Medical Ankara. Premium Medical - Медицинский онлайн-рынок - Premium Health Products - Medical Ankara не несет ответственности за содержание этих сайтов или любых других ссылок, которые они содержат.</value>
+  </data>
+  <data name="Giriş sayfasındaki Şifremi unuttum linkine tıklayın ve siteye kaydınızı yaparken kullanmış olduğunuz e-mail adresinizi girin, çok kısa bir sürede size, siteye giriş yaparken, bize bildirmiş olduğunuz şifrenizi içeren bir e-mail gönderilecektir." xml:space="preserve">
+    <value>Нажмите на ссылку Я забыл свой пароль на странице входа и введите адрес электронной почты, который вы использовали для регистрации на сайте, и письмо, содержащее ваш пароль, будет отправлено вам в очень короткое время.</value>
+  </data>
+  <data name="Gizli bilgilerin istendiği bölümlerde SSL (Secure Socket Layer) yöntemini kullanarak bilgilerinizin üçüncü şahısların eline geçmesini engeller." xml:space="preserve">
+    <value>Он предотвращает доступ вашей информации к третьим сторонам с помощью метода SSL (Secure Socket Layer) в разделах, где запрашивается конфиденциальная информация.</value>
+  </data>
+  <data name="Gizlilik ve Güvenlik" xml:space="preserve">
+    <value>Конфиденциальность и безопасность</value>
+  </data>
+  <data name="Güvenli ortamda yapacağınız işlemlerde siz ve kredi kartını size tahsis esen banka haricinde hiçbir kişi , kurum ve kuruluş tarafından bilgilerinize ulaşamamaktadır. Kredi kartı işlem sayfası kart bilgilerini doğrudan banka POS sistemine iletmekte ve işlem sonucunu müşteriye bildirmektedir. Kredi kartı bilgileri e-posta veya benzeri yöntemlerle aktarılmamaktadır. Online işlemin bir sonucu olarak aktarılan kredi kart bilgilerine tarafımızdan dahi erişilmesi mümkün değildir." xml:space="preserve">
+    <value>Никто, ни учреждение, ни организация не могут получить доступ к вашей информации, кроме банка, который выделяет вас и вашу кредитную карту для транзакций в безопасной среде. Страница транзакции по кредитной карте передает информацию о карте непосредственно в POS-систему банка и сообщает результат транзакции клиенту. Информация о кредитной карте не передается по электронной почте или подобными способами. Невозможно получить доступ к информации о кредитной карте, переданной в результате онлайн-транзакции, даже нами.</value>
+  </data>
+  <data name="Güvenlik Bildirimi" xml:space="preserve">
+    <value>Уведомление о безопасности</value>
+  </data>
+  <data name="Hakkımızda" xml:space="preserve">
+    <value>О компании</value>
+  </data>
+  <data name="Havale iadeleri 2 iş günü içinde Kredi Kartı iadeleri 3 iş günü içinde yapılacaktır. Bankanız kredi kartı iadelerini aynı gün hesabınıza yansıtmayabilir. Bu durumda bankanızın kredi kartı servisini aramanız gereklidir. Siparişinizle ilgili  İptal Edildi uyarısı çıktıktan sonra tüm bedel kredi kartınıza veya havale yaptığınız bankanıza iade edilmektedir. Taksitli satışlarda yapılan iadeler bankanız tarafından kredi kartınıza her ay artı bakiye olarak yansıtılmaktadır." xml:space="preserve">
+    <value>Возврат средств будет осуществлен в течение 2 рабочих дней, возврат по кредитной карте - в течение 3 рабочих дней. Ваш банк может не отражать возвраты кредитных карт на ваш счет в тот же день. В этом случае вам необходимо позвонить в службу поддержки кредитных карт вашего банка. После выдачи предупреждения об отмене вашего заказа вся сумма будет возвращена на вашу кредитную карту или в ваш банк, в котором вы сделали перевод. Возврат средств в рассрочку отражается на вашей кредитной карте вашим банком каждый месяц как положительный баланс.</value>
+  </data>
+  <data name="Hesap Numaralarımız" xml:space="preserve">
+    <value>Наши номера счетов</value>
+  </data>
+  <data name="itemizde kredi kartı işlemi için haberleşmede her aşama güvenlik altına alınmıştır." xml:space="preserve">
+    <value>Каждый этап предмета защищен в связи для транзакций по кредитной карте.</value>
+  </data>
+  <data name="Kargo ücreti ne kadar?" xml:space="preserve">
+    <value>Сколько стоит стоимость доставки?</value>
+  </data>
+  <data name="Kişisel Bilgilerinizin Güvenliği" xml:space="preserve">
+    <value>Безопасность вашей личной информации</value>
+  </data>
+  <data name="Kişisel Bilgilerinizin Kullanımı" xml:space="preserve">
+    <value>Использование вашей личной информации</value>
+  </data>
+  <data name="Kişisel Bilgilerinizin Toplanması" xml:space="preserve">
+    <value>Сбор вашей личной информации</value>
+  </data>
+  <data name="Kredi kartı bilgilerinin siteden bankaya aktarılması ile ilgili güvenlik, bankanın sunduğu maksimum güvenlik ile gerçekleşmektedir. Sözkonusu güvenliğin çok sayıda bileşenin yanında, CVV2/CVC2 kodu da çalıntı kart veya kart bilgileri ile alışverişe karşı önlem olarak sitemizde kullanılmaktadır." xml:space="preserve">
+    <value>Безопасность, связанная с передачей информации о кредитной карте с сайта в банк, осуществляется с максимальной безопасностью, предлагаемой банком. Помимо многих компонентов этой безопасности, код CVV2 / CVC2 также используется на нашем сайте в качестве меры предосторожности против совершения покупок с украденной картой или информацией о карте.</value>
+  </data>
+  <data name="Kredi kartı bilgilerinin verileceği sayfada bu haberleşme biçiminin bulunup bulunmadığını, sayfaya erişildiğinde adres çubuğunda yazan ifadenin http://.. biçiminde değil, https://.. biçiminde oluşu ifade etmektedir. Bu nitelikteki sayfalara eriştiğinizde tarayıcının sağ alt köşesinde kilit işareti de yer almaktadır." xml:space="preserve">
+    <value>Он указывает, существует ли этот формат связи на странице, где будет предоставлена информация о кредитной карте, и что выражение, записанное в адресной строке при доступе к странице, не в формате http: // .., а в формате https: // ... При доступе к страницам такого типа в правом нижнем углу браузера отображается значок блокировки.</value>
+  </data>
+  <data name="Kullanım Koşulları" xml:space="preserve">
+    <value>Условия использования</value>
+  </data>
+  <data name="Mağazalarımız" xml:space="preserve">
+    <value>Наши магазины</value>
+  </data>
+  <data name="MENÜ" xml:space="preserve">
+    <value>МЕНЮ</value>
+  </data>
+  <data name="Mesafeli Sözleşmeler Yönetmeliği" xml:space="preserve">
+    <value>Регулирование дистанционных договоров</value>
+  </data>
+  <data name="Müşteri, ürünü kendisine teslim edildiği andaki durumu ile geri vermekle ve kullanım söz konusu ise kullanma dolayısıyla malın ticari değerindeki kaybı tazminle yükümlüdür." xml:space="preserve">
+    <value>Покупатель обязан вернуть товар с его состоянием в момент доставки и возместить потерю коммерческой ценности товара в результате использования.</value>
+  </data>
+  <data name="Müşterinin ürünü iade etmesi veya alışverişinden cayması halinde, iade edilen ürün Bize ulaştığı andan itibaren on (10) gün içerisinde ürün bedeli iade edilir. Kredi kartına ürün iade bedeli bankanız tarafından 2-6 hafta arasında yapılmaktadır. Bu sürede firmamızın tasarrufu bulunmamaktadır." xml:space="preserve">
+    <value>В случае, если клиент возвращает или забирает товар, возвращенный товар будет возвращен в течение десяти (10) дней с даты получения. Плата за возврат продукта на кредитную карту взимается вашим банком в течение 2-6 недель. В этот период у нашей компании нет сбережений.</value>
+  </data>
+  <data name="Nasıl sipariş verebilirim?" xml:space="preserve">
+    <value>Как я могу заказать?</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara bu internet sitesinin genel görünüm ve dizaynı ile internet sitesindeki tüm bilgi, resim, Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara markası ve diğer markalar, www.premiummedikal.com alan adı, logo, ikon, demonstratif, yazılı, elektronik, grafik veya makinede okunabilir şekilde sunulan teknik veriler, bilgisayar yazılımları, uygulanan satış sistemi, iş metodu ve iş modeli de dahil tüm materyallerin ve bunlara ilişkin fikri ve sınai mülkiyet haklarının sahibi veya lisans sahibidir ve yasal koruma altındadır. Internet sitesinde bulunan hiçbir Materyal; önceden izin alınmadan ve kaynak gösterilmeden, kod ve yazılım da dahil olmak üzere, değiştirilemez, kopyalanamaz, çoğaltılamaz, başka bir lisana çevrilemez, yeniden yayımlanamaz, başka bir bilgisayara yüklenemez, postalanamaz, iletilemez, sunulamaz ya da dağıtılamaz. Internet sitesinin bütünü veya bir kısmı başka bir internet sitesinde izinsiz olarak kullanılamaz. Aksine hareketler hukuki ve cezai sorumluluğu gerektirir. Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara;in burada açıkça belirtilmeyen diğer tüm hakları saklıdır." xml:space="preserve">
+    <value>Premium Medical - Медицинский онлайн-рынок - Premium Health Products - Medikal Ankara Общий вид и дизайн этого сайта и вся информация, фотографии, Premium Medical - Онлайн медицинский рынок - Premium Health Products - Медицинская марка Ankara и другие бренды, www.premiummedikal. com доменное имя, логотип, значок, демонстрационные, письменные, электронные, графические или машиночитаемые технические данные, программное обеспечение, прикладная система продаж, бизнес-метод и бизнес-модель, включая все права на интеллектуальную и промышленную собственность или лицензию и находится под правовой защитой. Нет материалов на сайте; Его нельзя изменять, копировать, воспроизводить, переводить на другой язык, переиздавать, устанавливать на другом компьютере, отправлять по почте, передавать, представлять или распространять без предварительного согласия и без ссылки. Весь сайт или его часть не могут быть использованы на другом сайте без разрешения. В отличие от действий требуют юридической и уголовной ответственности. Premium Medical - Медицинский онлайн-рынок - Premium Health Products - Medical Ankara, все другие права, не предоставленные здесь явно, защищены.</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara işbu site ve www.premiummedikal.com uzantısında mevcut her tür hizmet, ürün, siteyi kullanma koşulları ile sitede sunulan bilgileri önceden bir ihtara gerek olmaksızın değiştirme, siteyi yeniden organize etme, yayını durdurma hakkını saklı tutar. Değişiklikler sitede yayım anında yürürlüğe girer. Sitenin kullanımı ya da siteye giriş ile bu değişiklikler de kabul edilmiş sayılır. Bu koşullar link verilen diğer web sayfaları için de geçerlidir." xml:space="preserve">
+    <value>Premium Medikal - Интернет-магазин Medikal - Premium Sağlık Ürünleri - Medikal Ankara для изменения всех видов услуг, продуктов, условий использования и информации, представленной на этом сайте, и расширения www.premiummedikal.com без предварительного уведомления, реорганизации сайта, прекращения трансляции оставляет за собой право. Изменения вступают в силу с момента публикации на сайте. Эти изменения считаются принятыми при использовании сайта или доступа к сайту. Эти условия также распространяются на другие связанные веб-страницы.</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, dilediği zaman bu yasal uyarı sayfasının içeriğini güncelleme yetkisini saklı tutmaktadır ve kullanıcılarına siteye her girişte yasal uyarı sayfasını ziyaret etmelerini tavsiye etmektedir." xml:space="preserve">
+    <value>Premium Medical - Медицинский онлайн-рынок - Premium Health Products - Medical Ankara оставляет за собой право обновлять содержание этой страницы официального уведомления в любое время и рекомендует пользователям посещать страницу официального уведомления каждый раз, когда они заходят на сайт.</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, erişim şifresi gibi bilgilerin sizin tarafınızdan belirlenmesine olanak sağlar. Erişim şifresinin unutulması durumunda kayıt olurken vermiş olduğunuz e-posta adresine yeni şifre oluşturma bağlantısı gönderilir." xml:space="preserve">
+    <value>Premium Medical - Медицинский онлайн-рынок - Premium Health Products - Medical Ankara позволяет вам определять информацию, такую как пароль доступа. Если пароль доступа забыт, ссылка на создание нового пароля отправляется на адрес электронной почты, который вы указали при регистрации.</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, kişisel bilgilerinizi yasal bir zorunluluk olarak istendiğinde veya (a) yasal gereklere uygun hareket etmek veya Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara ya da siteye tebliğ edilen yasal işlemlere uymak; (b) Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara haklarını ve mülkiyetini korumak ve savunmak; (c) Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara çalışanlarının veya aracılarının, Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara ürünü kullananların veya kamu güvenliği açısından acil durumlarda harekete geçmek için gerekli olduğuna iyi niyetle kanaat getirdiği hallerde açıklayabilir." xml:space="preserve">
+    <value>Premium Medical - медицинский онлайн-рынок - Premium Health Products - Medical Ankara, когда ваша личная информация запрашивается в качестве юридического обязательства или (a) действует в соответствии с требованиями законодательства, или Premium Medical - онлайн-медицинский рынок - Premium Health Products - Medical Ankara или юридически сообщается на сайт соблюдать транзакции; (б) Премиум Медикал - Интернет-рынок медицины - Premium Health Products - Medical Ankara для защиты и защиты своих прав и собственности; (c) Premium Medical - медицинский онлайн-рынок - Продукты медицинского назначения Premium - сотрудники или посредники компании Medical Ankara считают, что это необходимо тем, кто использует Premium Medical - медицинский онлайн-рынок Premium Health Products - медицинский продукт Ankara или для принятия мер в чрезвычайных ситуациях с точки зрения общественной безопасности. могу объяснить в случаях.</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, kişisel bilgilerinizi yetkisiz erişime, kullanıma veya açığa çıkmaya karşı korumak için çok çeşitli güvenlik teknolojileri ve yordamları kullanır. Örneğin, sağladığınız bilgileri kontrol altındaki tesislerde bulunan ve sınırlı erişimi olan bilgisayar sunucularında depolarız." xml:space="preserve">
+    <value>Premium Medical - медицинский онлайн-рынок - Premium Health Products - Medical Ankara использует широкий спектр технологий и процедур безопасности для защиты вашей личной информации от несанкционированного доступа, использования или воздействия. Например, мы храним информацию, которую вы предоставляете, на компьютерных серверах с ограниченным доступом, расположенных на контролируемых объектах.</value>
+  </data>
+  <data name="Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, sözleşmenin ihlali, haksız fiil, ihmal veya diğer sebepler neticesinde; işlemin kesintiye uğraması, hata, ihmal, kesinti, silinme, kayıp, işlemin veya iletişimin gecikmesi, bilgisayar virüsü, iletişim hatası, hırsızlık, imha veya izinsiz olarak kayıtlara girilmesi, değiştirilmesi veya kullanılması hususunda herhangi bir sorumluluk kabul etmez." xml:space="preserve">
+    <value>Premium Medical - Медицинский онлайн-рынок - Premium Health Products - Medical Ankara, в результате нарушения договора, противоправного деяния, небрежности или других причин; Он не несет никакой ответственности за прерывание транзакции, ошибку, небрежность, прерывание, удаление, потерю, задержку транзакции или связи, компьютерный вирус, ошибку связи, кражу, уничтожение или несанкционированный ввод, изменение или использование.</value>
+  </data>
+  <data name="Premium medikal hakkında bilgi sahibi olmak için sitemizi ziyaret ediniz." xml:space="preserve">
+    <value>Посетите наш сайт, чтобы узнать о премиальных медицинских.</value>
+  </data>
+  <data name="Premium medikal Türkiye'nin en büyük medikal ürün satış platformudur. Yurtdşında birçok ülkeye medikal ürün ithal etmektedir. Firmamız hakkında genel bilgilere bu sayfada ulaşabilirsiniz." xml:space="preserve">
+    <value>Premium Medical - крупнейшая в Турции платформа по продаже лекарственных препаратов. Импортирует медицинские товары во многие страны за рубежом. Вы можете найти общую информацию о нашей компании на этой странице.</value>
+  </data>
+  <data name="Sevkiyat sırasında zarar gördüğünü düşündüğünüz paketleri teslim aldığınız firma yetkilisi önünde açıp kontrol ediniz. Eğer üründe herhangi bir zarar varsa kargo firmasına tutanak tuttururarak ürünü teslim almayınız. Ürün teslim alındıktan sonra kargo firmasının görevini tam olarak yerine getirdiğini kabul etmiş olduğunuzu unutmayınız" xml:space="preserve">
+    <value>Откройте и проверьте пакеты, которые, по вашему мнению, повреждены во время отправки, перед представителем компании, которого вы получите. Если есть какое-либо повреждение продукта, не принимайте доставку продукта, сохраняя отчет о грузовой компании. Не забывайте, что вы приняли, что грузовая компания полностью выполняет свои обязанности после получения товара.</value>
+  </data>
+  <data name="Sevkiyat sırasında zarar gördüğünü düşündüğünüz paketleri, teslim aldığınız kargo yetkilisi önünde açıp kontrol ediniz. Eğer üründe herhangi bir zarar varsa kargo firmasına tutanak tuttururarak ürünü teslim almayınız. Ürün teslim alındıktan sonra kargo firmasının görevini tam olarak yerine getirdiğini kabul etmiş olduğunuzu unutmayınız." xml:space="preserve">
+    <value>Откройте и проверьте пакеты, которые, по вашему мнению, повреждены во время отправки, перед уполномоченным органом по грузоперевозкам. Если есть какое-либо повреждение продукта, не принимайте доставку продукта, сохраняя отчет о грузовой компании. Не забывайте, что вы приняли, что грузовая компания полностью выполняет свои обязанности после получения товара.</value>
+  </data>
+  <data name="Sipariş verirken nelere dikkat etmeliyim?" xml:space="preserve">
+    <value>Что я должен учитывать при заказе?</value>
+  </data>
+  <data name="Sipariş, Teslimat ve İade" xml:space="preserve">
+    <value>Заказ, доставка и возврат</value>
+  </data>
+  <data name="Siparişim hangi kargo şirketi ile gönderilecek?" xml:space="preserve">
+    <value>В какую транспортную компанию будет отправлен мой заказ?</value>
+  </data>
+  <data name="Siparişim kargoya verilmiş. Durumunu nasıl kontrol edebilirim?" xml:space="preserve">
+    <value>Мой заказ был отправлен. Как я могу проверить его состояние?</value>
+  </data>
+  <data name="Siparişimi verdim, bundan sonra ne olacak?" xml:space="preserve">
+    <value>Я разместил свой заказ, что будет дальше?</value>
+  </data>
+  <data name="Siparişimin durumunu nasıl takip edebilirim?" xml:space="preserve">
+    <value>Как я могу отслеживать статус моего заказа?</value>
+  </data>
+  <data name="Siparişiniz sorunsuz bir şekilde sistemimize ulaştıktan sonra, sitemize üyelik oluştururken kullandığınız email adresinize tarafımızdan siparişinizin detayını belirten bir mail gönderilecektir. Müşteri temsilcilerimiz siparişinizi en kısa sürede sorunsuz bir şekilde size ulaştırmak üzere ürünlerinizi hazırlayacak ve kargoya verecektir. Siparişiniz elimize ulaştıktan sonra en geç 4 iş günü içerisinde kargoya verilecektir. Ürününüz kargo firmasına teslim edildiğinde tarafımızdan size tekrar bir mail yollanacak ve kargo hakkında bilgilendirilmeniz sağlanacaktır. Ödemelerinizi Visa, Visa Electron ve Mastercard kredi kartları, Banka Havalesi veya Kapıdan Ödeme seçeneklerinden birisi ile yapabilirsiniz." xml:space="preserve">
+    <value>После того, как ваш заказ поступит в нашу систему без каких-либо проблем, мы отправим электронное письмо с указанием деталей вашего заказа на ваш адрес электронной почты, который вы использовали для создания членства на нашем сайте. Наши представители клиентов подготовят и отправят вашу продукцию для доставки вашего заказа в кратчайшие сроки без каких-либо проблем. Ваш заказ будет отправлен в течение 4 рабочих дней после его получения. Когда ваш товар будет доставлен в грузовую компанию, мы снова отправим вам электронное письмо, и вам сообщат о грузе. Вы можете осуществлять платежи с помощью кредитных карт Visa, Visa Electron и Mastercard, банковского перевода или оплаты через дом.</value>
+  </data>
+  <data name="Site içi Veri Güvenliği" xml:space="preserve">
+    <value>Безопасность данных на месте</value>
+  </data>
+  <data name="Site-Banka Haberleşme Güvenliği" xml:space="preserve">
+    <value>Сайт-Банк Связь Безопасность</value>
+  </data>
+  <data name="Site-Ziyaretçi Haberleşme Güvenliği" xml:space="preserve">
+    <value>Безопасность связи между посетителями сайта</value>
+  </data>
+  <data name="Sitede toplanan kişisel bilgiler, Sitenin işletilmesi ve istediğiniz veya yetkilendirdiğiniz hizmetlerin sağlanması ya da işlemlerin yerine getirilmesi için kullanılır. Kişisel bilgilerinizi, bildirimleri de içerecek şekilde, kullanmakta olduğunuz ürün veya hizmetler hakkında bilgiler sağlamak için kullanabiliriz." xml:space="preserve">
+    <value>Личная информация, собранная на Сайте, используется для работы Сайта и для предоставления услуг, которые вы хотите или разрешаете, или для выполнения транзакций. Мы можем использовать вашу личную информацию для предоставления информации о продуктах или услугах, которые вы используете, включая уведомления.</value>
+  </data>
+  <data name="Sitemiz üzerinden sipariş verebilmeniz için öncelikle sitemize üye olmanız gerekmektedir. Üyeliğinizi oluşturduktan sonra satın almak istediğiniz ürünün sayfasına giderek beğenmiş olduğunuz renk, beden tercihinizi yapıp Sepete Ekle butonuna basarak, ürünü sepetinize ekleyebilirsiniz. Daha sonrasında sayfamızın sağ üst tarafında bulunan Sepetim e tıklayarak, sistemin size soracağı kargo ve teslimat bilgilerinden sonra ödeme bilgilerinizi yazıp siparişinizi verebilirsiniz." xml:space="preserve">
+    <value>Чтобы разместить заказ на нашем сайте, вы должны сначала стать участником нашего сайта. После создания подписки вы можете добавить товар в корзину, перейдя на страницу товара, который хотите купить, выбрав нужный вам цвет и размер и нажав кнопку «Добавить в корзину». Затем вы можете нажать «Моя корзина» в правом верхнем углу нашей страницы, после того, как информация о доставке и доставке, которую попросит система, напишите вашу платежную информацию и разместите свой заказ.</value>
+  </data>
+  <data name="Sitemiz üzerinden vereceğiniz siparişlerinizin gönderileceği kargo şirketleri sipariş aşamalarında karşınıza çıkacak olup, seçim yapmanız gerekmektedir." xml:space="preserve">
+    <value>Грузовые компании, которые вы отправите ваши заказы на нашем сайте, появятся на стадии заказа, и вам придется выбирать.</value>
+  </data>
+  <data name="Sitemiz üzerinden vermiş olduğunuz siparişinizin takibini üyelik girişi yaptıktan sonra, hesabım sayfanızda siparişleriniz listelenmektedir. Kargoya verilen siparişinizin yanındaki kargo linkine tıklayarak, siparişinizin kargodaki durumunu takip edebilirsiniz." xml:space="preserve">
+    <value>После того, как вы зарегистрируетесь на нашем сайте, ваши заказы будут перечислены на странице вашего аккаунта. Вы можете следить за статусом вашего заказа, нажав на ссылку доставки рядом с вашим заказом.</value>
+  </data>
+  <data name="Sitemiz üzerinden yapacağınız alışverişe istinaden sistem tarafından hesaplanacak kargo ücreti, sipariş aşamalarında kargo seçimi sırasında belirtilecektir." xml:space="preserve">
+    <value>Стоимость доставки, рассчитываемая системой на основе ваших покупок на нашем сайте, будет указана при выборе груза на этапах заказа.</value>
+  </data>
+  <data name="Sitemizde istenen kişisel bilgileriniz hizmetlerimizin sunulabilmesi, bilgilendirme, iletişim vb. durumlar için kayıt altında tutulmaktadır. Topladığımız kişisel bilgiler arasında adınız, e-posta adresiniz, telefonunuz, iş veya ev adresiniz, şirketinizle ve kredi kartınızla ile ilgili bilgiler olabilir. Site, ziyaretleriniz hakkında, siteye erişmek için kullandığınız internet servis sağlayıcısının adı ve internet protokol (IP) adresi, siteye erişme tarihi ve saatiniz, sitede bulunduğunuz sırada eriştiğiniz sayfalar ve sitemize doğrudan bağlanmanızı sağlayan web sitesinin internet adresi gibi birtakım bilgiler toplayabilir. Bu bilgiler sitenin iyileştirilmesi, eğilimlerin analiz edilmesi ve sitenin yönetilmesi için kullanılır." xml:space="preserve">
+    <value>Ваша личная информация, запрашиваемая на нашем сайте, может быть предоставлена нашими службами, информацией, связью и т. Д. хранятся в записи для ситуаций. Личная информация, которую мы собираем, может включать информацию о вашем имени, адресе электронной почты, телефоне, рабочем или домашнем адресе, компании и кредитной карте. Сайт может собирать определенную информацию о ваших посещениях, например, имя и интернет-протокол (IP) адреса интернет-провайдера, которого вы используете для доступа к сайту, дату и время доступа к сайту, страницы, на которые вы заходили, когда вы были на сайте, и веб-сайт, который позволяет вам напрямую подключаться к нашему сайту. Эта информация используется для улучшения сайта, анализа тенденций и управления сайтом.</value>
+  </data>
+  <data name="Sitemizin sipariş sayfalarında site ile ziyaretçi arasındaki haberleşme 128 bit SSL standartında gerçekleşmektedir. Sözkonusu haberleşme standardı çok sayıda işlem gören sitelerde dahi güvenle kullanılan bir niteliktedir." xml:space="preserve">
+    <value>Связь между сайтом и посетителем на страницах заказа нашего сайта происходит в 128-битном стандарте SSL. Соответствующий стандарт связи имеет качество, которое можно безопасно использовать даже на большом количестве обработанных сайтов.</value>
+  </data>
+  <data name="Tıbbi Cihaz Satış Reklam ve Tanıtım Yönetmeliği" xml:space="preserve">
+    <value>Регулирование рекламы и продвижения продаж медицинского оборудования</value>
+  </data>
+  <data name="www.premiummedikal.com sitesine girilmesi, sitenin ya da sitedeki bilgilerin ve diğer verilerin programların vs. kullanılması sebebiyle, sözleşmenin ihlali, haksız fiil, ya da başkaca sebeplere binaen, doğabilecek doğrudan ya da dolaylı hiçbir zarardan Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara sorumlu değildir. Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara, sözleşmenin ihlali, haksız fiil, ihmal veya diğer sebepler neticesinde; işlemin kesintiye uğraması, hata, ihmal, kesinti hususunda herhangi bir sorumluluk kabul etmez." xml:space="preserve">
+    <value>Вход на сайт www.premiummedikal.com, сайт или информацию и другие данные на сайте, программах и т. Д. Premium Medical - Медицинский онлайн-рынок - Premium Health Products - Medical Ankara не несет ответственности за любые прямые или косвенные убытки, которые могут возникнуть в результате нарушения договора, недобросовестного действия или по любым другим причинам. Premium Medical - Медицинский онлайн-рынок - Premium Health Products - Medical Ankara, в результате нарушения договора, противоправного деяния, небрежности или других причин; Он не несет никакой ответственности за прерывание транзакции, ошибку, пренебрежение, прерывание.</value>
+  </data>
+  <data name="www.premiummedikal.com sitesine girmeniz veya bu internet sitesindeki herhangi bir bilgiyi kullanmanız aşağıdaki koşulları kabul ettiğiniz anlamına gelir." xml:space="preserve">
+    <value>Вход на сайт www.premiummedikal.com или использование любой информации на этом сайте означает, что вы принимаете следующие условия.</value>
+  </data>
+  <data name="Yukarıdaki şartlara uygun hallerde iade edilen ürünlerde kargo ücreti müşteri tarafından ödenecektir." xml:space="preserve">
+    <value>Для товаров, возвращенных в соответствии с вышеуказанными условиями, стоимость доставки оплачивает клиент.</value>
+  </data>
+  <data name="Öncelikle üye olurken dolduracağınız üye formunun eksiksiz ve güncel bilgiler içermesine dikkat etmeniz gerekmektedir. Siparişiniz sonrasında doğacak herhangi bir sorunda müşteri temsilcilerimiz, üyelik bilgilerinizdeki iletişim bilgilerinizden yararlanarak sizinle irtibata geçecektir. Siparişiniz, girmiş olduğunuz teslimat adresinize gönderilecektir. Kargo teslimatı sırasında herhangi bir sorun yaşanmaması için adresinizi tüm detaylarıyla yazmanız gerekmektedir." xml:space="preserve">
+    <value>Прежде всего необходимо обратить внимание на то, что форма участника, которую вы заполните при регистрации, содержит полную и обновленную информацию. В случае возникновения каких-либо проблем после вашего заказа, наши представители клиентов свяжутся с вами, используя ваши контактные данные в вашей информации о членстве. Ваш заказ будет отправлен на указанный вами адрес доставки. Вы должны написать свой адрес во всех деталях, чтобы избежать каких-либо проблем при доставке груза.</value>
+  </data>
+  <data name="Ürün müşteriye ulaştıktan sonra ortaya çıkabilecek arızalar için, üretici firmanın yetkili servislerine başvurulmalıdır." xml:space="preserve">
+    <value>В случае неисправностей, которые могут возникнуть после того, как изделие дойдет до покупателя, следует обратиться в авторизованные сервисные службы производителя.</value>
+  </data>
+  <data name="Üründe ve ambalajında herhangi bir açılma, bozulma, kırılma, tahrip, yırtılma, kullanılma ve sair durumları tespit ettiği hallerde ve ürünün müşteriye teslim edildiği andaki hali ile iade edilememesi halinde ürünü iade almayacak ve bedelini iade etmeyecektir." xml:space="preserve">
+    <value>В случаях, когда в продукте и его упаковке обнаружены какие-либо открытия, повреждения, поломки, разрушение, разрыв, использование и другие условия, и если продукт не может быть возвращен, как он был доставлен покупателю, он не вернет продукт и не вернет цену.</value>
+  </data>
+  <data name="Ürünü teslim alırken nelere dikkat etmeliyim?" xml:space="preserve">
+    <value>Что я должен искать при получении продукта?</value>
+  </data>
+  <data name="İade Bilgileri" xml:space="preserve">
+    <value>Возврат информации</value>
+  </data>
+  <data name="Şifremi Unuttum?" xml:space="preserve">
+    <value>Забыли мой пароль?</value>
+  </data>
+</root>

@@ -1,0 +1,33 @@
+﻿<!--Last Visited Products Component-->
+
+@model IEnumerable<LVPDto>
+
+@{
+    Layout = "~/Views/Shared/_ComponentLayout.cshtml";
+}
+
+<div class="son-gezilen-urunler product-detail-products-list">
+    <h3 class="theme-h3"><span>Son Gezdikleriniz</span></h3>
+    <div class="products-carousel">
+
+        @foreach (var item in Model)
+        {
+            <div class="item">
+                <div class="products-item" data-satis="0" data-stock="" data-urun-id="5018">
+                    <div class="new" data-value="">Yeni</div>
+                    <div class="image">
+                        <a href="@item.ProductHref" class="image-href">
+                            <img class="b-lazy b-loaded" src="~/Images/ProductImages/thumb/@item.PhotoFileName" alt="@item.PhotoAltTag">
+                        </a>
+                    </div>
+                    <div class="detail">
+                        <div class="ucretsiz-kargo" data-value="">Ücretsiz Kargo</div>
+                        <a href="#" class="brand">@item.ProductBrand</a>
+                        <a href="#" class="name">@item.ProductName</a>
+                        <div class="price" data-active=""></div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

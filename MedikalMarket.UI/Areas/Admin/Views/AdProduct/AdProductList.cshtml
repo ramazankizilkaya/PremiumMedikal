@@ -1,0 +1,704 @@
+﻿@model IEnumerable<AdminAdProductDto>
+@{
+    ViewData["Title"] = "Reklam Ürün Listesi";
+}
+
+<input type="hidden" value="@ViewBag.success" id="adproListSuccess" />
+<input type="hidden" value="@ViewBag.warning" id="adproListWarning" />
+
+<!-- Update AdProduct Popup Modal -->
+<div class="modal fade in" id="updateAdProductPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:800px !important">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Reklam Güncelleme Formu</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydetmeden Çık</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create AdProduct Popup Modal -->
+<div class="modal fade in" id="createAdProductPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:800px !important">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Yeni Reklam Ekleme Formu</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydetmeden Çık</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Reklam İşlemleri</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index" asp-area="Admin">Anasayfa</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Reklam Ürünleri</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Reklam Ürün Listesi</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <a class="btn btn-primary createAdProduct" href="#">Yeni Reklam Ekle</a>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Sıra No</th>
+                                    <th>Reklam Id</th>
+                                    <th>Fotoğraf</th>
+                                    <th>Dil</th>
+                                    <th>Fotoğraf Alt Tag'i</th>
+                                    <th>Hedef</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @{ int i = 1;}
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="gradeX">
+                                        <td class="center">@i</td>
+                                        <td class="center">@item.Id</td>
+                                        @if (item.PhotoFileName != null)
+                                        {
+                                            <td class="center"><a href="/Images/AdProductImages/@item.Culture/@item.PhotoFileName" target="_blank"><img src="~/Images/AdProductImages/@item.Culture/@item.PhotoFileName" alt="@item.PhotoAltTag" style="width:200px; height:100px;" /></a></td>
+                                        }
+
+                                        else
+                                        {
+                                            <td class="center">Reklam fotoğrafı yok.</td>
+                                        }
+
+                                        @{ string dil = item.Culture.Equals("tr") ? "Türkçe" : item.Culture.Equals("en") ? "İngilizce" : "Rusça";}
+                                        <td class="center">@dil</td>
+                                        <td class="center">@item.PhotoAltTag</td>
+                                        <td class="center">@item.AdproTargetType.GetDisplayName() <br /> (@item.GenericTargetName)</td>
+                                        <td class="center">
+
+                                            <button type="button" class="btn btn-primary btn-xs updateAdProduct" data-target="/Admin/AdProduct/UpdateAdProduct/@item.Id" title="Detayları Gör/Güncelle">&emsp;<i class="fa fa-search"></i>&emsp;</button>
+
+                                            <button type="button" class="btn btn-danger btn-xs hardDeleteAdProduct" data-target="/Admin/AdProduct/HardDeleteAdProduct/@item.Id" data-rowId="@item.Id" title="Sil">&emsp;<i class="fa fa-trash-o"></i>&emsp;</button>
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Sıra No</th>
+                                    <th>Reklam Id</th>
+                                    <th>Fotoğraf</th>
+                                    <th>Dil</th>
+                                    <th>Fotoğraf Alt Tag'i</th>
+                                    <th>Hedef</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Styles {
+
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+
+    <style>
+        .ui-autocomplete {
+            z-index: 215000000 !important;
+        }
+    </style>
+}
+
+@section Scripts {
+
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+
+
+    @*Datatable ve gelen başarı uyarısını verir*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //Datatable
+            $('.dataTables-example').DataTable({
+
+                initComplete: function () {
+                    this.api().columns().every(function (index, element) {
+                        if (index != 0 && index != 1 && index != 2 && index != 8) {
+                            var column = this;
+                            var select = $('<select class="filterS"><option value=""></option></select>')
+                                //.appendTo($(column.header()))
+                                .appendTo($(column.footer()))
+                                .on('change', function () {
+                                    var val = $.fn.dataTable.util.escapeRegex(
+                                        $(this).val()
+                                    );
+
+                                    column
+                                        .search(val ? '^' + val + '$' : '', true, false)
+                                        .draw();
+                                });
+
+                            column.data().unique().sort().each(function (d, j) {
+                                select.append('<option value="' + d + '">' + d + '</option>')
+                            });
+                        }
+
+                    });
+                },
+                "language": {
+
+                    "sDecimal": ",",
+                    "sEmptyTable": "Tabloda herhangi bir veri mevcut değil",
+                    "sInfo": "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
+                    "sInfoEmpty": "Kayıt yok",
+                    "sInfoFiltered": "(_MAX_ kayıt içerisinden bulunan)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "Sayfada _MENU_ kayıt göster",
+                    "sLoadingRecords": "Yükleniyor...",
+                    "sProcessing": "İşleniyor...",
+                    "sSearch": "Ara:",
+                    "sZeroRecords": "Eşleşen kayıt bulunamadı",
+                    "oPaginate": {
+                        "sFirst": "İlk",
+                        "sLast": "Son",
+                        "sNext": "Sonraki",
+                        "sPrevious": "Önceki"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": artan sütun sıralamasını aktifleştir",
+                        "sSortDescending": ": azalan sütun sıralamasını aktifleştir"
+                    },
+                    "select": {
+                        "rows": {
+                            "_": "%d kayıt seçildi",
+                            "0": "",
+                            "1": "1 kayıt seçildi"
+                        }
+                    }
+                },
+                pageLength: 25,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'excel', title: 'ExampleFile' },
+                    { extend: 'pdf', title: 'ExampleFile' },
+
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+            });
+
+            //gelen başarı uyarısını verir
+            var successText = $('#adproListSuccess').val();
+
+            if (successText.length > 0) {
+                toastr.success(successText, "Başarılı");
+                $('#adproListSuccess').val("")
+            }
+            var failText = $('#adproListWarning').val();
+
+            if (failText.length > 0) {
+                toastr.error(failText, "Hata");
+                $('#adproListWarning').val("")
+            }
+        });
+    </script>
+
+    @*AdProduct Update Popup*@
+    <script>
+        $(".updateAdProduct").click(function () {
+            //debugger;
+            var url = $(this).data("target");
+            $.get(url, function (data) { })
+                .done(function (data) {
+                    $("#updateAdProductPopup .modal-body").html(data);
+                    $.validator.unobtrusive.parse("#updateAdProductPopupForm");
+                    $("#updateAdProductPopup").modal("show");
+                })
+                .fail(function () {
+                    //modalımızın bodysine Error! yaz
+                    $("#updateAdProductPopup .modal-body").text("Hata!!");
+                    //sonra da modalimizi göster
+                    $("#updateAdProductPopup").modal("show");
+                })
+        });
+    </script>
+
+    @*AdProduct Create Popup*@
+    <script>
+        $(".createAdProduct").click(function () {
+            //debugger;
+            var url = "/Admin/AdProduct/CreateAdProduct";
+            $.get(url, function (data) { })
+                .done(function (data) {
+                    $("#createAdProductPopup .modal-body").html(data);
+                    $.validator.unobtrusive.parse("#createAdProductPopupForm");
+                    $("#createAdProductPopup").modal("show");
+                })
+                .fail(function () {
+                    //modalımızın bodysine Error! yaz
+                    $("#createAdProductPopup .modal-body").text("Hata!!");
+                    //sonra da modalimizi göster
+                    $("#createAdProductPopup").modal("show");
+                })
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            //İlk Loadda UpdateAdProduct popupu içinde Hedef türüne göre selectlistlerin dolması
+            $("#updateAdProductPopup").on('show.bs.modal', function () {
+
+                $('#searchProName').autocomplete({
+                    source: '/Admin/Slider/SearchProductName'
+                });
+
+                var comingVal = $("#AdproTargetType").val();
+                if (comingVal == 0) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', '');
+                    $('#subCateSelectList').css('display', '');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", true);
+                    $('#subCateSelectList').prop("required", true);
+                    $('#productSearchBox').prop("required", false);
+
+                    $('#topCateSelectList').val('');
+                    $('#midCateSelectList').val('');
+                    $('#subCateSelectList').val('');
+
+                }
+                if (comingVal == 1) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+
+                    $('#topCateSelectList').val('');
+                    $('#midCateSelectList').val('');
+                    $('#subCateSelectList').val('');
+
+                }
+                if (comingVal == 2) {
+                    $('#brandSelectList').css('display', '');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", true);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+                }
+                if (comingVal == 3) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', '');
+                    $('#productSearchBox').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", true);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+
+                    $('#topCateSelectList').val('');
+                    $('#midCateSelectList').val('');
+                    $('#subCateSelectList').val('');
+                }
+                if (comingVal == 4) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', '');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", true);
+
+                }
+                if (comingVal == "") {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+                }
+            });
+
+            //İlk Loadda CreateAdProduct popupu içinde Hedef türüne göre selectlistlerin dolması
+            $("#createAdProductPopup").on('show.bs.modal', function () {
+
+                $('#searchProName').autocomplete({
+                    source: '/Admin/Slider/SearchProductName'
+                });
+
+                var comingVal = $("#AdproTargetType").val();
+                if (comingVal == 0) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', '');
+                    $('#subCateSelectList').css('display', '');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", true);
+                    $('#subCateSelectList').prop("required", true);
+                    $('#productSearchBox').prop("required", false);
+                }
+                if (comingVal == 1) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+
+                }
+                if (comingVal == 2) {
+                    $('#brandSelectList').css('display', '');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", true);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+                }
+                if (comingVal == 3) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', '');
+                    $('#productSearchBox').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", true);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+                }
+                if (comingVal == 4) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', '');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", true);
+
+                }
+                if (comingVal == "") {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+                }
+            });
+
+            //Hedef Türü Değişince hedef selectlerinin dolması
+            $("body").on("change", "#AdproTargetType", function () {
+                
+                var comingVal = $(this).val();
+                if (comingVal == 0) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', '');
+                    $('#subCateSelectList').css('display', '');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", true);
+                    $('#subCateSelectList').prop("required", true);
+                    $('#productSearchBox').prop("required", false);
+                }
+                if (comingVal == 1) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+
+                }
+                if (comingVal == 2) {
+                    $('#brandSelectList').css('display', '');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", true);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+                }
+                if (comingVal == 3) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', '');
+                    $('#productSearchBox').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", true);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+                }
+                if (comingVal == 4) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', '');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", true);
+
+                }
+                if (comingVal == "") {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+                }
+            });
+
+            //Reklam fotoğrafı silme
+            $("body").on("click", ".delAdProductPhoto", function () {
+                debugger;
+                var result = confirm("Reklam fotoğrafı silinecek. Onaylıyor musunuz?");
+                if (result) {
+                    var sliderId = $(this).attr('data-proId');
+                    var url = "/Admin/AdProduct/DeleteAdProductPhoto?adproId=" + sliderId;
+                    $.get(url, function (data) { })
+                        .done(function (data) {
+                            if (data.success == true) {
+                                toastr.success(data.message, 'Başarılı');
+                                var divToDel = $('#updateAdProductPopupForm').find('[data-divId="main"]')
+                                divToDel.css("display", "none");
+                                $('#PhotoFileName').val('');
+                            }
+
+                            if (data.success == false) {
+                                toastr.error(data.message, 'Hata');
+                            }
+
+                        })
+                        .fail(function () {
+                            toastr.error(data.message, 'Hata');
+                        })
+                }
+            });
+        });
+    </script>
+
+    @*Üst kategori değiştiğinde orta kategorileri doldurur*@
+    <script>
+        $("body").on("change", "#TargetTopCategoryId", function () {
+            //alert($('#TargetTopCategoryId').val());
+            $.ajax({
+                url: "/Admin/Product/GetMiddleCategoryList",
+                dataType: 'json',
+                type: "get",
+                data: { 'id': $('#TargetTopCategoryId').val() },
+                success: function (data) {
+                    var items = '';
+                    $("#TargetMiddleCategoryId").empty();
+                    $.each(data, function (i, row) {
+                        items += "<option value='" + row.value + "'>" + row.text + "</option>";
+                    });
+                    $("#TargetMiddleCategoryId").html(items);
+                    $("#TargetSubCategoryId").empty();
+                    $("#TargetMiddleCategoryId").trigger("change");
+                }
+            });
+        });
+    </script>
+
+    @*Orta kategori değiştiğinde alt kategorileri doldurur*@
+    <script>
+        $("body").on("change", "#TargetMiddleCategoryId", function () {
+            $.ajax({
+                url: "/Admin/Product/GetSubCategoryList",
+                dataType: 'json',
+                type: "get",
+                data: { 'id': $('#TargetMiddleCategoryId').val() },
+                success: function (data) {
+                    var items = '';
+                    $("#TargetSubCategoryId").empty();
+                    $.each(data, function (i, row) {
+                        items += "<option value='" + row.value + "'>" + row.text + "</option>";
+                    });
+                    $("#TargetSubCategoryId").html(items);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        //Dosya input boxuna seçili dosya adedini yazar
+        $(document).ready(function () {
+
+            $("body").on("change", "#adproPhotoUpload", function () {
+                var sdsd = document.getElementById("adproPhotoUpload");
+                if (sdsd.files.length == 1) {
+                    var fileNamee = sdsd.files.item(0).name;
+                    var fileLabell = document.getElementById('adproPhotoUploadLabel');
+                    fileLabell.innerHTML = fileNamee;
+                }
+            });
+        });
+    </script>
+
+    <script>
+        //Reklamı kalıcı sil butonu tıklama
+        $('.dataTables-example tbody').on('click', 'button.hardDeleteAdProduct', function () {
+            //debugger;
+
+            var result = confirm("Reklam kalıcı olarak database'den silinecek. Onaylıyor musunuz?");
+            if (result) {
+                var url = $(this).data("target");
+                $.get(url, function (data) { })
+                    .done(function (data) {
+                        if (data.success == true) {
+                            toastr.success(data.message, 'Başarılı');
+
+                            $(".dataTables-example tr").each(function () {
+                                var rowSelector = $(this);
+
+                                if (rowSelector.find("button.hardDeleteAdProduct").attr('data-rowId') == data.proId) {
+                                    rowSelector.remove();
+                                }
+                            });
+                        }
+
+                        if (data.success == false) {
+                            toastr.error(data.message, 'Hata');
+                        }
+
+                    })
+                    .fail(function () {
+                        toastr.error(data.message, 'Hata');
+                    })
+            }
+
+        });
+    </script>
+}

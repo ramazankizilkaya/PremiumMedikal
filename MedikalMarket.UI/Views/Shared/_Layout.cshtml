@@ -1,0 +1,127 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IViewLocalizer localizer
+
+
+<!DOCTYPE html>
+<html lang=@localizer["tr-TR"] data-dir="ltr">
+<head>
+
+    @RenderSection("Head", required: true)
+
+    <meta name="keywords" content="@localizer["medikal ürünler, ankara, ubsis sağlık ürünleri, tansiyon aleti, şeker ölçüm cihazı, ateş ölçer, medikal malzeme, tıbbi malzeme, tıbbi cihazlar, tens cihazı, pulse oksimetre, havalı yataklar, nebulizatör, aspiratör cihazı, varis çorabı"]">
+
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta property="og:title" content="@localizer["Premium Medikal-Online Medikal Market-Ubsis Sağlık Ürünleri-Medikal Ankara, Türkiye"]">
+    <meta property="og:description" content="@localizer["Premium Medikal-Online Medikal Market-Ubsis Sağlık Ürünleri-Medikal Ankara, Türkiye"]">
+    <meta name="author" content="www.premiummedikal.com">
+    <link rel="icon" href="/images/favicon.png">
+
+
+    <link rel="stylesheet" href="/assets/css/nexa.min.css">
+    <link href="~/lib/font-awesome/css/fontawesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/animations.min.css">
+    <link rel="stylesheet" href="/assets/css/css.demeti.min.css">
+    <link href="~/css/toastr.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/all.css" rel="stylesheet" />
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+    <style>
+        .product-detail-tabs .tab-content * {
+            text-transform: none;
+        }
+    </style>
+    <style>
+        .user-nav a.cart {
+            display: none;
+        }
+    </style>
+    <style>
+        .ui-autocomplete {
+            z-index: 215000000 !important;
+        }
+    </style>
+
+    @RenderSection("Styles", false)
+</head>
+<body>
+    <div id="loading">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+    </div>
+
+    <!--Header-->
+    <partial name="_Header" />
+
+
+    @RenderBody()
+
+
+    <!--Footer-->
+    @*<cache expires-after="@TimeSpan.FromMinutes(20)" vary-by-culture="true" enabled="true">*@
+        <partial name="_Footer" />
+    @*</cache>*@
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.min.js"></script>
+
+    @*<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>*@
+
+    @*<script src="~/assets/js/jquery-3.2.1.min.js"></script>*@
+    @*<script src="~/assets/js/jquery.elevatezoom-3.0.8.min.js"></script>*@
+    <script src="~/assets/js/js.demeti.min.js"></script>
+    <script src="~/assets/js/theme-home.min.js"></script>
+    <script src="~/js/customScripts.js"></script>
+    <script src="~/js/toastr.min.js"></script>
+    @*<script src="~/admin/lib/iCheck/icheck.min.js"></script>*@
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+
+
+
+    <script>
+        $(window).on('load', function (e) {
+            $('#loading').fadeOut('normal', function () {
+                $(this).remove();
+            });
+        });
+    </script>
+
+    <script>
+        var StokDurumuYok = 'TÜKENDİ',
+            turl = '//www..com/themes/',
+            FiltreOtomatikCalistir = 1,
+            SecilebilirUlkeler = 1;
+    </script>
+    <script>
+        var curl = 'index.html',
+            ModulName = '',
+            ccurl = '//www..com',
+            cdn = '//www..com/themes/cdn',
+            VarsayilanResim = 'UserFiles/Fotograflar/thumbs/11-gorsel-hazirlaniyor-noimage.png',
+            ParaBirimi = 'TRY',
+            site = { "curl": "http:\/\/www..com", "ModulName": null, "ccurl": "\/\/www..com", "cdn": "\/\/www..com\/themes\/cdn", "VarsayilanResim": "\/\/www..com\/UserFiles\/Fotograflar\/thumbs\/11-gorsel-hazirlaniyor-noimage.png", "GecerliDil": "tr", "VaryasyonlariListele": "0", "ParaBirimi": "TRY", "ParaBirimiSolIkon": "", "ParaBirimiSagIkon": "<i class='fa fa-try'><\/i>", "StokTakibi": "1", "domain": ".com", "StoksuzFiyat": "1", "GecerliUlke": null, "mobil": false, "teklif": "0", "AnonimFiyatGosterme": "1", "isUser": false, "VEtiket": [], "kurye": "0", "lurl": "\/\/www..com" },
+            uye = { "mail": null, "adsoyad": null, "grup_id": null, "telif": 0 };
+    </script>
+
+    @*<script type="application/ld+json">
+            {"@@context":"http:\/\/schema.org\/","@@type":"WebSite","name":" Medikal - Online Medikal Market - Erkent Sa\u011fl\u0131k \u00dcr\u00fcnleri - Medikal Ankara","alternateName":" Medikal - Online Medikal Market - Erkent Sa\u011fl\u0131k \u00dcr\u00fcnleri - Medikal Ankara","url":"https:\/\/www..com","potentialAction":{"@@type":"SearchAction","target":"https:\/\/www..com\/arama?Keyword={search_term_string}","query-input":"required name=search_term_string"}}
+        </script>*@
+
+    @*<script type="application/ld+json">
+            {"@@context":"http:\/\/schema.org\/","@@type":"BreadcrumbList","itemListElement":[{"@@type":"ListItem","position":1,"item":{"@@id":"https:\/\/www..com\/","name":"Ana Sayfa"}}]}
+        </script>*@
+
+    @RenderSection("Scripts", false)
+
+    <div id="message_from_top" style="background-color: rgb(255, 80, 0)!important; text-align: center; position: fixed; left: 0px; width: 100%; line-height: 50px; font-size: 25px; top: -50px;"><div><span>Error Message</span></div></div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿@model AdminCateDto
+
+<form class="form-horizontal bv-form" asp-area="Admin" asp-controller="Category" asp-action="CreateCategory" method="POST" enctype="multipart/form-data" id="createCategoryPopupForm">
+    
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="CategoryType" />
+    <input type="hidden" asp-for="TopCategoryId" />
+    <input type="hidden" asp-for="MiddleCategoryId" />
+    
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <!--Türkçe Kategori Adı-->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" asp-for="NameTR"><b>Türkçe Kategori Adı</b></label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" asp-for="NameTR">
+                <span asp-validation-for="NameTR" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!--İngilizce Kategori Adı-->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" asp-for="NameEN"><b>İngilizce Kategori Adı</b></label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" asp-for="NameEN">
+                <span asp-validation-for="NameEN" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!--Rusça Kategori Adı-->
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label" asp-for="NameRU"><b>Rusça Kategori Adı</b></label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" asp-for="NameRU">
+                <span asp-validation-for="NameRU" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="box-footer" style="text-align:right">
+            <button type="submit" class="btn btn-danger btn-xl">Değişiklikleri Kaydet</button>
+        </div>
+</form>

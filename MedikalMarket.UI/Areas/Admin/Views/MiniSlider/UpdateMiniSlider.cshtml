@@ -1,0 +1,80 @@
+﻿@model AdminMiniSliderDto
+
+    <form class="form-horizontal bv-form" asp-area="Admin" asp-controller="MiniSlider" asp-action="UpdateMiniSlider" method="POST" enctype="multipart/form-data" id="updateMiniSliderPopupForm">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="PhotoFileName" />
+        <input type="hidden" id="ifHasPhoto" value="@Model.PhotoFileName" />
+
+        <div class="box box-success">
+            <div class="box-body">
+                <div class="tabs-container">
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <!--Fotoğraf Alt Tag'i-->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="PhotoAltTag"><b>Fotoğraf Alt Tag'i</b></label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" asp-for="PhotoAltTag" disabled>
+                            <span asp-validation-for="PhotoAltTag" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--Hedef Ürün Adı-->
+                    <div class="form-group row" id="productSearchBox">
+                        <label class="col-sm-3 col-form-label" asp-for="TargetProductName"><b>Hedef Ürün Adı</b></label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" asp-for="TargetProductName" id="searchProName">
+                            <span asp-validation-for="TargetProductName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--Mini Slider Kültür-->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="Culture"><b>Mini Slider Kültürü</b></label>
+                        <div class="col-sm-9">
+                            <select class="form-control" asp-for="Culture">
+                                <option value="" selected="selected" style="color:red;">Lütfen Slider kültürünü seçiniz</option>
+                                <option value="tr">Türkçe</option>
+                                <option value="en">İngilizce</option>
+                                <option value="ru">Rusça</option>
+                            </select>
+                            <span asp-validation-for="Culture" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @if (!String.IsNullOrEmpty(Model.PhotoFileName))
+                    {
+                        <!--Mini Slider Fotoğraf-->
+                        <div class="form-group row" data-divId="main">
+                            <label class="col-sm-3 col-form-label" asp-for="PhotoFileName"><b>Mini Slider Fotoğrafı</b></label>
+                            <div class="col-sm-9">
+                                <img src="~/Images/MiniSliderImages/@Model.Culture/@Model.PhotoFileName" alt="@Model.PhotoAltTag" title="Mini Slider Fotoğrafı" style="border:1px solid black; width:280px;height:355px;" />
+                                &emsp;
+                                <a href="#" class="delMiniSliderPhoto" data-proId="@Model.Id"><i class="fa fa-trash-o fa-2x" title="Mini Slider Fotoğrafını Sil"></i></a>
+                                &emsp;
+                            </div>
+                        </div>
+                    }
+
+                    <!--Mini Slider Fotoğraf Yükleme-->
+                    <div class="form-group row" id="mainPhotoGroup">
+                        <label class="col-sm-3 col-form-label" asp-for="SliderPhoto"><b>Mini Slider Fotoğrafı Yükle</b></label>
+                        <div class="col-sm-9 align-content-start">
+                            <div class="custom-file">
+                                <input type="file" asp-for="SliderPhoto" class="custom-file-input form-control" id="miniSliderPhotoUpload" accept=".png, .jpeg, .jpg, .bmp" data-urunId="@Model.Id" />
+                                <label class="custom-file-label" asp-for="SliderPhoto" id="miniSliderUploadLabel">Mini Slider Fotoğrafını Seçiniz</label>
+                            </div>
+                            <span asp-validation-for="SliderPhoto" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-footer" style="text-align:right">
+            <button type="submit" class="btn btn-danger btn-xl">Değişiklikleri Kaydet</button>
+        </div>
+    </form>
+
+

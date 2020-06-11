@@ -1,0 +1,138 @@
+﻿@model AdminBrandDto
+
+
+<form class="form-horizontal bv-form" asp-area="Admin" asp-controller="Brand" asp-action="UpdateBrand" method="POST" enctype="multipart/form-data" id="updateBrandPopupForm">
+    <div class="box box-success">
+        <div class="box-body">
+            <div class="tabs-container">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="IsActive" />
+                <input type="hidden" asp-for="IsDeleted" />
+                <input type="hidden" asp-for="PhotoFileName" />
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <!--Marka Adı-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="BrandName"><b>Marka Adı</b></label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" asp-for="BrandName">
+                        <span asp-validation-for="BrandName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Marka Fotoğraf Etiketi(Türkçe)-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="PhotoAltTagTR"><b>Marka Fotoğraf Etiketi(Türkçe)</b></label>
+                    <div class="col-sm-9">
+                        <textarea rows="2" cols="50" asp-for="PhotoAltTagTR" style="display:block;" ></textarea>
+                        <span asp-validation-for="PhotoAltTagTR" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Marka Fotoğraf Etiketi(İngilizce)-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="PhotoAltTagEN"><b>Marka Fotoğraf Etiketi(İngilizce)</b></label>
+                    <div class="col-sm-9">
+                        <textarea rows="2" cols="50" asp-for="PhotoAltTagEN" style="display:block;" ></textarea>
+                        <span asp-validation-for="PhotoAltTagEN" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Marka Fotoğraf Etiketi(Rusça)-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="PhotoAltTagRU"><b>Marka Fotoğraf Etiketi(Rusça)</b></label>
+                    <div class="col-sm-9">
+                        <textarea rows="2" cols="50" asp-for="PhotoAltTagRU" style="display:block;" ></textarea>
+                        <span asp-validation-for="PhotoAltTagRU" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Marka Meta Title Etiketi(Türkçe)-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="MasterPageMetaTitleTR"><b>Marka Meta Title (Türkçe)</b></label>
+                    <div class="col-sm-9">
+                        <textarea rows="2" cols="50" asp-for="MasterPageMetaTitleTR" style="display:block;" ></textarea>
+                        <span asp-validation-for="MasterPageMetaTitleTR" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Marka Meta Title Etiketi(İngilizce)-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="MasterPageMetaTitleEN"><b>Marka Meta Title (İngilizce)</b></label>
+                    <div class="col-sm-9">
+                        <textarea rows="2" cols="50" asp-for="MasterPageMetaTitleEN" style="display:block;" ></textarea>
+                        <span asp-validation-for="MasterPageMetaTitleEN" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Marka Meta Title Etiketi(Rusça)-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="MasterPageMetaTitleRU"><b>Marka Meta Title (Rusça)</b></label>
+                    <div class="col-sm-9">
+                        <textarea rows="2" cols="50" asp-for="MasterPageMetaTitleRU" style="display:block;" ></textarea>
+                        <span asp-validation-for="MasterPageMetaTitleRU" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Marka Meta Description (Türkçe)-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="MasterPageMetaDescriptionTR"><b>Meta Description (Türkçe)</b></label>
+                    <div class="col-sm-9">
+                        <textarea rows="2" cols="50" asp-for="MasterPageMetaDescriptionTR" style="display:block;" ></textarea>
+                        <span asp-validation-for="MasterPageMetaDescriptionTR" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Marka Meta Description (İngilizce)-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="MasterPageMetaDescriptionEN"><b>Meta Description (İngilizce)</b></label>
+                    <div class="col-sm-9">
+                        <textarea rows="2" cols="50" asp-for="MasterPageMetaDescriptionEN" style="display:block;" ></textarea>
+                        <span asp-validation-for="MasterPageMetaDescriptionEN" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!--Marka Meta Description (Rusça)-->
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" asp-for="MasterPageMetaDescriptionRU"><b>Meta Description (Rusça)</b></label>
+                    <div class="col-sm-9">
+                        <textarea rows="2" cols="50" asp-for="MasterPageMetaDescriptionRU" style="display:block;" ></textarea>
+                        <span asp-validation-for="MasterPageMetaDescriptionRU" class="text-danger"></span>
+                    </div>
+                </div>
+
+                @if (!String.IsNullOrEmpty(Model.PhotoFileName))
+                {
+                    <!--Marka Fotoğraf-->
+                    <div class="form-group row" data-divId="main">
+                        <label class="col-sm-3 col-form-label"><b>Marka Fotoğrafı</b></label>
+                        <div class="col-sm-9">
+                            <img src="~/Images/BrandImages/@Model.PhotoFileName" alt="@Model.PhotoAltTagTR" title="Reklam Fotoğrafı" style="border:1px solid black; width:100px;height:100px;" />
+                            &emsp;
+                            <a href="#" class="delBrandPhoto" data-proId="@Model.Id"><i class="fa fa-trash-o fa-2x" title="Marka Fotoğrafını Sil"></i></a>
+                            &emsp;
+                        </div>
+                    </div>
+                }
+
+                <!--Marka Fotoğrafı Yükleme-->
+                <div class="form-group row" id="mainPhotoGroup">
+                    <label class="col-sm-3 col-form-label" asp-for="BrandPhoto"><b>Marka Fotoğrafı Yükle</b></label>
+                    <div class="col-sm-9 align-content-start">
+                        <div class="custom-file">
+                            <input type="file" asp-for="BrandPhoto" class="custom-file-input form-control" id="brandPhotoUpload" accept=".png, .jpeg, .jpg, .bmp" data-urunId="@Model.Id" />
+                            <label class="custom-file-label" asp-for="BrandPhoto" id="brandPhotoUploadLabel">Marka Fotoğrafını Seçiniz</label>
+                        </div>
+                        <span asp-validation-for="BrandPhoto" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-footer" style="text-align:right">
+        <button type="submit" class="btn btn-danger btn-xl">Kaydet</button>
+    </div>
+</form>
+
+

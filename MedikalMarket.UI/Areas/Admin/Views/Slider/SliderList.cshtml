@@ -1,0 +1,714 @@
+﻿@model IEnumerable<AdminSliderDto>
+@{
+    ViewData["Title"] = "Slider Listesi";
+}
+
+<input type="hidden" value="@ViewBag.success" id="sliderListSuccess" />
+<input type="hidden" value="@ViewBag.warning" id="sliderListWarning" />
+
+<!-- Update Slider Popup Modal -->
+<div class="modal fade in" id="updateSliderPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:800px !important">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Slider Güncelleme Formu</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydetmeden Çık</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create Slider Popup Modal -->
+<div class="modal fade in" id="createSliderPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:800px !important">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Yeni Slider Ekleme Formu</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-secondary" data-dismiss="modal">Kaydetmeden Çık</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Slider İşlemleri</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index" asp-area="Admin">Anasayfa</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Slider</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Slider Listesi</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <a class="btn btn-primary createSlider" href="#">Yeni Slider Ekle</a>
+                </div>
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Sıra No</th>
+                                    <th>Slider Id</th>
+                                    <th>Ana Fotoğraf</th>
+                                    <th>Thumb Fotoğraf</th>
+                                    <th>Dil</th>
+                                    <th>Fotoğraf Alt Tag'i</th>
+                                    <th>Hedef</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @{ int i = 1;}
+                                @foreach (var item in Model)
+                                {
+                                    //string durum = item.IsActive ? "aktif " : "pasif ";
+                                    //string silinme = item.IsDeleted ? ", silinmiş" : " ";
+
+                                    <tr class="gradeX">
+                                        <td class="center">@i</td>
+                                        <td class="center">@item.Id</td>
+                                        @if (item.PhotoFileName != null)
+                                        {
+                                            <td class="center"><a href="/Images/SliderImages/@item.Culture/@item.PhotoFileName" target="_blank"><img src="~/Images/SliderImages/@item.Culture/@item.PhotoFileName" alt="@item.PhotoAltTag" style="width:100px; height:100px;" /></a></td>
+                                        }
+
+                                        else
+                                        {
+                                            <td class="center">Slider fotoğrafı yok.</td>
+                                        }
+                                        @if (item.ThumbFileName != null)
+                                        {
+                                            <td class="center"><a href="/Images/SliderImages/@item.Culture/@item.ThumbFileName" target="_blank"><img src="~/Images/SliderImages/@item.Culture/@item.ThumbFileName" alt="@item.PhotoAltTag" style="width:100px; height:100px;" /></a></td>
+                                        }
+
+                                        else
+                                        {
+                                            <td class="center">Slider thumb fotoğrafı yok.</td>
+                                        }
+
+                                        @{ string dil = item.Culture.Equals("tr") ? "Türkçe" : item.Culture.Equals("en") ? "İngilizce" : "Rusça";}
+                                        <td class="center">@dil</td>
+                                        <td class="center">@item.PhotoAltTag</td>
+                                        <td class="center">@item.SliderTargetType.GetDisplayName() &emsp; (@item.GenericTargetName)</td>
+                                        <td class="center">
+
+                                            <button type="button" class="btn btn-primary btn-xs updateSlider" data-target="/Admin/Slider/UpdateSlider/@item.Id" title="Detayları Gör/Güncelle">&emsp;<i class="fa fa-search"></i>&emsp;</button>
+
+                                            <button type="button" class="btn btn-danger btn-xs hardDeleteSlider" data-target="/Admin/Slider/HardDeleteSlider/@item.Id" data-rowId="@item.Id" title="Sil">&emsp;<i class="fa fa-trash-o"></i>&emsp;</button>
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Sıra No</th>
+                                    <th>Slider Id</th>
+                                    <th>Ana Fotoğraf</th>
+                                    <th>Thumb Fotoğraf</th>
+                                    <th>Dil</th>
+                                    <th>Fotoğraf Alt Tag'i</th>
+                                    <th>Hedef</th>
+                                    <th>İşlemler</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Styles {
+
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+
+    <style>
+        .ui-autocomplete {
+            z-index: 215000000 !important;
+        }
+    </style>
+}
+
+@section Scripts {
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+
+    @*Datatable ve gelen başarı uyarısını verir*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //Datatable
+            $('.dataTables-example').DataTable({
+
+                initComplete: function () {
+                    this.api().columns().every(function (index, element) {
+                        if (index != 0 && index != 1 && index != 2 && index != 8) {
+                            var column = this;
+                            var select = $('<select class="filterS"><option value=""></option></select>')
+                                //.appendTo($(column.header()))
+                                .appendTo($(column.footer()))
+                                .on('change', function () {
+                                    var val = $.fn.dataTable.util.escapeRegex(
+                                        $(this).val()
+                                    );
+
+                                    column
+                                        .search(val ? '^' + val + '$' : '', true, false)
+                                        .draw();
+                                });
+
+                            column.data().unique().sort().each(function (d, j) {
+                                select.append('<option value="' + d + '">' + d + '</option>')
+                            });
+                        }
+
+                    });
+                },
+                "language": {
+
+                    "sDecimal": ",",
+                    "sEmptyTable": "Tabloda herhangi bir veri mevcut değil",
+                    "sInfo": "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
+                    "sInfoEmpty": "Kayıt yok",
+                    "sInfoFiltered": "(_MAX_ kayıt içerisinden bulunan)",
+                    "sInfoPostFix": "",
+                    "sInfoThousands": ".",
+                    "sLengthMenu": "Sayfada _MENU_ kayıt göster",
+                    "sLoadingRecords": "Yükleniyor...",
+                    "sProcessing": "İşleniyor...",
+                    "sSearch": "Ara:",
+                    "sZeroRecords": "Eşleşen kayıt bulunamadı",
+                    "oPaginate": {
+                        "sFirst": "İlk",
+                        "sLast": "Son",
+                        "sNext": "Sonraki",
+                        "sPrevious": "Önceki"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": artan sütun sıralamasını aktifleştir",
+                        "sSortDescending": ": azalan sütun sıralamasını aktifleştir"
+                    },
+                    "select": {
+                        "rows": {
+                            "_": "%d kayıt seçildi",
+                            "0": "",
+                            "1": "1 kayıt seçildi"
+                        }
+                    }
+                },
+                pageLength: 25,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'excel', title: 'ExampleFile' },
+                    { extend: 'pdf', title: 'ExampleFile' },
+
+                    {
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+            });
+
+            //gelen başarı uyarısını verir
+            var successText = $('#sliderListSuccess').val();
+
+            if (successText.length > 0) {
+                toastr.success(successText, "Başarılı");
+                $('#sliderListSuccess').val("")
+            }
+            var failText = $('#sliderListWarning').val();
+
+            if (failText.length > 0) {
+                toastr.error(failText, "Hata");
+                $('#sliderListWarning').val("")
+            }
+        });
+    </script>
+
+    @*Slider Update Popup*@
+    <script>
+        $(".updateSlider").click(function () {
+            //debugger;
+            var url = $(this).data("target");
+            $.get(url, function (data) { })
+                .done(function (data) {
+                    $("#updateSliderPopup .modal-body").html(data);
+                    $.validator.unobtrusive.parse("#updateSliderPopupForm");
+                    $("#updateSliderPopup").modal("show");
+                })
+                .fail(function () {
+                    //modalımızın bodysine Error! yaz
+                    $("#updateSliderPopup .modal-body").text("Hata!!");
+                    //sonra da modalimizi göster
+                    $("#updateSliderPopup").modal("show");
+                })
+        });
+    </script>
+
+    @*Slider Create Popup*@
+    <script>
+        $(".createSlider").click(function () {
+            //debugger;
+            var url = "/Admin/Slider/CreateSlider";
+            $.get(url, function (data) { })
+                .done(function (data) {
+                    $("#createSliderPopup .modal-body").html(data);
+                    $.validator.unobtrusive.parse("#createSliderPopupForm");
+                    $("#createSliderPopup").modal("show");
+                })
+                .fail(function () {
+                    //modalımızın bodysine Error! yaz
+                    $("#createSliderPopup .modal-body").text("Hata!!");
+                    //sonra da modalimizi göster
+                    $("#createSliderPopup").modal("show");
+                })
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            //İlk Loadda UpdateSlider popupu içinde Hedef türüne göre selectlistlerin dolması
+            $("#updateSliderPopup").on('show.bs.modal', function () {
+
+                $('#searchProName').autocomplete({
+                    source: '/Admin/Slider/SearchProductName',
+                    appendTo: '#productSearchBox'
+                });
+
+                var comingVal = $("#SliderTargetType").val();
+                if (comingVal == 0) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', '');
+                    $('#subCateSelectList').css('display', '');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", true);
+                    $('#subCateSelectList').prop("required", true);
+                    $('#productSearchBox').prop("required", false);
+
+                    $("#brandSelectList").val('');
+                    $('#productSearchBox').val('');
+                }
+                if (comingVal == 1) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+
+                    $("#brandSelectList").val('');
+                    $('#midCateSelectList').val('');
+                    $('#subCateSelectList').val('');
+                    $('#productSearchBox').val('');
+                }
+                if (comingVal == 2) {
+                    $('#brandSelectList').css('display', '');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", true);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+
+                    $('#topCateSelectList').val('');
+                    $('#midCateSelectList').val('');
+                    $('#subCateSelectList').val('');
+                    $('#productSearchBox').val('');
+                }
+                if (comingVal == 3) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', '');
+                    $('#productSearchBox').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", true);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+
+                    $("#brandSelectList").val('');
+                    $('#subCateSelectList').val('');
+                    $('#productSearchBox').val('');
+                }
+                if (comingVal == 4) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', '');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", true);
+
+                    $("#brandSelectList").val('');
+                    $('#topCateSelectList').val('');
+                    $('#midCateSelectList').val('');
+                    $('#subCateSelectList').val('');
+                }
+                if (comingVal == "") {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+
+                    $("#brandSelectList").val('');
+                    $('#topCateSelectList').val('');
+                    $('#midCateSelectList').val('');
+                    $('#subCateSelectList').val('');
+                    $('#productSearchBox').val('');
+                }
+            });
+
+            //İlk Loadda CreateSlider popupu içinde Hedef türüne göre selectlistlerin dolması
+            $("#createSliderPopup").on('show.bs.modal', function () {
+
+                $('#searchProName').autocomplete({
+                    source: '/Admin/Slider/SearchProductName',
+                    appendTo: '#productSearchBox'
+                });
+                $("#SliderTargetType").val('');
+            });
+
+            //Hedef Türü Değişince hedef selectlerinin dolması
+            $("body").on("change", "#SliderTargetType", function () {
+                
+                var comingVal = $("#SliderTargetType").val();
+                if (comingVal == 0) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', '');
+                    $('#subCateSelectList').css('display', '');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", true);
+                    $('#subCateSelectList').prop("required", true);
+                    $('#productSearchBox').prop("required", false);
+
+                    $("#brandSelectList").val('');
+                    $('#productSearchBox').val('');
+                }
+                if (comingVal == 1) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+
+                    $("#brandSelectList").val('');
+                    $('#midCateSelectList').val('');
+                    $('#subCateSelectList').val('');
+                    $('#productSearchBox').val('');
+                }
+                if (comingVal == 2) {
+                    $('#brandSelectList').css('display', '');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", true);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+
+                    $('#topCateSelectList').val('');
+                    $('#midCateSelectList').val('');
+                    $('#subCateSelectList').val('');
+                    $('#productSearchBox').val('');
+                }
+                if (comingVal == 3) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', '');
+                    $('#midCateSelectList').css('display', '');
+                    $('#productSearchBox').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", true);
+                    $('#midCateSelectList').prop("required", true);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+
+                    $("#brandSelectList").val('');
+                    $('#subCateSelectList').val('');
+                    $('#productSearchBox').val('');
+                }
+                if (comingVal == 4) {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', '');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", true);
+
+                    $("#brandSelectList").val('');
+                    $('#topCateSelectList').val('');
+                    $('#midCateSelectList').val('');
+                    $('#subCateSelectList').val('');
+                }
+                if (comingVal == "") {
+                    $('#brandSelectList').css('display', 'none');
+                    $('#topCateSelectList').css('display', 'none');
+                    $('#midCateSelectList').css('display', 'none');
+                    $('#subCateSelectList').css('display', 'none');
+                    $('#productSearchBox').css('display', 'none');
+
+                    $("#brandSelectList").prop("required", false);
+                    $('#topCateSelectList').prop("required", false);
+                    $('#midCateSelectList').prop("required", false);
+                    $('#subCateSelectList').prop("required", false);
+                    $('#productSearchBox').prop("required", false);
+
+                    $("#brandSelectList").val('');
+                    $('#topCateSelectList').val('');
+                    $('#midCateSelectList').val('');
+                    $('#subCateSelectList').val('');
+                    $('#productSearchBox').val('');
+                }
+            });
+
+            //Slider main fotoğraf silme
+            $("body").on("click", ".delSliderMainPhoto", function () {
+                debugger;
+                var result = confirm("Slider fotoğrafı silinecek. Onaylıyor musunuz?");
+                if (result) {
+                    var sliderId = $(this).attr('data-proId');
+                    var url = "/Admin/Slider/DeleteSliderMainPhoto?sliderId=" + sliderId;
+                    $.get(url, function (data) { })
+                        .done(function (data) {
+                            if (data.success == true) {
+                                toastr.success(data.message, 'Başarılı');
+                                var divToDel = $('#updateSliderPopupForm').find('[data-divId="main"]')
+                                divToDel.css("display", "none");
+                                $('#PhotoFileName').val('');
+                            }
+
+                            if (data.success == false) {
+                                toastr.error(data.message, 'Hata');
+                            }
+
+                        })
+                        .fail(function () {
+                            toastr.error(data.message, 'Hata');
+                        })
+                }
+            });
+
+            //Slider thumb fotoğraf silme
+            $("body").on("click", ".delSliderThumbPhoto", function () {
+                debugger;
+                var result = confirm("Slider thumb fotoğrafı silinecek. Onaylıyor musunuz?");
+                if (result) {
+                    var sliderId = $(this).attr('data-proId');
+                    var url = "/Admin/Slider/DeleteSliderThumbPhoto?sliderId=" + sliderId;
+                    $.get(url, function (data) { })
+                        .done(function (data) {
+                            if (data.success == true) {
+                                toastr.success(data.message, 'Başarılı');
+                                var divToDel = $('#updateSliderPopupForm').find('[data-divId="thumb"]')
+                                divToDel.css("display", "none");
+                                $('#ThumbFileName').val('');
+                            }
+
+                            if (data.success == false) {
+                                toastr.error(data.message, 'Hata');
+                            }
+
+                        })
+                        .fail(function () {
+                            toastr.error(data.message, 'Hata');
+                        })
+                }
+            });
+
+        });
+    </script>
+
+    @*Üst kategori değiştiğinde orta kategorileri doldurur*@
+    <script>
+        $("body").on("change", "#TargetTopCategoryId", function () {
+            //alert($('#TargetTopCategoryId').val());
+            $.ajax({
+                url: "/Admin/Product/GetMiddleCategoryList",
+                dataType: 'json',
+                type: "get",
+                data: { 'id': $('#TargetTopCategoryId').val() },
+                success: function (data) {
+                    var items = '';
+                    $("#TargetMiddleCategoryId").empty();
+                    $.each(data, function (i, row) {
+                        items += "<option value='" + row.value + "'>" + row.text + "</option>";
+                    });
+                    $("#TargetMiddleCategoryId").html(items);
+                    $("#TargetSubCategoryId").empty();
+                    $("#TargetMiddleCategoryId").trigger("change");
+                }
+            });
+        });
+    </script>
+
+    @*Orta kategori değiştiğinde alt kategorileri doldurur*@
+    <script>
+        $("body").on("change", "#TargetMiddleCategoryId", function () {
+            $.ajax({
+                url: "/Admin/Product/GetSubCategoryList",
+                dataType: 'json',
+                type: "get",
+                data: { 'id': $('#TargetMiddleCategoryId').val() },
+                success: function (data) {
+                    var items = '';
+                    $("#TargetSubCategoryId").empty();
+                    $.each(data, function (i, row) {
+                        items += "<option value='" + row.value + "'>" + row.text + "</option>";
+                    });
+                    $("#TargetSubCategoryId").html(items);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        //Dosya input boxuna seçili dosya adedini yazar
+        $(document).ready(function () {
+
+            $("body").on("change", "#thumbUpload", function () {
+
+                var sdsd = document.getElementById("thumbUpload");
+                var fileNamee = sdsd.files.item(0).name;
+                var fileLabell = document.getElementById('thumbUploadLabel');
+                fileLabell.innerHTML = fileNamee;
+            });
+
+            $("body").on("change", "#sliderUpload", function () {
+                var sdsd = document.getElementById("sliderUpload");
+                if (sdsd.files.length == 1) {
+                    var fileNamee = sdsd.files.item(0).name;
+                    var fileLabell = document.getElementById('sliderUploadLabel');
+                    fileLabell.innerHTML = fileNamee;
+                }
+            });
+        });
+    </script>
+
+    <script>
+        //Slider'ı kalıcı sil butonu tıklama
+        $('.dataTables-example tbody').on('click', 'button.hardDeleteSlider', function () {
+            //debugger;
+
+            var result = confirm("Slider kalıcı olarak database'den silinecek. Onaylıyor musunuz?");
+            if (result) {
+                var url = $(this).data("target");
+                $.get(url, function (data) { })
+                    .done(function (data) {
+                        if (data.success == true) {
+                            toastr.success(data.message, 'Başarılı');
+
+                            $(".dataTables-example tr").each(function () {
+                                var rowSelector = $(this);
+
+                                if (rowSelector.find("button.hardDeleteSlider").attr('data-rowId') == data.proId) {
+                                    rowSelector.remove();
+                                }
+                            });
+                        }
+
+                        if (data.success == false) {
+                            toastr.error(data.message, 'Hata');
+                        }
+
+                    })
+                    .fail(function () {
+                        toastr.error(data.message, 'Hata');
+                    })
+            }
+
+        });
+    </script>
+}

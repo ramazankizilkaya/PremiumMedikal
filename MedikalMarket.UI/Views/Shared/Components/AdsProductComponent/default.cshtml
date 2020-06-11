@@ -1,0 +1,50 @@
+﻿<!--Ads Product Componen-->
+
+@model IEnumerable<AdProductDto>
+
+@{
+    Layout = "~/Views/Shared/_ComponentLayout.cshtml";
+}
+
+
+@if (Model != null)
+{
+    @if (ViewBag.culture.Equals("tr"))
+    {
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-xs-6">
+                    <a href="@item.AdproHref" class="banner"><img src="~/Images/AdProductImages/tr/@item.PhotoFileName" width="590" height="350" alt="@item.PhotoAltTag"></a>
+                </div>
+            }
+        </div>
+    }
+
+    else if (ViewBag.culture.Equals("ru"))
+    {
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-6">
+                    <a href="@item.AdproHref" class="banner"><img src="~/Images/AdProductImages/ru/@item.PhotoFileName" width="590" height="350" alt="@item.PhotoAltTag"></a>
+                </div>
+            }
+        </div>
+    }
+
+    else
+    {
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-6">
+                    <a href="@item.AdproHref" class="banner"><img src="~/Images/AdProductImages/en/@item.PhotoFileName" width="590" height="350" alt="@item.PhotoAltTag"></a>
+                </div>
+            }
+        </div>
+    }
+
+}
+

@@ -1,0 +1,61 @@
+﻿<!--Brands Slider Component-->
+@model IEnumerable<BrandsSliderDto>
+
+@{
+    Layout = "~/Views/Shared/_ComponentLayout.cshtml";
+}
+
+@if (Model.Count()>0)
+{
+
+    @if (ViewBag.culture.Equals("tr"))
+    {
+        <div class="container">
+            <div class="brands-carousel">
+
+                @foreach (var brand in Model)
+                {
+                    <div class="item">
+                        <a href="/tr/markalar/@brand.BrandNameUrl/sayfa/1">
+                            <img src="~/Images/BrandImages/@brand.PhotoFileName" width="100" height="100" alt="@brand.PhotoAltTag">
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else if (ViewBag.culture.Equals("ru"))
+    {
+        <div class="container">
+            <div class="brands-carousel">
+
+                @foreach (var brand in Model)
+                {
+                    <div class="item">
+                        <a href="/ru/brands/@brand.BrandNameUrl/page/1">
+                            <img src="~/Images/BrandImages/@brand.PhotoFileName" width="100" height="100" alt="@brand.PhotoAltTag">
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    else
+    {
+        <div class="container">
+            <div class="brands-carousel">
+
+                @foreach (var brand in Model)
+                {
+                    <div class="item">
+                        <a href="/en/brands/@brand.BrandNameUrl/page/1">
+                            <img src="~/Images/BrandImages/@brand.PhotoFileName" width="100" height="100" alt="@brand.PhotoAltTag">
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+}

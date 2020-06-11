@@ -1,0 +1,462 @@
+﻿@model IEnumerable<TopCategory>
+
+@{ ViewBag.Title = "Kategori İşlemleri"; }
+
+
+<input type="hidden" value="@ViewBag.success" id="proCateSuccess" />
+<input type="hidden" value="@ViewBag.warning" id="proCateWarning" />
+
+<!-- Update Category Popup Modal -->
+<div class="modal fade in" id="updateCategoryPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle">
+    <div class="modal-dialog">
+        <div class="modal-content" style="width:800px !important">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Kategori Ekleme/Güncelleme Formu</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Kategori İşlemleri</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a asp-controller="Home" asp-action="Index" asp-area="Admin">Anasayfa</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Kategoriler</a>
+            </li>
+            <li class="active breadcrumb-item">
+                <strong>Kategori İşlemleri</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="ibox ">
+                <div class="ibox-content">
+                    <p>Ana kategori eklemek için kök dizine tıklayıp yeni ekle butonuna basınız. Orta kategori eklemek için ana kategori seçip yeni ekle butonuna basınız. Alt kategori eklemek için orta kategori seçip yeni ekle butonuna basınız.</p>
+                    <p>Kategori silmek için silinecek kategoriyi seçip sil butonuna tıklayınız. Kategori silinmesi durumunda bu kategorideki tüm ürünlerin de silineceğini unutmayınız.</p>
+                    <p>Kategori bilgilerini güncellemek için  kategori seçip güncelle butonuna tıklayınız. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="ibox ">
+                <div class="ibox-content">
+                    <p id="sucAlert" style="color:black;"> </p>
+                    <p id="warnAlert" style="color:red;"> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-6 col-xs-12">
+            <div class="ibox ">
+                <div class="ibox-title" style="padding-right:10px;">
+                    <button class="product-expand btn btn-primary" onclick="toggle()">Aç Kapa</button>
+                    <div style="float:right">
+                        <button class="product-expand btn btn-primary" id="deleteCate" data-cate="" data-catoo="">Sil</button>
+                        <button class="product-expand btn btn-secondary" id="editCate" data-cate="" data-catoo="">Güncelle</button>
+                        <button class="product-expand btn btn-success" id="newCate" data-cate="" data-catoo="">Yeni Ekle</button>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div id="jstree1">
+                        <ul>
+                            <li class="jstree-open" data-cate="root" data-catoo="0">
+                                Kategori Kök Dizini
+
+                                @foreach (var topCate in Model.OrderBy(x => x.NameTR))
+                                {
+                    <ul>
+                        <li data-cate="ana" data-catoo="@topCate.Id">
+                            @topCate.NameTR
+
+                            @if (topCate.MiddleCategories.Any(x => !x.IsDeleted))
+                            {
+            <ul>
+                @foreach (var midCate in topCate.MiddleCategories.Where(x => !x.IsDeleted).OrderBy(x => x.NameTR))
+                {
+<li data-jstree='{"type":"css"}' data-cate="orta" data-catoo="@midCate.Id">
+
+    @midCate.NameTR
+
+    @if (midCate.SubCategories.Any(x => !x.IsDeleted))
+    {
+
+<ul>
+
+    @foreach (var subCate in midCate.SubCategories.Where(x => !x.IsDeleted).OrderBy(x => x.NameTR))
+    {
+<li data-cate="alt" data-catoo="@subCate.Id">@subCate.NameTR</li>}
+</ul>}
+
+
+</li>}
+            </ul>}
+                        </li>
+                    </ul>}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+@section Styles {
+    <environment names="Development">
+        <link rel="stylesheet" href="~/admin/lib/jstree/dist/themes/default/style.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/admin/lib/jstree/dist/themes/default/style.min.css" />
+    </environment>
+}
+
+@section Scripts {
+    <environment names="Development">
+        <script src="~/admin/lib/jstree/dist/jstree.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/admin/lib/jstree/dist/jstree.min.js"></script>
+    </environment>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#jstree1').jstree({
+                'core': {
+                    'check_callback': true
+                },
+                'plugins': ['types', 'dnd'],
+                'types': {
+                    'default': {
+                        'icon': 'fa fa-folder'
+                    },
+                    'html': {
+                        'icon': 'fa fa-file-code-o'
+                    },
+                    'svg': {
+                        'icon': 'fa fa-file-picture-o'
+                    },
+                    'css': {
+                        'icon': 'fa fa-file-code-o'
+                    },
+                    'img': {
+                        'icon': 'fa fa-file-image-o'
+                    },
+                    'js': {
+                        'icon': 'fa fa-file-text-o'
+                    }
+
+                }
+            });
+
+            $('#using_json').jstree({
+                'core': {
+                    'data': [
+                        'Empty Folder',
+                        {
+                            'text': 'Resources',
+                            'state': {
+                                'opened': true
+                            },
+                            'children': [
+                                {
+                                    'text': 'css',
+                                    'children': [
+                                        {
+                                            'text': 'animate.css', 'icon': 'none'
+                                        },
+                                        {
+                                            'text': 'bootstrap.css', 'icon': 'none'
+                                        },
+                                        {
+                                            'text': 'main.css', 'icon': 'none'
+                                        },
+                                        {
+                                            'text': 'style.css', 'icon': 'none'
+                                        }
+                                    ],
+                                    'state': {
+                                        'opened': true
+                                    }
+                                },
+                                {
+                                    'text': 'js',
+                                    'children': [
+                                        {
+                                            'text': 'bootstrap.js', 'icon': 'none'
+                                        },
+                                        {
+                                            'text': 'inspinia.min.js', 'icon': 'none'
+                                        },
+                                        {
+                                            'text': 'jquery.min.js', 'icon': 'none'
+                                        },
+                                        {
+                                            'text': 'jsTree.min.js', 'icon': 'none'
+                                        },
+                                        {
+                                            'text': 'custom.min.js', 'icon': 'none'
+                                        }
+                                    ],
+                                    'state': {
+                                        'opened': true
+                                    }
+                                },
+                                {
+                                    'text': 'html',
+                                    'children': [
+                                        {
+                                            'text': 'layout.html', 'icon': 'none'
+                                        },
+                                        {
+                                            'text': 'navigation.html', 'icon': 'none'
+                                        },
+                                        {
+                                            'text': 'navbar.html', 'icon': 'none'
+                                        },
+                                        {
+                                            'text': 'footer.html', 'icon': 'none'
+                                        },
+                                        {
+                                            'text': 'sidebar.html', 'icon': 'none'
+                                        }
+                                    ],
+                                    'state': {
+                                        'opened': true
+                                    }
+                                }
+                            ]
+                        },
+                        'Fonts',
+                        'Images',
+                        'Scripts',
+                        'Templates',
+                    ]
+                }
+            });
+        });
+    </script>
+
+    @*Komple aç kapa butonu*@
+    <script>
+        var open = false;
+        function toggle() {
+            if (open) {
+                $("#jstree1").jstree('close_all');
+                open = false;
+            }
+            else {
+                $("#jstree1").jstree('open_all');
+                open = true;
+            }
+        }
+    </script>
+
+    @*Tıklanan kategori aç kapa butonu*@
+    <script>
+        $(document).ready(function () {
+
+            $('#jstree1').on('select_node.jstree', function (e, data) {
+                data.instance.toggle_node(data.node);
+                $('#deleteCate').attr('data-cate', data.node.data.cate);
+                $('#deleteCate').attr('data-catoo', data.node.data.catoo);
+
+                $('#editCate').attr('data-cate', data.node.data.cate);
+                $('#editCate').attr('data-catoo', data.node.data.catoo);
+
+                $('#newCate').attr('data-cate', data.node.data.cate);
+                $('#newCate').attr('data-catoo', data.node.data.catoo);
+            });
+        });
+    </script>
+
+    @*Sil butonu*@
+    <script>
+        $(document).ready(function () {
+            $('#deleteCate').click(function () {
+                //$(this).unbind("click");
+                debugger;
+                var catTip = $("#deleteCate").attr("data-cate");
+                var catid = $("#deleteCate").attr("data-catoo");
+                 
+                if (catTip == "" || catTip == null || catTip==undefined) {
+                    toastr.error('Lütfen kategori seçiniz');
+                    $('#warnAlert').html('Lütfen kategori seçiniz');
+                    return false;
+                }
+                $("#deleteCate").attr('data-cate', '');
+                $("#deleteCate").attr('data-catoo', '');
+                $.get("/Admin/Category/GetCategoryName?type=" + catTip + '&id=' + catid, function (data) { })
+                    .done(function (data) {
+                        if (data.success == false) {
+                            toastr.error(data.message, "Uyarı");
+                            $('#warnAlert').html(data.message);
+                        }
+                        if (data.success == true) {
+                            var result = confirm(data.message);
+                            if (result) {
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/Admin/Category/DeleteCategory',
+                                    data: { categoryType: data.type, categoryId: data.itemId },
+                                    success: function (response) {
+                                        if (response.success) {
+                                            toastr.success("Silme işlemi başarılı", "Başarılı");
+                                            $('#sucAlert').html('Silme işlemi başarılı');
+                                            var delayInMilliseconds = 1000; //1 second
+                                            setTimeout(function () {
+                                                window.location.href = "/Admin/Category/CategoryList";
+                                            }, delayInMilliseconds);
+                                        }
+                                        else {
+                                            toastr.error(response.message, "Hata");
+                                            $('#warnAlert').html(response.message);
+
+                                        }
+
+                                    },
+                                    fail: function () {
+                                        toastr.error("Hata oluştu", "Hata");
+                                        $('#warnAlert').html("Hata oluştu");
+                                    }
+                                });
+                            }
+                        }
+
+                    })
+                    .fail(function () {
+
+                    })
+            });
+        });
+    </script>
+
+    @*Category Create Popup*@
+    <script>
+        $(document).ready(function () {
+            $("#newCate").click(function () {
+                //$(this).unbind("click");
+                debugger;
+                var catTip = $("#newCate").attr("data-cate");
+                var catid = $("#newCate").attr("data-catoo");
+                $("#newCate").attr('data-cate', '');
+                $("#newCate").attr('data-catoo', '');
+
+                if (catTip == "" || catTip == null || catTip == undefined) {
+                    toastr.error('Lütfen kategori seçiniz');
+                    $('#warnAlert').html('Lütfen kategori seçiniz');
+                    return false;
+                }
+
+                if (catTip == "alt") {
+                    toastr.error("Alt kategorinin altına kategori eklenemez. Alt kategori eklemek için lütfen orta kategori seçiniz.");
+                    $('#warnAlert').html("Alt kategorinin altına kategori eklenemez. Alt kategori eklemek için lütfen orta kategori seçiniz.");
+                    return false;
+                }
+                var url = "/Admin/Category/CreateCategory?id=" + catid + "&type=" + catTip;
+
+                $.get(url, function (data) { })
+                    .done(function (data) {
+                        $("#updateCategoryPopup .modal-body").html(data);
+                        $.validator.unobtrusive.parse("#createCategoryPopupForm");
+                        $("#updateCategoryPopup").modal("show");
+                    })
+                    .fail(function () {
+                        //modalımızın bodysine Error! yaz
+                        $("#updateCategoryPopup .modal-body").text("Hata!!");
+                        //sonra da modalimizi göster
+                        $("#updateCategoryPopup").modal("show");
+                    })
+            });
+        });
+    </script>
+
+    @*Category Update Popup*@
+    <script>
+        $(document).ready(function () {
+            $("#editCate").click(function () {
+                //$(this).unbind("click");
+                debugger;
+                var catTip = $("#editCate").attr("data-cate");
+                var catid = $("#editCate").attr("data-catoo");
+                $("#editCate").attr('data-cate', '');
+                $("#editCate").attr('data-catoo', '');
+
+                if (catTip == "" || catTip == null || catTip == undefined) {
+                    toastr.error('Lütfen kategori seçiniz');
+                    $('#warnAlert').html('Lütfen kategori seçiniz');
+                    return false;
+                }
+
+                if (catTip == "root") {
+                    toastr.error("Kök klasör güncellenemez");
+                    $('#warnAlert').html("Kök klasör güncellenemez");
+                    return false;
+                }
+                var url = "/Admin/Category/UpdateCategory?id=" + catid + "&type=" + catTip;
+
+                $.get(url, function (data) { })
+                    .done(function (data) {
+                        $("#updateCategoryPopup .modal-body").html(data);
+                        $.validator.unobtrusive.parse("#updateCategoryPopupForm");
+                        $("#updateCategoryPopup").modal("show");
+                    })
+                    .fail(function () {
+                        //modalımızın bodysine Error! yaz
+                        $("#updateCategoryPopup .modal-body").text("Hata!!");
+                        //sonra da modalimizi göster
+                        $("#updateCategoryPopup").modal("show");
+                    })
+            });
+        });
+    </script>
+
+    @*gelen başarı uyarısını verir*@
+    <script>
+        var successText = $('#proCateSuccess').val();
+        if (successText.length > 0) {
+            toastr.success(successText, "Başarılı");
+            $('#proCateSuccess').val("")
+            $('#sucAlert').html(successText);
+        }
+        var failText = $('#proCateWarning').val();
+
+        if (failText.length > 0) {
+            toastr.error(failText, "Hata");
+            $('#proCateWarning').val("")
+            $('#warnAlert').html(failText);
+        }
+    </script>
+}
+

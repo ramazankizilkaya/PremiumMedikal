@@ -1,0 +1,75 @@
+﻿@using Microsoft.AspNetCore.Http
+@{
+    var customer = Context.Session.GetString("adminInfo");
+}
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            @if (customer != null)
+            {
+                <li class="nav-header">
+                    <div class="dropdown profile-element">
+                        <img alt="image" class="rounded-circle" src="~/admin/images/profile_small.jpg" />
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="block m-t-xs font-bold">David Williams</span>
+                            <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                        </a>
+                        @*<ul class="dropdown-menu animated fadeInRight m-t-xs" style="position: absolute; top: 91px; left: 0px; will-change: top, left;">
+                                <li><a class="dropdown-item" href="@Url.Action("Profile", "AppViews")">Profile</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Contacts", "AppViews")">Contacts</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Inbox", "Mailbox")">Mailbox</a></li>
+                                <li class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="@Url.Action("Login", "Pages")">Logout</a></li>
+                            </ul>*@
+                    </div>
+                    <div class="logo-element">
+                        IN+
+                    </div>
+                </li>
+                <li>
+                    <a href="/Admin/Home/Index"><i class="fa fa-home"></i><span  id="homePak" class="nav-label" data-i18n="nav.dashboard">Anasayfa</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Ürün İşlemleri</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a asp-area="Admin" asp-controller="Product" asp-action="CreateProduct">Yeni Ürün Ekle</a></li>
+                        <li><a asp-area="Admin" asp-controller="Product" asp-action="ProductList">Satıştaki Ürünler</a></li>
+                        <li><a asp-area="Admin" asp-controller="Product" asp-action="DeletedProductList">Silinmiş Ürünler</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Kategori İşlemleri</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a asp-area="Admin" asp-controller="Category" asp-action="CategoryList">Kategoriler</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Slider İşlemleri</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a asp-area="Admin" asp-controller="Slider" asp-action="SliderList">Slider Listesi</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Mini Slider İşlemleri</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a asp-area="Admin" asp-controller="MiniSlider" asp-action="MiniSliderList">Mini Slider Listesi</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Reklam Ürün İşlemleri</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a asp-area="Admin" asp-controller="AdProduct" asp-action="AdProductList">Reklam Ürün Listesi</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label" data-i18n="nav.dashboard">Marka İşlemleri</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a asp-area="Admin" asp-controller="Brand" asp-action="BrandList">Marka Listesi</a></li>
+                    </ul>
+                </li>
+            }
+
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,250 @@
+﻿@inject IViewLocalizer localizer
+@model ContactUsDto
+
+@section Head {
+    <title>@localizer["premiummedikal.com iletişim bilgileri ve mesaj gönderme formu"]</title>
+    <meta name="description" content="@localizer["premiummedikal.com, her türlü sorularınız için firmamız ile irtibata geçebilirsiniz."]">
+}
+
+@*<cache expires-after="@TimeSpan.FromMinutes(20)" vary-by-culture="true" enabled="true">*@
+
+    <input type="hidden" id="warnnameSurnameC" value="@localizer["Ad soyad minimum 2, maksimum 100 karakter içermelidir."]" />
+    <input type="hidden" id="warnnameSurnameEmptyC" value="@localizer["Lütfen adınızı ve soyadınızı giriniz."]" />
+    <input type="hidden" id="warnemailValC" value="@localizer["E-posta adresi minimum 2, maksimum 100 karakter içermelidir."]" />
+    <input type="hidden" id="warnwrongEmailC" value="@localizer["Lütfen geçerli bir eposta adresi giriniz."]" />
+    <input type="hidden" id="warnEmptyEmailC" value="@localizer["Lütfen E-posta adresinizi giriniz."]" />
+    <input type="hidden" id="warnSubjectC" value="@localizer["Konu alanı minimum 2, maksimum 100 karakter içermelidir."]" />
+    <input type="hidden" id="warnSubjectEmptyC" value="@localizer["Lütfen konuyu giriniz."]" />
+    <input type="hidden" id="warnMessageC" value="@localizer["Mesaj alanı minimum 20, maksimum 4000 karakter içermelidir."]" />
+    <input type="hidden" id="warnMessageEmptyC" value="@localizer["Lütfen mesajınızı giriniz."]" />
+    <input type="hidden" id="warnCodeEmptyC" value="@localizer["Lütfen güvenlik kodunu giriniz"]" />
+    <input type="hidden" id="warnCodeErrorC" value="@localizer["Güvenlik kodu hatalı"]" />
+
+
+
+    <div class="contact-detail">
+        <h1><span>@localizer["Adres Bilgileri"]</span></h1>
+        <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-8">
+
+                <div class="mapouter">
+                    <div class="gmap_canvas"><iframe width="100%" height="600" id="gmap_canvas" src="https://maps.google.com/maps?q=Ala%C3%A7am%20Sk.%20No%3A1&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.divi-discounts.com"></a></div>
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-4">
+                <div class="contact-info" itemscope itemtype="http://schema.org/Organization">
+                    <h4><span itemprop="name">@localizer["Premium Medikal - Online Medikal Market - Premium Sağlık Ürünleri - Medikal Ankara"]</span></h4>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-map-marker" aria-hidden="true"></i><span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">@localizer["Merkez:"] Güvenevler Mah. Cinnah Cad. Alaçam Sok. No:1/22 Çankaya/Ankara </span></li>
+                        <li><a href="mailto:erkentmedikal@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i><span itemprop="email">premiummedikal@gmail.com</span></a></li>
+                        <li><a href="tel:0(312) 433 30 55"><i class="fa fa-volume-control-phone" aria-hidden="true"></i><span itemprop="telephone">+90(312) 312 47 47</a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=905321768335&amp;text=Merhaba"><i class="fa fa-whatsapp" aria-hidden="true"></i><span itemprop="telephone">+90(532) 176 83 35</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-detail">
+            <h1><span>@localizer["İletişim Formu"]</span></h1>
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-sm-offset-4 col-lg-offset-4 col-md-offset-4">
+                    <form method="post" id="ContactForm">
+                        <div class="form-group">
+                            <label asp-for="NameSurname" class="col-form-label">@localizer["Adınız Soyadınız"]</label>
+                            <input asp-for="NameSurname" data-rule-required="true" type="text" class="form-control" id="AdSoyad" placeholder="@localizer["Adınız Soyadınız"]" data-hata-mesaji="@localizer["Lütfen adınızı ve soyadınızı arasında boşluk bırakarak giriniz"]">
+                            <span asp-validation-for="NameSurname" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="EmailAddress" class="col-form-label">@localizer["E-posta Adresiniz"]</label>
+                            <input asp-for="EmailAddress" data-rule-required="true" data-rule-email="true" type="email" class="form-control" id="Mail" placeholder="@localizer["E-posta Adresiniz"]" data-hata-mesaji="@localizer["Lütfen geçerli bir e-posta adresi belirtiniz"]">
+                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Subject" class="col-form-label">@localizer["Konu"]</label>
+                            <input asp-for="Subject" type="text" class="form-control" id="Konu" placeholder="@localizer["Konu"]" data-hata-mesaji="@localizer["Lütfen konu belirtiniz"]">
+                            <span asp-validation-for="Subject" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Message" class="col-form-label">@localizer["Mesajınız"]</label>
+                            <textarea asp-for="Message" class="form-control" id="Mesaj" data-rule-required="true" data-hata-mesaji="@localizer["Lütfen mesajınızı en az 20 karakter yazınız"]" placeholder="@localizer["Mesajınız"]" rows="15"></textarea>
+                            <span asp-validation-for="Message" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SecurityCode" class="col-form-label">@localizer["Güvenlik Kodu"]</label>
+                            <div class="security-code">
+
+                                <img src="~/images/SecurityImages/MjE0Njc=.png" width="65" height="28" alt="Güvenlik Kodu" class="securitycode" id="1" data-Nam="MjE0Njc=">
+                                <img src="~/images/SecurityImages/MjI3Nzg=.png" width="65" height="28" alt="Güvenlik Kodu" class="securitycode" id="2" data-Nam="MjI3Nzg=" style="display:none;">
+                                <img src="~/images/SecurityImages/MzkxOTA=.png" width="65" height="28" alt="Güvenlik Kodu" class="securitycode" id="3" data-Nam="MzkxOTA=" style="display:none;">
+                                <img src="~/images/SecurityImages/NDkwNjQ=.png" width="65" height="28" alt="Güvenlik Kodu" class="securitycode" id="4" data-Nam="NDkwNjQ=" style="display:none;">
+                                <img src="~/images/SecurityImages/NTM1NTQ=.png" width="65" height="28" alt="Güvenlik Kodu" class="securitycode" id="5" data-Nam="NTM1NTQ=" style="display:none;">
+                                <img src="~/images/SecurityImages/ODA2NDA=.png" width="65" height="28" alt="Güvenlik Kodu" class="securitycode" id="6" data-Nam="ODA2NDA=" style="display:none;">
+                                <img src="~/images/SecurityImages/OTgyMTQ=.png" width="65" height="28" alt="Güvenlik Kodu" class="securitycode" id="7" data-Nam="OTgyMTQ=" style="display:none;">
+                                <img src="~/images/SecurityImages/OTM1NjA=.png" width="65" height="28" alt="Güvenlik Kodu" class="securitycode" id="8" data-Nam="OTM1NjA=" style="display:none;">
+
+                                <a class="btn btn-sm refresh" href="javascript:void(0);" id="btnChangeImg"><i class="fa fa-refresh"></i></a>
+                                <input class="form-control" type="number" asp-for="SecurityCode" placeholder="@localizer["Güvenlik Kodu"]" data-rule-required="true" data-rule-guvenlikkodu="true" data-hata-mesaji="@localizer["Lütfen güvenlik kodunu giriniz"]" id="guvenlikKodu" value="">
+
+                                <input type="hidden" id="myCodeKey" data-Nam="MjE0Njc=" />
+                                <span asp-validation-for="SecurityCode" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <button type="submit" id="contactSubmit">@localizer["Gönder"]</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@*</cache>*@
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+        /Contact Ajax
+        $(document).ready(function () {
+            $('#contactSubmit').click(function (e) {
+                debugger;
+                e.preventDefault();
+
+                var form = $('#ContactForm');
+                $.validator.unobtrusive.parse(form);
+                form.validate();
+
+                var nameSurname = document.getElementById('AdSoyad').value;
+                var emailVal = document.getElementById('Mail').value;
+                var subject = document.getElementById('Konu').value;
+                var message = document.getElementById('Mesaj').value;
+                var kod = document.getElementById('guvenlikKodu').value;
+
+                var warnnameSurnameEmpty = document.getElementById('warnnameSurnameEmptyC').value;
+                var warnWrongEmail = document.getElementById('warnwrongEmailC').value;
+                var warnEmptyEmail = document.getElementById('warnEmptyEmailC').value;
+                var warnnameSurname = document.getElementById('warnnameSurnameC').value;
+                var warnemailVal = document.getElementById('warnemailValC').value;
+                var warnSubjectVal = document.getElementById('warnSubjectC').value;
+                var warnEmptySubject = document.getElementById('warnSubjectEmptyC').value;
+                var warnMessageVal = document.getElementById('warnMessageC').value;
+                var warnEmptyMessage = document.getElementById('warnMessageEmptyC').value;
+                var warnEmptySecurityCode = document.getElementById('warnCodeEmptyC').value;
+
+
+                var pattern = /^(([^<>()\[\]\.,;:\s@@\"]+(\.[^<>()\[\]\.,;:\s@@\"]+)*)|(\".+\"))@@(([^<>()[\]\.,;:\s@@\"]+\.)+[^<>()[\]\.,;:\s@@\"]{2,})$/i;
+                var emailValidation = pattern.test(emailVal);
+
+                if (nameSurname.length == 0) {
+                    toastr.error(warnnameSurnameEmpty);
+                    $('#AdSoyad').focus();
+                    return false;
+                }
+                if (nameSurname.length < 2 || nameSurname.length > 100) {
+                    toastr.error(warnnameSurname);
+                    $('#AdSoyad').focus();
+                    return false;
+                }
+                if (emailVal.length == 0) {
+                    toastr.error(warnEmptyEmail);
+                    $('#Mail').focus();
+                    return false;
+                }
+                if (!emailValidation) {
+                    toastr.error(warnWrongEmail);
+                    $('#Mail').focus();
+                    return false;
+                }
+                if (emailVal.length < 2 || emailVal.length > 100) {
+                    toastr.error(warnemailVal);
+                    $('#Mail').focus();
+                    return false;
+                }
+                if (subject.length == 0) {
+                    toastr.error(warnEmptySubject);
+                    $('#Konu').focus();
+                    return false;
+                }
+                if (subject.length < 2 || subject.length > 100) {
+                    toastr.error(warnSubjectVal);
+                    $('#Konu').focus();
+                    return false;
+                }
+                if (message.length == 0) {
+                    toastr.error(warnEmptyMessage);
+                    $('#Mesaj').focus();
+                    return false;
+                }
+                if (message.length < 20 || message.length > 4000) {
+                    toastr.error(warnMessageVal);
+                    $('#Mesaj').focus();
+                    return false;
+                }
+                if (guvenlikKodu.length == 0) {
+                    toastr.error(warnEmptySecurityCode);
+                    $('#guvenlikKodu').focus();
+                    return false;
+                }
+
+                if (form.valid()) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "/Home/DecodeText",
+                        data: { imageFileName: $('#myCodeKey').attr('data-Nam') },
+                        success: function (response) {
+                            if (response.success) {
+                                if (response.result != kod) {
+                                    toastr.error($('#warnCodeErrorC').val());
+                                    kod.value = "";
+                                }
+                                else {
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: "/Home/SendContactUsMessage",
+                                        data: { nameSurname: nameSurname, email: emailVal, subject: subject, message: message },
+                                        success: function (response) {
+                                            if (response.success) {
+                                                window.location.href = "/";
+                                            }
+                                            else {
+                                                toastr.warning(response.responseText, response.title);
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+    </script>
+
+    <script>
+        //captcha değişimi
+        $(document).ready(function () {
+
+            $("#btnChangeImg").click(function () {
+                //debugger;
+                var number = getRandomInt(0, 7);
+
+                $('.security-code img').css("display", "none");
+
+                var we = $('.security-code img').toArray()[number];
+
+                we.style.display = "";
+
+                var comingName = we.getAttribute('data-Nam');
+
+                $('#myCodeKey').attr('data-Nam', comingName);
+
+            });
+        });
+
+    </script>
+}
+
+
+

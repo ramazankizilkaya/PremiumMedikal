@@ -1,0 +1,166 @@
+﻿@model AdminSliderDto
+
+
+    <form class="form-horizontal bv-form" asp-area="Admin" asp-controller="Slider" asp-action="UpdateSlider" method="POST" enctype="multipart/form-data" id="updateSliderPopupForm">
+
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="PhotoFileName" />
+        <input type="hidden" asp-for="ThumbFileName" />
+        <input type="hidden" asp-for="TargetProductId" />
+        
+        @*<input type="hidden" id="ifTargetIsProduct" value="@Model.TargetProductId" />*@
+
+        <div class="box box-success">
+            <div class="box-body">
+                <div class="tabs-container">
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <!--Fotoğraf Alt Tag'i-->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="PhotoAltTag"><b>Fotoğraf Alt Tag'i</b></label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" asp-for="PhotoAltTag" disabled>
+                            <span asp-validation-for="PhotoAltTag" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--Slider hedef türü Türü-->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="SliderTargetType"><b>Slider Hedef  Türü</b></label>
+                        <div class="col-sm-9">
+                            <select class="form-control" asp-for="SliderTargetType" asp-items="Html.GetEnumSelectList<SliderTargetType>().OrderBy(x=>x.Text)">
+                                <option value="" selected="selected" style="color:red;">Lütfen Slider hedef türü seçiniz</option>
+                            </select>
+                            <span asp-validation-for="SliderTargetType" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--TopKategori Selectlist-->
+                    <div class="form-group row" id="topCateSelectList" style="display:none; background-color:wheat;">
+                        <label class="col-sm-3 col-form-label" asp-for="TargetTopCategoryId"><b>Hedef Ana Kategori</b></label>
+                        <div class="col-sm-9">
+                            <select class="form-control topCat" asp-for="TargetTopCategoryId" asp-items="@(new SelectList(Model.TopCategories, "Id", "NameTR"))">
+                                <option value="" style="color:red;" selected="selected">Lütfen Ana Kategori Seçiniz</option>
+                            </select>
+                            <span asp-validation-for="TargetTopCategoryId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--MiddleKategori Selectlist-->
+                    <div class="form-group row" id="midCateSelectList" style="display:none;background-color:wheat;">
+                        <label class="col-sm-3 col-form-label" asp-for="TargetMiddleCategoryId"><b>Hedef Orta Kategori</b></label>
+                        <div class="col-sm-9">
+                            <select class="form-control midCat" asp-for="TargetMiddleCategoryId" asp-items="@(new SelectList(Model.MiddleCategories, "Id", "NameTR"))">
+                                <option value="" style="color:red;" selected="selected">Lütfen Orta Kategori Seçiniz</option>
+                            </select>
+                            <span asp-validation-for="TargetMiddleCategoryId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--SubKategori Selectlist-->
+                    <div class="form-group row" id="subCateSelectList" style="display:none;background-color:wheat;">
+                        <label class="col-sm-3 col-form-label" asp-for="TargetSubCategoryId"><b>Hedef Alt Kategori</b></label>
+                        <div class="col-sm-9">
+                            <select class="form-control" asp-for="TargetSubCategoryId" asp-items="@(new SelectList(Model.SubCategories, "Id", "NameTR"))">
+                                <option value="" style="color:red;" selected="selected">Lütfen Alt Kategori Seçiniz</option>
+                            </select>
+                            <span asp-validation-for="TargetSubCategoryId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--Marka Selectlist-->
+                    <div class="form-group row" id="brandSelectList" style="display:none;background-color: wheat;">
+                        <label class="col-sm-3 col-form-label" asp-for="TargetBrandId"><b>Hedef Marka</b></label>
+                        <div class="col-sm-9">
+                            <select class="form-control" asp-for="TargetBrandId" asp-items="@(new SelectList(Model.Brands, "Id", "BrandName"))">
+                                <option value="" style="color:red;" selected="selected">Lütfen Marka Seçiniz</option>
+                            </select>
+                            <span asp-validation-for="TargetBrandId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--Hedef Ürün Adı-->
+                    <div class="form-group row" style="display:none;" id="productSearchBox">
+                        <label class="col-sm-3 col-form-label" asp-for="TargetProductName" style="background-color: wheat;"><b>Hedef Ürün Adı</b></label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" asp-for="TargetProductName" id="searchProName">
+                            <span asp-validation-for="TargetProductName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--Slider Kültür-->
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label" asp-for="Culture"><b>Slider Kültürü</b></label>
+                        <div class="col-sm-9">
+                            <select class="form-control" asp-for="Culture">
+                                <option value="" selected="selected" style="color:red;">Lütfen Slider kültürünü seçiniz</option>
+                                <option value="tr">Türkçe</option>
+                                <option value="en">İngilizce</option>
+                                <option value="ru">Rusça</option>
+                            </select>
+                            <span asp-validation-for="Culture" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @if (!String.IsNullOrEmpty(Model.PhotoFileName))
+                    {
+                        <!--Slider Ana Fotoğraf-->
+                        <div class="form-group row" data-divId="main">
+                            <label class="col-sm-3 col-form-label" asp-for="PhotoFileName"><b>Slider Fotoğrafı</b></label>
+                            <div class="col-sm-9">
+                                <img src="~/Images/SliderImages/@Model.Culture/@Model.PhotoFileName" alt="@Model.PhotoAltTag" title="Slider Fotoğrafı" style="border:1px solid black; width:500px;height:200px;" />
+                                &emsp;
+                                <a href="#" class="delSliderMainPhoto" data-proId="@Model.Id"><i class="fa fa-trash-o fa-2x" title="Slider Fotoğrafını Sil"></i></a>
+                                &emsp;
+                            </div>
+                        </div>
+                    }
+
+                    <!--Slider Thumb Fotoğraf-->
+                    @if (!String.IsNullOrEmpty(Model.ThumbFileName))
+                    {
+                        <div class="form-group row" data-divId="thumb">
+                            <label class="col-sm-3 col-form-label" asp-for="PhotoFileName"><b>Thumb Fotoğrafı</b></label>
+                            <div class="col-sm-9">
+                                <img src="~/Images/SliderImages/@Model.Culture/@Model.ThumbFileName" alt="@Model.PhotoAltTag" title="Slider Thumb Fotoğrafı" style="border:1px solid black;" />
+                                &emsp;
+                                <a href="#" class="delSliderThumbPhoto" data-proId="@Model.Id"><i class="fa fa-trash-o fa-2x" title="Thumb Fotoğrafını Sil"></i></a>
+                                &emsp;
+                            </div>
+                        </div>
+                    }
+
+                    <!--Slider Ana Fotoğrafı Yükleme-->
+                    <div class="form-group row" id="mainPhotoGroup">
+                        <label class="col-sm-3 col-form-label" asp-for="SliderPhoto"><b>Slider Fotoğrafı Yükle</b></label>
+                        <div class="col-sm-9 align-content-start">
+                            <div class="custom-file">
+                                <input type="file" asp-for="SliderPhoto" class="custom-file-input form-control" id="sliderUpload" accept=".png, .jpeg, .jpg, .bmp" data-urunId="@Model.Id" />
+                                <label class="custom-file-label" asp-for="SliderPhoto" id="sliderUploadLabel">Slider Fotoğrafını Seçiniz</label>
+                            </div>
+                            <span asp-validation-for="SliderPhoto" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <!--Slider Thumb Fotoğrafı Yükleme-->
+                    <div class="form-group row" id="additionalPhotoGroup">
+                        <label class="col-sm-3 col-form-label" asp-for="SliderThumbPhoto"><b>Ürün Detay Sayfası Fotoğrafları Yükle</b></label>
+                        <div class="col-sm-9 align-content-start">
+                            <div class="custom-file">
+                                <input type="file" asp-for="SliderThumbPhoto" class="custom-file-input form-control" id="thumbUpload" accept=".png, .jpeg, .jpg, .bmp" />
+                                <label class="custom-file-label" asp-for="SliderThumbPhoto" id="thumbUploadLabel">Lütfen Slider Thumb Fotoğraflarını Seçiniz</label>
+                            </div>
+                            <span asp-validation-for="SliderThumbPhoto" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-footer" style="text-align:right">
+            <button type="submit" class="btn btn-danger btn-xl">Değişiklikleri Kaydet</button>
+        </div>
+    </form>
+
+

@@ -1,0 +1,102 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer _localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "AboutUsTR";
+    var requestCultureFeature = HttpContextAccessor.HttpContext.Features.Get<IRequestCultureFeature>();
+    string lang = requestCultureFeature.RequestCulture.UICulture.ToString();
+    var customer = Context.Session.GetObject<SessionDto>("customerInfo");
+}
+
+<!--Header top-->
+ 
+    <div class="top">
+        <div class="container">
+            <ul class="list-unstyled top-nav">
+                <li><a href="/" target="_self">@_localizer["ANASAYFA"]</a></li>
+                <li><a href="@_localizer["/tr/hakkimizda"]" target="_self">@_localizer["HAKKIMIZDA"]</a></li>
+                <li><a href="@_localizer["/tr/iletisim"]" target="_self">@_localizer["İLETİŞİM"]</a></li>
+
+                <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="tr" asp-route-returnUrl="@Context.Request.Path"><img src="~/images/Turkiye.jpeg" alt="Turkiye"></a></li>
+                <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en" asp-route-returnUrl="@Context.Request.Path"><img src="~/images/Britain.jpeg" alt="Britain"></a></li>
+                <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="ru" asp-route-returnUrl="@Context.Request.Path"><img src="~/images/Russia.jpg" alt="Russia"></a></li>
+            </ul>
+        </div>
+    </div>
+    
+
+    <!--Header middle-->
+    <header>
+        <div class="container">
+            <div class="row">
+
+                @*<cache expires-after="@TimeSpan.FromMinutes(20)" vary-by-culture="true" enabled="true">*@
+                    <div class="col-xs-3 col-sm-1 hidden-md hidden-lg">
+                        <button class="mainmenu-toggle" type="button">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="col-xs-6 col-sm-4 col-md-3">
+                        @if (lang.Equals("tr"))
+                        {
+                            <a href="/" class="logo"><img src="~/Images/logotr.png" width="240" height="60" alt="Premium Medikal-Online Medikal Market-Medikal Ankara"></a>
+                        }
+                        else if (lang.Equals("ru"))
+                        {
+                            <a href="/" class="logo"><img src="~/Images/logoru.png" width="240" height="60" alt="Premium Medikal- Online Medikal Market-Medikal Ankara"></a>
+                        }
+                        else
+                        {
+                            <a href="/" class="logo"><img src="~/Images/logoen.png" width="240" height="60" alt="Premium Medikal-Online Medikal Market-Medikal Ankara"></a>
+                        }
+                    </div>
+                @*</cache>*@
+
+                <div class="col-xs-3 col-sm-7 col-md-4 pull-right">
+                    @if (customer == null)
+                    {
+                        <div class="login" style="width:auto;">
+                            <ul class="list-unstyled">
+                                <li><a href="@_localizer["/tr/uye-girisi"]" style="text-transform:capitalize;">@_localizer["Giriş Yap"]</a></li>
+                                <li><a href="@_localizer["/tr/yeni-uye-kaydi"]" style="text-transform:capitalize;">@_localizer["Üye Ol"]</a></li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="login" style="width:auto;">
+                            <p>@_localizer["Hoşgeldiniz"] @customer.NameSurname</p>
+                            <ul class="list-unstyled">
+                                <li><a href="@_localizer["/tr/hesabim"]" style="text-transform:capitalize;">@_localizer["Hesabım"]</a></li>
+                                <li><a href="@_localizer["/tr/cikis"]" style="text-transform:capitalize;">@_localizer["Çıkış"]</a></li>
+                            </ul>
+                        </div>
+                    }
+                </div>
+
+                @*<cache expires-after="@TimeSpan.FromMinutes(20)" vary-by-culture="true" enabled="true">*@
+                    <div class="col-xs-12 col-md-5 cacikkk">
+                        <div class="search">
+                            <form id="AramaFormu">
+                                <input type="text" class="form-control" id="headerSearchText" placeholder="@_localizer["Örnek: Tansiyon Aleti..."]">
+                                <button type="submit" class="btn">@_localizer["Ara"]</button>
+                            </form>
+                        </div>
+                    </div>
+                @*</cache>*@
+            </div>
+        </div>
+    </header>
+
+    <!--Header navigation-->
+    @*<cache expires-after="@TimeSpan.FromMinutes(20)" vary-by-culture="true" enabled="true">*@
+        @await Component.InvokeAsync("CategoryNavbar")
+    @*</cache>*@

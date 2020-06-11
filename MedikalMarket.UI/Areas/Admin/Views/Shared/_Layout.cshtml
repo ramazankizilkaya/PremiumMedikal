@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Premium Medikal Admin Paneli</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   
+    <!-- Add local styles, mostly for plugins css file -->
+    @if (IsSectionDefined("Styles"))
+            {@RenderSection("Styles", required: false)}
+
+<environment names="Development">
+    <link rel="stylesheet" href="~/admin/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/admin/lib/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/admin/lib/dataTables/datatables.min.css" />
+    <link rel="stylesheet" href="~/admin/css/animate.css" />
+    <link rel="stylesheet" href="~/admin/css/style.css"/>
+    <link rel="stylesheet" href="~/admin/lib/dataTables/datatables.min.css" />
+    <link href="~/css/pace.css" rel="stylesheet" />
+    <link href="~/admin/lib/iCheck/custom.css" rel="stylesheet" />
+    <link href="~/css/toastr.min.css" rel="stylesheet" />
+    <link href="~/admin/lib/metisMenu/dist/metisMenu.css" rel="stylesheet" />
+
+</environment>
+<environment names="Staging,Production">
+    <link rel="stylesheet" href="~/admin/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/admin/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/admin/lib/dataTables/datatables.min.css" />
+    <link rel="stylesheet" href="~/admin/css/animate.css" />
+    <link rel="stylesheet" href="~/admin/css/style.css"/>
+    <link rel="stylesheet" href="~/admin/lib/dataTables/datatables.min.css" />
+    <link href="~/css/pace.css" rel="stylesheet" />
+    <link href="~/admin/lib/iCheck/custom.css" rel="stylesheet" />
+    <link href="~/css/toastr.min.css" rel="stylesheet" />
+    <link href="~/admin/lib/metisMenu/dist/metisMenu.min.css" rel="stylesheet" />
+</environment>
+
+
+</head>
+<body class="pace-done">
+    
+
+    <!-- Skin configuration box -->
+    <!-- <partial name="_SkinConfig" /> -->
+    <!-- Wrapper-->
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <partial name="_Navigation" />
+
+        <!-- Page wraper -->
+        <div id="page-wrapper" class="gray-bg">
+
+            <!-- Top Navbar -->
+            <partial name="_TopNavbar" />
+
+            <!-- Main view  -->
+            @RenderBody()
+
+            <!-- Footer -->
+            <partial name="_Footer" />
+
+        </div>
+        <!-- End page wrapper-->
+        <!-- Right Sidebar -->
+        <partial name="_RightSidebar" />
+
+    </div>
+    <!-- End wrapper-->
+
+    @RenderSection("toast", required: false)
+
+<environment names="Development">
+    <script src="~/js/jquery-3.1.1.min.js"></script>
+    <script src="~/admin/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/admin/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/admin/lib/Popper/popper.min.js"></script>
+    <script src="~/admin/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/admin/lib/metisMenu/dist/jquery.metisMenu.js"></script>
+    <script src="~/admin/lib/slimScroll/jquery.slimscroll.js"></script>
+    <script src="~/admin/lib/pace/pace.js"></script>
+    <script src="~/admin/lib/dataTables/datatables.min.js"></script>
+    <script src="~/admin/lib/dataTables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/inspinia.js"></script>
+    <script src="~/admin/lib/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="~/admin/js/site.js"></script>
+    <script src="~/admin/lib/iCheck/icheck.min.js"></script>
+    <script src="~/js/toastr.min.js"></script>
+    <script src="~/admin/js/script.js"></script>
+    <script src="~/admin/js/skin.config.js"></script>
+
+
+    <!-- Only for demo purpose -->
+    <script src="~/admin/js/skin.config.js"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/js/jquery-3.1.1.min.js"></script>
+    <script src="~/admin/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/admin/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/admin/lib/Popper/popper.min.js"></script>
+    <script src="~/admin/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/admin/lib/metisMenu/dist/jquery.metisMenu.js"></script>
+    <script src="~/admin/lib/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="~/admin/lib/pace/pace.min.js"></script>
+    <script src="~/admin/lib/dataTables/datatables.min.js"></script>
+    <script src="~/admin/lib/dataTables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/inspinia.js"></script>
+    <script src="~/admin/lib/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="~/admin/js/site.js"></script>
+    <script src="~/admin/lib/iCheck/icheck.min.js"></script>
+    <script src="~/js/toastr.min.js"></script>
+    <script src="~/admin/js/script.js"></script>
+    <script src="~/admin/js/skin.config.js"></script>
+
+</environment>
+
+    @RenderSection("scripts", required: false)
+
+<script>
+    $(document).ready(function () {
+
+        window.addEventListener('resize', function (event) {
+            if ($("body").hasClass('body-small')) {
+                $("body").addClass('mini-navbar');
+                $("#homePak").text('');
+            }
+
+            if (!$("body").hasClass('body-small')) {
+                $("body").removeClass('mini-navbar');
+                $("#homePak").text('Anasayfa');
+            }
+        });
+    });
+</script>
+</body>
+</html>

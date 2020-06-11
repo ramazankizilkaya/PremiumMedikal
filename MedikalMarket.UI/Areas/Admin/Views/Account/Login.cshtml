@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewData["Title"] = "Admin Login";
+}
+    <input type="hidden" value="@ViewBag.adminEmailCokie" id="adminMail"/>
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div>
+            <h1 class="logo-name">IHMG</h1>
+        </div>
+        <h3>Premium Medikal Admin Paneli</h3>
+        <p>Lütfen kullanıcı adı ve şifrenizi giriniz</p>
+        <form class="m-t" method="post" id="adminLoginForm">
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Eposta" required="" id="inputEmail">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Şifre" required="" id="inputPassword">
+            </div>
+            <div class="i-checks" style="display:inline; margin-bottom:15px; float:left;">
+                <input type="checkbox" class="form-control" id="rememberMeAdmin" checked="@ViewBag.checkTest">
+                <label for="rememberMeAdmin">&emsp;Beni Hatırla</label>
+            </div>
+            <button type="submit" class="btn btn-primary block full-width m-b" id="adminLoginFormSubmit">Giriş</button>
+        </form>
+        <p class="m-t"> <small>premiummedikal.com @DateTime.Now.Year</small> </p>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            //debugger;
+            var adminVall = $('#adminMail').val();
+            if (adminVall!=null) {
+                $('#inputEmail').val(adminVall);
+                //document.getElementById('rememberMeAdmin').click();
+            }
+            else {
+                document.getElementById('rememberMeAdmin').checked = false;
+            }
+            //LoginCheck Ajax
+            $('#adminLoginFormSubmit').click(function (e) {
+                //debugger;
+                e.preventDefault();
+
+                var form = $('#adminLoginForm');
+                $.validator.unobtrusive.parse(form);
+                form.validate();
+
+                var emailVal = document.getElementById('inputEmail').value;
+                var pwdVal = document.getElementById('inputPassword').value;
+                var rememberVal = document.getElementById('rememberMeAdmin').checked;
+                if (emailVal=="") {
+                    toastr.warning("Epostanızı giriniz");
+                    return false;
+                }
+                if (pwdVal == "") {
+                    toastr.warning("Şifrenizi giriniz");
+                    return false;
+                }
+                if (form.valid()) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "/Admin/Account/LoginCheck",
+                        data: { email: emailVal, password: pwdVal, rember: rememberVal},
+                        success: function (response) {
+                            if (response.success) {
+                                toastr.success(response.responseText, response.title);
+                                var delayInMilliseconds = 1000;
+
+                                setTimeout(function () {
+                                    window.location.href = "/Admin/Home/Index";
+                                }, delayInMilliseconds);
+                            }
+                            else {
+                                toastr.warning(response.responseText, response.title);
+                            }
+                        }
+                    });
+                }
+            });
+           
+        });
+
+    </script>
+}

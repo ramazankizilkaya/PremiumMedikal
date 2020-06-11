@@ -1,0 +1,19 @@
+﻿@model PopulateInfoDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+
+<h1>Populate Index</h1>
+<br />
+<h3>Sayılar</h3>
+<br />
+
+@foreach (var item in Model.Counts)
+{
+    <p>@item.Key :  @item.Value </p>
+
+}
+
+
+
