@@ -57,7 +57,6 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
             {
                 return RedirectToAction("Login", "Account", new { area = "Admin" });
             }
-            //deneme
             return View();
         }
 
@@ -115,10 +114,10 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
                 PhotoAltTagTR = productDb.PhotoAltTagTR,
                 PhotoAltTagEN = productDb.PhotoAltTagEN,
                 PhotoAltTagRU = productDb.PhotoAltTagRU,
-                TopCategories = _topRepo.FindEntities(x=>!x.IsDeleted).ToList(),
-                MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).ToList(),
-                SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).ToList(),
-                Brands = _brandRepo.FindEntities(x => !x.IsDeleted).ToList(),
+                TopCategories = _topRepo.FindEntities(x=>!x.IsDeleted).OrderBy(x=>x.NameTR).ToList(),
+                MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList(),
+                SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList(),
+                Brands = _brandRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.BrandName).ToList(),
                 NameTR = productDb.NameTR,
                 NameEN = productDb.NameEN,
                 NameRU = productDb.NameRU,
@@ -164,10 +163,10 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
             HttpContext.Session.Remove("warning");
             var dto = new AdminCreateProductDto
             {
-                Brands = _brandRepo.FindEntities(x => !x.IsDeleted).ToList(),
-                TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).ToList(),
-                MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).ToList(),
-                SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).ToList(),
+                Brands = _brandRepo.FindEntities(x => !x.IsDeleted).OrderBy(x=>x.BrandName).ToList(),
+                TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList(),
+                MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList(),
+                SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList(),
                 SelectedProductOfferType = (int)ProductOfferType.Nothing
             };
             dto.AdminProductPhotoDtos = new List<AdminProductPhotoDto>();
@@ -191,10 +190,10 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
                 if (_brandRepo.GetEntityById(dto.SelectedBrandId).IsDeleted)
             {
                 ModelState.AddModelError("warning", $"Seçilen marka ({_brandRepo.GetEntityById(dto.SelectedBrandId).BrandName}) pasif ya da silinmiş durumdadır. Lütfen önce markayı aktive ediniz veya başka bir marka seçiniz.");
-                dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).ToList();
+                dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.BrandName).ToList();
+                dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
                 dto.SelectedProductOfferType = (int)ProductOfferType.Nothing;
                 return View("CreateProduct", dto);
             }
@@ -202,10 +201,10 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
             if (_topRepo.GetEntityById(dto.SelectedTopCategoryId).IsDeleted)
             {
                 ModelState.AddModelError("warning", $"Seçilen ana kategori ({_topRepo.GetEntityById(dto.SelectedTopCategoryId).NameTR})pasif ya da silinmiş durumdadır. Lütfen önce ana kategoriyi aktive ediniz veya başka bir ana kategori seçiniz.");
-                dto.Brands = _brandRepo.FindEntities(x=>!x.IsDeleted).ToList();
-                dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).ToList();
+                dto.Brands = _brandRepo.FindEntities(x=>!x.IsDeleted).OrderBy(x => x.BrandName).ToList();
+                dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
                 dto.SelectedProductOfferType = (int)ProductOfferType.Nothing;
                 return View("CreateProduct", dto);
             }
@@ -214,10 +213,10 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
             if (midCateId != 0 && _midRepo.GetEntityById((int)dto.SelectedMiddleCategoryId).IsDeleted)
             {
                 ModelState.AddModelError("warning", $"Seçilen orta kategori ({_midRepo.GetEntityById((int)dto.SelectedMiddleCategoryId).NameTR}) silinmiş durumdadır. Lütfen önce orta kategoriyi aktive ediniz veya başka bir orta kategori seçiniz.");
-                dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).ToList();
+                dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.BrandName).ToList();
+                dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
                 dto.SelectedProductOfferType = (int)ProductOfferType.Nothing;
                 return View("CreateProduct", dto);
             }
@@ -228,10 +227,10 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
             if (subCateId != 0 && _subRepo.GetEntityById((int)dto.SelectedSubCategoryId).IsDeleted)
             {
                 ModelState.AddModelError("warning", $"Seçilen alt kategori ({_subRepo.GetEntityById((int)dto.SelectedSubCategoryId).NameTR}) pasif ya da silinmiş durumdadır. Lütfen önce alt kategoriyi aktive ediniz veya başka bir alt kategori seçiniz.");
-                dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).ToList();
+                dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.BrandName).ToList();
+                dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
                 dto.SelectedProductOfferType = (int)ProductOfferType.Nothing;
                 return View("CreateProduct", dto);
             }
@@ -249,10 +248,10 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
                 if (!allowedExtensions.Contains(ext.ToLower()))
                 {
                     ModelState.AddModelError("warning", "Lütfen sadece .jpg, .jpeg, .bmp veya .png uzantılı resim yükleyiniz.");
-                    dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).ToList();
-                    dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).ToList();
-                    dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).ToList();
-                    dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).ToList();
+                    dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.BrandName).ToList();
+                    dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                    dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                    dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
                     dto.SelectedProductOfferType = (int)ProductOfferType.Nothing;
                     return View("CreateProduct", dto);
                 }
@@ -268,10 +267,10 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
                     if (!allowedExtensions.Contains(ext2.ToLower()))
                     {
                         ModelState.AddModelError("warning", "Lütfen sadece .jpg, .jpeg, .bmp veya .png uzantılı resim yükleyiniz.");
-                        dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).ToList();
-                        dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).ToList();
-                        dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).ToList();
-                        dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).ToList();
+                        dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.BrandName).ToList();
+                        dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                        dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                        dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
                         dto.SelectedProductOfferType = (int)ProductOfferType.Nothing;
                         return View("CreateProduct", dto);
                     }
@@ -279,7 +278,7 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
             }
 
             var proDb = new Product();
-            
+                string brandName = _brandRepo.GetEntityById(dto.SelectedBrandId).BrandName;
                 if (ModelState.IsValid)
                 {
                     proDb.NameTR = dto.NameTR;
@@ -299,9 +298,9 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
                     proDb.HasNewBadge = dto.HasNewBadge;
                     proDb.IsFreeShipping = dto.IsFreeShipping;
 
-                    proDb.HeadTitleTR = dto.NameTR + "-" + " premium medikal market";
-                    proDb.HeadTitleEN = dto.NameEN + "-" + " premium medical market";
-                    proDb.HeadTitleRU = dto.NameRU + "-" + " премиум медицинский рынок";
+                    proDb.HeadTitleTR = dto.NameTR + "-" + $"{brandName} marka ürünler, premium medikal market";
+                    proDb.HeadTitleEN = dto.NameEN + "-" + $"{brandName} products, premium medical market";
+                    proDb.HeadTitleRU = dto.NameRU + "-" + $"продукты бренда { brandName}, премиум медицинский рынок";
 
                     string midCateNameTR = midCateId != 0 ? _midRepo.GetEntityById(midCateId).NameTR : null;
                     string midCateNameEN = midCateId != 0 ? _midRepo.GetEntityById(midCateId).NameEN : null;
@@ -353,10 +352,10 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
                
                 ModelState.AddModelError("warning", $"Ürün eklenemedi. Hata oluştu. Lütfen formu tam doldurunuz. {messages}");
 
-                dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).ToList();
+                dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.BrandName).ToList();
+                dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
                 dto.SelectedProductOfferType = (int)ProductOfferType.Nothing;
                 return View("CreateProduct", dto);
             }
@@ -372,10 +371,10 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
                 });
 
                 ModelState.AddModelError("warning", $"Ürün eklenemedi. Hata oluştu. Lütfen formu tam doldurunuz. {messages}");
-                dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).ToList();
-                dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).ToList();
+                dto.Brands = _brandRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.BrandName).ToList();
+                dto.TopCategories = _topRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                dto.MiddleCategories = _midRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
+                dto.SubCategories = _subRepo.FindEntities(x => !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
                 dto.SelectedProductOfferType = (int)ProductOfferType.Nothing;
                 return View("CreateProduct", dto);
             }
@@ -1000,13 +999,13 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
 
         public JsonResult GetMiddleCategoryList(int id)
         {
-            var midCategories = _midRepo.FindEntities(x => x.TopCategoryId == id).OrderBy(x => x.NameTR).ToList();
+            var midCategories = _midRepo.FindEntities(x => x.TopCategoryId == id && !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
             return Json(new SelectList(midCategories, "Id", "NameTR"));
         }
 
         public JsonResult GetSubCategoryList(int id)
         {
-            var subCategories = _subRepo.FindEntities(x => x.MiddleCategoryId == id).OrderBy(x => x.NameTR).ToList();
+            var subCategories = _subRepo.FindEntities(x => x.MiddleCategoryId == id && !x.IsDeleted).OrderBy(x => x.NameTR).ToList();
             return Json(new SelectList(subCategories, "Id", "NameTR"));
         }
 

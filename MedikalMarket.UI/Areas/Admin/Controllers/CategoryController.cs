@@ -291,9 +291,6 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
             }
         }
 
-       
-
-
         public IActionResult Index()
         {
             if (!AuthCheck())

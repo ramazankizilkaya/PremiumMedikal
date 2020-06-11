@@ -56,8 +56,13 @@
                             </div>
                         }
 
-                        <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)" style="z-index:999999">  &#10094;</button>
-                        <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)" style="z-index:999999">&#10095;</button>
+                        @if (Model.ProductPhotoDtos.Count > 1)
+                        {
+                            <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)" style="z-index:999999">  &#10094;</button>
+                            <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)" style="z-index:999999">&#10095;</button>
+
+                        }
+
                     </div>
                     
                 </div>

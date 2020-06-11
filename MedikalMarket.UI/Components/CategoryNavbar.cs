@@ -34,7 +34,7 @@ namespace MedikalMarket.UI.Components
                 switch (culture)
                 {
                     case "tr":
-                        foreach (var topCate in topCatesDb)
+                        foreach (var topCate in topCatesDb.OrderBy(x=>x.NameTR))
                         {
                             TopCategoryComponentDto topDto = new TopCategoryComponentDto();
                             topDto.Id = topCate.Id;
@@ -44,7 +44,7 @@ namespace MedikalMarket.UI.Components
                             topDto.TopCategoryNameUrl = topCate.TopCategoryNameUrlTR;
                             if (topCate.MiddleCategories.Any(x=>!x.IsDeleted))
                             {
-                                foreach (var middleCate in topCate.MiddleCategories.Where(x => !x.IsDeleted))
+                                foreach (var middleCate in topCate.MiddleCategories.Where(x => !x.IsDeleted).OrderBy(x => x.NameTR))
                                 {
                                     MiddleCategoryComponentDto middleDto = new MiddleCategoryComponentDto();
                                     middleDto.Id = middleCate.Id;
@@ -55,7 +55,7 @@ namespace MedikalMarket.UI.Components
                                     middleDto.MiddleCategoryNameUrl = middleCate.MiddleCategoryNameUrlTR;
                                     if (middleCate.SubCategories.Any(x => !x.IsDeleted))
                                     {
-                                        foreach (var subCate in middleCate.SubCategories.Where(x => !x.IsDeleted))
+                                        foreach (var subCate in middleCate.SubCategories.Where(x => !x.IsDeleted).OrderBy(x => x.NameTR))
                                         {
                                             SubCategoryComponentDto subDto = new SubCategoryComponentDto();
                                             subDto.Id = subCate.Id;
@@ -78,7 +78,7 @@ namespace MedikalMarket.UI.Components
                         break;
 
                     case "en":
-                        foreach (var topCate in topCatesDb)
+                        foreach (var topCate in topCatesDb.OrderBy(x => x.NameEN))
                         {
                             TopCategoryComponentDto topDto = new TopCategoryComponentDto();
                             topDto.Id = topCate.Id;
@@ -88,7 +88,7 @@ namespace MedikalMarket.UI.Components
                             topDto.TopCategoryNameUrl = topCate.TopCategoryNameUrlEN;
                             if (topCate.MiddleCategories.Any(x => !x.IsDeleted))
                             {
-                                foreach (var middleCate in topCate.MiddleCategories.Where(x => !x.IsDeleted))
+                                foreach (var middleCate in topCate.MiddleCategories.Where(x => !x.IsDeleted).OrderBy(x => x.NameEN))
                                 {
                                     MiddleCategoryComponentDto middleDto = new MiddleCategoryComponentDto();
                                     middleDto.Id = middleCate.Id;
@@ -100,7 +100,7 @@ namespace MedikalMarket.UI.Components
 
                                     if (middleCate.SubCategories.Any(x => !x.IsDeleted))
                                     {
-                                        foreach (var subCate in middleCate.SubCategories.Where(x => !x.IsDeleted))
+                                        foreach (var subCate in middleCate.SubCategories.Where(x => !x.IsDeleted).OrderBy(x => x.NameEN))
                                         {
                                             SubCategoryComponentDto subDto = new SubCategoryComponentDto();
                                             subDto.Id = subCate.Id;
@@ -123,7 +123,7 @@ namespace MedikalMarket.UI.Components
                         break;
 
                     case "ru":
-                        foreach (var topCate in topCatesDb)
+                        foreach (var topCate in topCatesDb.OrderBy(x => x.NameRU))
                         {
                             TopCategoryComponentDto topDto = new TopCategoryComponentDto();
                             topDto.Id = topCate.Id;
@@ -134,7 +134,7 @@ namespace MedikalMarket.UI.Components
 
                             if (topCate.MiddleCategories.Any(x => !x.IsDeleted))
                             {
-                                foreach (var middleCate in topCate.MiddleCategories.Where(x => !x.IsDeleted))
+                                foreach (var middleCate in topCate.MiddleCategories.Where(x => !x.IsDeleted).OrderBy(x => x.NameRU))
                                 {
                                     MiddleCategoryComponentDto middleDto = new MiddleCategoryComponentDto();
                                     middleDto.Id = middleCate.Id;
@@ -146,7 +146,7 @@ namespace MedikalMarket.UI.Components
 
                                     if (middleCate.SubCategories.Any(x => !x.IsDeleted))
                                     {
-                                        foreach (var subCate in middleCate.SubCategories.Where(x => !x.IsDeleted))
+                                        foreach (var subCate in middleCate.SubCategories.Where(x => !x.IsDeleted).OrderBy(x => x.NameRU))
                                         {
                                             SubCategoryComponentDto subDto = new SubCategoryComponentDto();
                                             subDto.Id = subCate.Id;
@@ -168,7 +168,7 @@ namespace MedikalMarket.UI.Components
                         }
                         break;
                     default:
-                        foreach (var topCate in topCatesDb)
+                        foreach (var topCate in topCatesDb.OrderBy(x => x.NameEN))
                         {
                             TopCategoryComponentDto topDto = new TopCategoryComponentDto();
                             topDto.Id = topCate.Id;
@@ -179,7 +179,7 @@ namespace MedikalMarket.UI.Components
 
                             if (topCate.MiddleCategories.Any(x => !x.IsDeleted))
                             {
-                                foreach (var middleCate in topCate.MiddleCategories.Where(x => !x.IsDeleted))
+                                foreach (var middleCate in topCate.MiddleCategories.Where(x => !x.IsDeleted).OrderBy(x => x.NameEN))
                                 {
                                     MiddleCategoryComponentDto middleDto = new MiddleCategoryComponentDto();
                                     middleDto.Id = middleCate.Id;
@@ -191,7 +191,7 @@ namespace MedikalMarket.UI.Components
 
                                     if (middleCate.SubCategories.Any(x => !x.IsDeleted))
                                     {
-                                        foreach (var subCate in middleCate.SubCategories.Where(x => !x.IsDeleted))
+                                        foreach (var subCate in middleCate.SubCategories.Where(x => !x.IsDeleted).OrderBy(x => x.NameEN))
                                         {
                                             SubCategoryComponentDto subDto = new SubCategoryComponentDto();
                                             subDto.Id = subCate.Id;
