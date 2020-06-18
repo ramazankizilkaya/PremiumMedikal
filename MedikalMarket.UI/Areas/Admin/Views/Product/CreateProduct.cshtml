@@ -302,16 +302,19 @@
     <script>
         //gelen başarı uyarısını verir
         var successText = $('#createProSuccess').val();
-
-        if (successText.length > 0) {
-            toastr.success(successText, "Başarılı");
-            $('#createProSuccess').val("")
+        if (successText!=null) {
+            if (successText.length > 0) {
+                toastr.success(successText, "Başarılı");
+                $('#createProSuccess').val("")
+            }
         }
+        
         var failText = $('#createProtWarning').val();
-
-        if (failText.length > 0) {
-            toastr.error(failText, "Hata");
-            $('#createProWarning').val("")
+        if (failText != null) {
+            if (failText.length > 0) {
+                toastr.error(failText, "Hata");
+                $('#createProWarning').val("")
+            }
         }
     </script>
 }

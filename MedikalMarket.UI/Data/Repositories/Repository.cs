@@ -5,8 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 
 namespace MedikalMarket.UI.Data.Repositories
 {
@@ -119,8 +117,6 @@ namespace MedikalMarket.UI.Data.Repositories
         }
         #endregion
 
-
-
         #region Delete
 
         public bool HardDeleteEntity(T entity)
@@ -156,7 +152,6 @@ namespace MedikalMarket.UI.Data.Repositories
         }
         #endregion
 
-
         #region Update
         public bool UpdateEntities(IEnumerable<T> entities)
         {
@@ -177,7 +172,6 @@ namespace MedikalMarket.UI.Data.Repositories
         }
         #endregion
 
-        
         protected bool Save()
         {
             try
