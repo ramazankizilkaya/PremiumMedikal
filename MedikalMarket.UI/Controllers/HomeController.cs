@@ -43,7 +43,7 @@ namespace MedikalMarket.UI.Controllers
             _hostingEnvironment = hostingEnvironment;
             _contactRepo = contactRepo;
         }
-
+        //deneme
         [Route("/")]
         [Route("/home")]
         [Route("/anasayfa")]
