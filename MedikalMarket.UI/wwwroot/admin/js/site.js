@@ -224,12 +224,14 @@ $(document).ready(function () {
             type: "get",
             data: { 'id': $('#SelectedTopCategoryId').val() },
             success: function (data) {
-                var items = '';
+                var items = "<option style='color:red;' value=''>Lütfen Orta Kategori Seçiniz</option>";
                 $("#SelectedMiddleCategoryId").empty();
                 $.each(data, function (i, row) {
                     items += "<option value='" + row.value + "'>" + row.text + "</option>";
                 });
-                $("#SelectedMiddleCategoryId").html(items);
+                if (data.length != 0) {
+                    $("#SelectedMiddleCategoryId").html(items);
+                }
                 $("#SelectedSubCategoryId").empty();
                 $(".midCat").trigger("change");
             }
@@ -246,12 +248,14 @@ $(document).ready(function () {
             type: "get",
             data: { 'id': $('#SelectedMiddleCategoryId').val() },
             success: function (data) {
-                var items = '';
+                var items = "<option style='color:red;' value=''>Lütfen Alt Kategori Seçiniz</option>";
                 $("#SelectedSubCategoryId").empty();
                 $.each(data, function (i, row) {
                     items += "<option value='" + row.value + "'>" + row.text + "</option>";
                 });
-                $("#SelectedSubCategoryId").html(items);
+                if (data.length != 0) {
+                    $("#SelectedSubCategoryId").html(items);
+                }
             }
         });
     });
