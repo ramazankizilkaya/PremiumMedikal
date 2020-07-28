@@ -7,8 +7,7 @@
 }
 
 
-<input type="hidden" id="registerSuccess" value="@ViewBag.RegAlert" />
-<input type="hidden" id="registerSuccessTitle" value="@ViewBag.warnTitle" />
+<input type="hidden" id="successInput" value="@ViewBag.RegAlert" />
 <input type="hidden" id="warnwrongEmail" value="@localizer["Lütfen geçerli bir eposta adresi giriniz."]" />
 <input type="hidden" id="warnEmptyEmail" value="@localizer["Lütfen E-posta adresinizi giriniz."]" />
 <input type="hidden" id="warnemailVal" value="@localizer["E-posta adresi minimum 2, maksimum 100 karakter içermelidir."]" />
@@ -21,10 +20,9 @@
             <div class="modul-content user-login">
                 <h2 class="theme-h2"><span>@localizer["Üye Girişi"]</span></h2>
                 <form method="post" id="loginForm">
-
                     <div class="form-group">
                         <label asp-for="Email">@localizer["E-Posta Adresiniz"]</label>
-                        <input type="email" class="form-control" id="inputEmail" data-rule-required="true" data-rule-email="true" name="Mail" placeholder="@localizer["E-Posta Adresiniz"]" data-focus="true" data-hata-mesaji="@localizer["Lütfen geçerli bir e-posta adresi belirtiniz"]" asp-for="Email">
+                        <input type="email" class="form-control" id="inputEmail" data-rule-required="true" data-rule-email="true" name="Mail" placeholder="@localizer["E-Posta Adresiniz"]" data-focus="true" data-hata-mesaji="@localizer["Lütfen geçerli bir e-posta adresi belirtiniz"]" asp-for="Email" value="@ViewBag.newRegisteredEmail">
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
 
@@ -36,10 +34,10 @@
 
                     <div class="form-group">
                         <div class="i-checks" style="display:inline;">
-                            <input type="checkbox" class="form-control" id="rememberMe" checked="@Model.RememberMe">
+                            <input type="checkbox" class="form-control" id="rememberMe">
                             @*<button onclick="alert(document.getElementById('rememberMe').checked);"></button>*@
                         </div>
-                        <label asp-for="RememberMe">&emsp;@localizer["Beni Hatırla"]</label>
+                        <label for="rememberMe">&emsp;@localizer["Beni Hatırla"]</label>
 
                         <label style="float:right;"><a href="#" data-toggle="modal" data-target="#myEmailModal" class="forgot-pass">@localizer["Şifremi Unuttum"]</a></label>
                     </div>
@@ -52,10 +50,10 @@
         </div>
     </div>
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="myEmailModal" role="dialog">
     <div class="modal-dialog">
-
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -88,6 +86,38 @@
 
         $(document).ready(function () {
 
+            var mySuccessVal = document.getElementById('successInput').value;
+            if (mySuccessVal.length > 0) {
+                toastr.success(mySuccessVal);
+                document.getElementById('successInput').value = "";
+            }
+
+            var userEmailCokie = window.localStorage.getItem("userEmail");
+            if (userEmailCokie != null) {
+                $('#inputEmail').val(userEmailCokie);
+                $('#inputPassword').focus();
+                var targetEl = document.getElementsByClassName('icheckbox_square-green');
+                targetEl[0].classList.add('checked');
+                //document.getElementById('rememberMe').checked = true;
+            }
+            else {
+                //document.getElementById('rememberMe').checked = false;
+                var targetEl = document.getElementsByClassName('icheckbox_square-green');
+                targetEl[0].classList.remove('checked');
+            }
+
+            $('#rememberMe').on('ifChecked', function (event) {
+                var emailVal = document.getElementById('inputEmail').value;
+                window.localStorage.setItem("userEmail", emailVal);
+            });
+            $('#rememberMe').on('ifUnchecked', function (event) {
+                window.localStorage.removeItem("userEmail");
+            });
+            $('#inputForgotEmail').off('keyup').on('keyup', function (event) {
+                $('#btnSendMyPwd').prop('disabled', false);
+            });
+
+
             //LoginCheck Ajax
             $('#loginFormSubmit').click(function (e) {
                 //debugger;
@@ -99,13 +129,12 @@
 
                 var emailVal = document.getElementById('inputEmail').value;
                 var pwdVal = document.getElementById('inputPassword').value;
-                var remember = document.getElementById('rememberMe').checked;
 
                 if (form.valid()) {
                     $.ajax({
                         type: 'POST',
                         url: "/Account/LoginCheck",
-                        data: { email: emailVal, password: pwdVal, rememberMe: remember },
+                        data: { email: emailVal, password: pwdVal },
                         success: function (response) {
                             if (response.success) {
                                 toastr.success(response.responseText, response.title);
@@ -123,10 +152,15 @@
                 }
             });
 
+        $('#myEmailModal').on('show.bs.modal', function(){
+        $('#inputForgotEmail').val('');
+        $('#warnResult').html('');
+        });
 
             //Şifremi unuttum
-            $('#btnSendMyPwd').click(function (e) {
-                debugger;
+            $('#btnSendMyPwd').off('click').on('click', function (e) {
+                $(this).prop('disabled', true);
+                $('#warnResult').html('Lütfen bekleyin...');
                 var emailVal = $('#inputForgotEmail').val();
                 var warnWrongEmail = document.getElementById('warnwrongEmail').value;
                 var warnEmptyEmail = document.getElementById('warnEmptyEmail').value;
@@ -141,16 +175,20 @@
                 if (emailVal.length == 0) {
                     $('#warnResult').html("<div class='alert alert-danger' role='alert'>" + warnEmptyEmail + "</div>");
                     $('#Mail').focus();
+                    $(this).prop('disabled', true);
                     return false;
                 }
                 if (!emailValidation) {
                     $('#warnResult').html("<div class='alert alert-danger' role='alert'>" + warnWrongEmail + "</div>");
                     $('#Mail').focus();
+                    $(this).prop('disabled', true);
                     return false;
                 }
                 if (emailVal.length < 2 || emailVal.length > 100) {
                     $('#warnResult').html("<div class='alert alert-danger' role='alert'>" + warnemailVal + "</div>");
                     $('#Mail').focus();
+                $(this).prop('disabled', true);
+
                     return false;
                 }
 
@@ -164,10 +202,14 @@
                         }
                         if (!response.success) {
                             $('#warnResult').html(response.responseText);
+                $(this).prop('disabled', true);
+
                         }
                     }
                 }).fail(function () {
                     $('#warnResult').html(response.responseText);
+                $(this).prop('disabled', true);
+
                 });
             });
         });

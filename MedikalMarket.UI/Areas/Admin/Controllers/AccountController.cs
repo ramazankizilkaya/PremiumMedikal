@@ -26,14 +26,14 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
 
         public IActionResult Login()
         {
-            string adminMailCookie = Request.Cookies["adminEmail"];
-            ViewBag.adminEmailCokie = adminMailCookie;
-            ViewBag.checkTest = adminMailCookie != null;
+            //string adminMailCookie = Request.Cookies["adminEmail"];
+            //ViewBag.adminEmailCokie = adminMailCookie;
+            //ViewBag.checkTest = adminMailCookie != null;
             return View();
         }
 
         [HttpPost]
-        public JsonResult LoginCheck(string email, string password, bool rember)
+        public JsonResult LoginCheck(string email, string password)
         {
             try
             {
@@ -47,14 +47,14 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
                 }
                 else
                 {
-                    if (rember)
-                    {
-                        SetMyCookie("adminEmail", email);
-                    }
-                    else
-                    {
-                        RemoveMyCookie("adminEmail");
-                    }
+                    //if (rember)
+                    //{
+                    //    SetMyCookie("adminEmail", email);
+                    //}
+                    //else
+                    //{
+                    //    RemoveMyCookie("adminEmail");
+                    //}
 
                     HttpContext.Session.SetString("adminInfo", email);
                     string msgTitle = "Başarılı";
@@ -84,16 +84,16 @@ namespace MedikalMarket.UI.Areas.Admin.Controllers
             return RedirectToAction("Login", "Account", new { area = "Admin" });
         }
 
-        public void SetMyCookie(string key, string value)
-        {
-            CookieOptions option = new CookieOptions();
-            Response.Cookies.Append(key, value);
-        }
+        //public void SetMyCookie(string key, string value)
+        //{
+        //    CookieOptions option = new CookieOptions();
+        //    Response.Cookies.Append(key, value);
+        //}
 
-        public void RemoveMyCookie(string key)
-        {
-            Response.Cookies.Delete(key);
-        }
+        //public void RemoveMyCookie(string key)
+        //{
+        //    Response.Cookies.Delete(key);
+        //}
 
     }
 }

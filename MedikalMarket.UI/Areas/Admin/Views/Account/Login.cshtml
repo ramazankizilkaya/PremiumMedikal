@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Admin Login";
 }
-    <input type="hidden" value="@ViewBag.adminEmailCokie" id="adminMail"/>
+    
 <div class="middle-box text-center loginscreen animated fadeInDown">
     <div>
         <div>
@@ -18,7 +18,7 @@
                 <input type="password" class="form-control" placeholder="Şifre" required="" id="inputPassword">
             </div>
             <div class="i-checks" style="display:inline; margin-bottom:15px; float:left;">
-                <input type="checkbox" class="form-control" id="rememberMeAdmin" checked="@ViewBag.checkTest">
+                <input type="checkbox" class="form-control" id="rememberMeAdmin">
                 <label for="rememberMeAdmin">&emsp;Beni Hatırla</label>
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b" id="adminLoginFormSubmit">Giriş</button>
@@ -35,15 +35,31 @@
     <script>
 
         $(document).ready(function () {
-            //debugger;
-            var adminVall = $('#adminMail').val();
-            if (adminVall!=null) {
-                $('#inputEmail').val(adminVall);
-                //document.getElementById('rememberMeAdmin').click();
+
+            var adminEmailCokie = window.localStorage.getItem("adminEmail");
+            if (adminEmailCokie != null) {
+                $('#inputEmail').val(adminEmailCokie);
+                $('#inputPassword').focus();
+                var targetEl = document.getElementsByClassName('icheckbox_square-green');
+                targetEl[0].classList.add('checked');
+                //document.getElementById('rememberMe').checked = true;
             }
             else {
-                document.getElementById('rememberMeAdmin').checked = false;
+                //document.getElementById('rememberMe').checked = false;
+                var targetEl = document.getElementsByClassName('icheckbox_square-green');
+                targetEl[0].classList.remove('checked');
             }
+
+            $('#rememberMeAdmin').on('ifChecked', function (event) {
+                var emailVal = document.getElementById('inputEmail').value;
+                window.localStorage.setItem("adminEmail", emailVal);
+            });
+            $('#rememberMeAdmin').on('ifUnchecked', function (event) {
+                window.localStorage.removeItem("adminEmail");
+            });
+
+
+
             //LoginCheck Ajax
             $('#adminLoginFormSubmit').click(function (e) {
                 //debugger;
@@ -56,6 +72,7 @@
                 var emailVal = document.getElementById('inputEmail').value;
                 var pwdVal = document.getElementById('inputPassword').value;
                 var rememberVal = document.getElementById('rememberMeAdmin').checked;
+
                 if (emailVal=="") {
                     toastr.warning("Epostanızı giriniz");
                     return false;
@@ -68,7 +85,7 @@
                     $.ajax({
                         type: 'POST',
                         url: "/Admin/Account/LoginCheck",
-                        data: { email: emailVal, password: pwdVal, rember: rememberVal},
+                        data: { email: emailVal, password: pwdVal},
                         success: function (response) {
                             if (response.success) {
                                 toastr.success(response.responseText, response.title);

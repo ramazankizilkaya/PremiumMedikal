@@ -35,22 +35,23 @@ namespace MedikalMarket.UI.Controllers
         public IActionResult Login()
         {
             LoginDto dto = new LoginDto();
-            string userEmailCokie = Request.Cookies["userEmail"];
+            //string userEmailCokie = Request.Cookies["userEmail"];
             ViewBag.RegAlert = HttpContext.Session.GetString("registerSuc") ?? "";
-            ViewBag.warnTitle = _localizer["Başarılı"];
             HttpContext.Session.Remove("registerSuc");
-            
-            if (userEmailCokie!=null)
-            {
-                dto.RememberMe = true;
-                dto.Email = userEmailCokie;
-            }
-            string newRegisterEmail = HttpContext.Session.GetString("newRegisterEmail");
-            if (newRegisterEmail != null)
-            {
-                dto.Email = newRegisterEmail;
-                HttpContext.Session.Remove("newRegisterEmail");
-            }
+            ViewBag.newRegisteredEmail = HttpContext.Session.GetString("newRegisterEmail") ?? "";
+            HttpContext.Session.Remove("newRegisterEmail");
+
+            //if (userEmailCokie!=null)
+            //{
+            //    dto.RememberMe = true;
+            //    dto.Email = userEmailCokie;
+            //}
+            //string newRegisterEmail = HttpContext.Session.GetString("newRegisterEmail");
+            //if (newRegisterEmail != null)
+            //{
+            //    dto.Email = newRegisterEmail;
+            //    HttpContext.Session.Remove("newRegisterEmail");
+            //}
             return View(dto);
         }
 
@@ -140,7 +141,7 @@ namespace MedikalMarket.UI.Controllers
                         string rspText = _localizer["Kayıt işlemi başarılı...  Lütfen bilgilerinizi girerek oturum açınız."];
                         string url = _localizer["/tr/uye-girisi"];
 
-                        HttpContext.Session.SetString("success", _localizer["Kayıt işlemi başarılı...  Lütfen bilgilerinizi girerek oturum açınız."]);
+                        HttpContext.Session.SetString("registerSuc", _localizer["Kayıt işlemi başarılı...  Lütfen bilgilerinizi girerek oturum açınız."]);
 
                         HttpContext.Session.SetString("newRegisterEmail", email);
 
@@ -210,7 +211,7 @@ namespace MedikalMarket.UI.Controllers
 
                      
                         client.Connect("smtp.gmail.com", 587, SecureSocketOptions.Auto);
-                        client.Authenticate("ubsisprojectmanagement@gmail.com", "11791191");
+                        client.Authenticate("ubsisprojectmanagement@gmail.com", "alfaGT5505!");
                         client.Send(message);
                         client.Disconnect(true);
                         client.Dispose();
@@ -236,7 +237,7 @@ namespace MedikalMarket.UI.Controllers
         }
 
         [HttpPost]
-        public JsonResult LoginCheck(string email, string password, bool rememberMe)
+        public JsonResult LoginCheck(string email, string password)
         {
             try
             {
@@ -251,15 +252,15 @@ namespace MedikalMarket.UI.Controllers
                 }
                 else
                 {
-                    if (rememberMe)
-                    {
-                        SetMyCookie("userEmail", customer.EmailAddress);
-                    }
-                    else
-                    {
-                        RemoveMyCookie("userEmail");
-                        string userCok = Request.Cookies["userEmail"];
-                    }
+                    //if (rememberMe)
+                    //{
+                    //    SetMyCookie("userEmail", customer.EmailAddress);
+                    //}
+                    //else
+                    //{
+                    //    RemoveMyCookie("userEmail");
+                    //    string userCok = Request.Cookies["userEmail"];
+                    //}
 
                     SessionDto sessionDto = new SessionDto();
                     sessionDto.Id = customer.Id;
@@ -288,16 +289,16 @@ namespace MedikalMarket.UI.Controllers
             }
         }
        
-        public void SetMyCookie(string key, string value)
-        {
-            CookieOptions option = new CookieOptions();
-            Response.Cookies.Append(key, value);
-        }
+        //public void SetMyCookie(string key, string value)
+        //{
+        //    CookieOptions option = new CookieOptions();
+        //    Response.Cookies.Append(key, value);
+        //}
          
-        public void RemoveMyCookie(string key)
-        {
-            Response.Cookies.Delete(key);
-        }
+        //public void RemoveMyCookie(string key)
+        //{
+        //    Response.Cookies.Delete(key);
+        //}
 
         [Route("/tr/cikis")]
         [Route("/en/logout")]
@@ -343,7 +344,7 @@ namespace MedikalMarket.UI.Controllers
         [NonAction]
         public bool AuthCheck()
         {
-            return HttpContext.Session.GetInt32("customerInfo") == null ? false : true;
+            return HttpContext.Session.GetInt32("customerInfo") != null;
         }
     }
 }

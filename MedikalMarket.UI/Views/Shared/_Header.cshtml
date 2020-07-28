@@ -16,12 +16,12 @@
 
 <!--Header top-->
  
-    <div class="top">
+    <div class="top" style="min-height:30px;background-color:blueviolet">
         <div class="container">
             <ul class="list-unstyled top-nav">
-                <li><a href="/" target="_self">@_localizer["ANASAYFA"]</a></li>
-                <li><a href="@_localizer["/tr/hakkimizda"]" target="_self">@_localizer["HAKKIMIZDA"]</a></li>
-                <li><a href="@_localizer["/tr/iletisim"]" target="_self">@_localizer["İLETİŞİM"]</a></li>
+                <li><a style="padding:10px 5px;" href="/" target="_self">@_localizer["ANASAYFA"]</a></li>
+                <li><a style="padding:10px 5px;" href="@_localizer["/tr/hakkimizda"]" target="_self">@_localizer["HAKKIMIZDA"]</a></li>
+                <li><a style="padding:10px 5px;" href="@_localizer["/tr/iletisim"]" target="_self">@_localizer["İLETİŞİM"]</a></li>
 
                 <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="tr" asp-route-returnUrl="@Context.Request.Path"><img src="~/images/Turkiye.jpeg" alt="Turkiye"></a></li>
                 <li><a asp-controller="Home" asp-action="SetLanguage" asp-route-culture="en" asp-route-returnUrl="@Context.Request.Path"><img src="~/images/Britain.jpeg" alt="Britain"></a></li>

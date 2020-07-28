@@ -12,8 +12,8 @@
 <input type="hidden" data-url="@Context.Request.Path" id="pageRouteVal" />
 
 <!--Breadcrumb-->
-<div class="breadcrumb">
-    <ul class="list-unstyled">
+<div class="breadcrumb" style="min-height:40px;vertical-align: middle !important;margin-top:0px!important;">
+    <ul class="list-unstyled p1">
         <li><a href="/"><span>@localizer["Ana Sayfa"]</span></a></li>
         <li class="last"><a href="@localizer["/tr/kategoriler/"]@ViewBag.topcategoryNameUrl/@localizer["sayfa"]/1"><h1>@ViewBag.topcategoryName</h1></a></li>
         <li class="last"><a href="/tr/kategoriler/@ViewBag.topcategoryNameUrl/@ViewBag.midcategoryNameUrl/@localizer["sayfa"]/1"><h1>@ViewBag.midcategoryName</h1></a></li>

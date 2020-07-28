@@ -3,6 +3,7 @@
 
 @{
     Layout = "~/Views/Shared/_ComponentLayout.cshtml";
+    string stil = $"style='max-width:{100 / Model.Count()}%";
 }
 
 @if (ViewBag.culture.Equals("tr"))
@@ -17,7 +18,7 @@
                 <ul class="categories-nav list-unstyled" style="min-height:60px;">
                     @foreach (var topCate in Model)
                     {
-                        <li>
+                        <li @stil>
                             <a href="/tr/kategoriler/@topCate.TopCategoryNameUrl/sayfa/1" data-title="@topCate.Name"><span>@topCate.Name</span></a>
                             <i class="fa fa-chevron-right" aria-hidden="true"></i>
 
